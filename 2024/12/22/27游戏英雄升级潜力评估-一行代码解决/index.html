@@ -21,15 +21,15 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="19 字典序最小的 01 字符串 简单 O(n)做法题目描述小 U 拥有一个由0和1组成的字符串，她可以进行最多k次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。 解题思路为了获得字典序最小的字符串，我们的目标是尽可能将&#39;0&#39;移向字符串的左侧而把&#39;1&#39;移到字符串的右侧，并且根据字典序的规则，我们应该尽量把&#39;1&amp;#3">
+    <meta name="description" content="问题描述小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析要使至少有一个英雄达到20000">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19 字典序最小的 01 字符串 简单 O(n)做法">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/22/19-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84-01-%E5%AD%97%E7%AC%A6%E4%B8%B2-%E7%AE%80%E5%8D%95-O-n-%E5%81%9A%E6%B3%95/index.html">
+<meta property="og:title" content="27游戏英雄升级潜力评估 一行代码解决">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/22/27%E6%B8%B8%E6%88%8F%E8%8B%B1%E9%9B%84%E5%8D%87%E7%BA%A7%E6%BD%9C%E5%8A%9B%E8%AF%84%E4%BC%B0-%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="19 字典序最小的 01 字符串 简单 O(n)做法题目描述小 U 拥有一个由0和1组成的字符串，她可以进行最多k次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。 解题思路为了获得字典序最小的字符串，我们的目标是尽可能将&#39;0&#39;移向字符串的左侧而把&#39;1&#39;移到字符串的右侧，并且根据字典序的规则，我们应该尽量把&#39;1&amp;#3">
+<meta property="og:description" content="问题描述小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析要使至少有一个英雄达到20000">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-21T17:38:46.000Z">
-<meta property="article:modified_time" content="2024-12-21T17:39:30.784Z">
+<meta property="article:published_time" content="2024-12-21T17:52:12.000Z">
+<meta property="article:modified_time" content="2024-12-21T17:58:39.166Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>19 字典序最小的 01 字符串 简单 O(n)做法 - Hexo</title>
+  <title>27游戏英雄升级潜力评估 一行代码解决 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -286,7 +286,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="19 字典序最小的 01 字符串 简单 O(n)做法"></span>
+            <span id="subtitle" data-typed-text="27游戏英雄升级潜力评估 一行代码解决"></span>
           
         </div>
 
@@ -302,8 +302,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-22 01:38" pubdate>
-           2024 年 12 月 22 日 , 凌晨 01:38 , 星期日
+        <time datetime="2024-12-22 01:52" pubdate>
+           2024 年 12 月 22 日 , 凌晨 01:52 , 星期日
         </time>
       </span>
     
@@ -315,7 +315,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          552 字
+          391 字
         
       </span>
     
@@ -327,7 +327,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -364,27 +364,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">19 字典序最小的 01 字符串 简单 O(n)做法</h1>
+            <h1 id="seo-header">27游戏英雄升级潜力评估 一行代码解决</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="19-字典序最小的-01-字符串-简单-O-n-做法"><a href="#19-字典序最小的-01-字符串-简单-O-n-做法" class="headerlink" title="19 字典序最小的 01 字符串 简单 O(n)做法"></a>19 字典序最小的 01 字符串 简单 O(n)做法</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小 U 拥有一个由<code>0</code>和<code>1</code>组成的字符串，她可以进行最多<code>k</code>次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>为了获得字典序最小的字符串，我们的目标是尽可能将<code>&#39;0&#39;</code>移向字符串的左侧而把<code>&#39;1&#39;</code>移到字符串的右侧，并且根据字典序的规则，我们应该尽量把<code>&#39;1&#39;</code>和最右边的<code>&#39;0&#39;</code>交换</p>
-<p>具体步骤如下：</p>
-<ol>
-<li><strong>遍历字符串</strong>：从左到右遍历字符串中的每一个字符。</li>
-<li><strong>遇到<code>&#39;0&#39;</code>时尝试和左边的最远的<code>&#39;1&#39;</code>交换</strong>：<ul>
-<li>对于当前位置的<code>&#39;0&#39;</code>，尝试将其向左边移动尽可能多的位置，但移动的步数不能超过剩余的操作次数<code>ops</code>。</li>
-<li>用指针<code>j</code>记录最左边的<code>&#39;1&#39;</code>的位置，并且<code>j</code>具有单调性，因为假设当前的<code>i - j &gt; ops</code>，这意味着本次不能交换，那么当<code>i</code>继续向右移动时,<code>i - j</code>的值只会越来越大，所以<code>j</code>也必须向右继续移动才有可能进行交换。这也意味这<code>j</code>只会从<code>0~n</code>遍历一次，复杂度为$O(n)$</li>
-<li>更新字符串，同时减少相应的操作次数<code>k</code>。</li>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。</p>
+<p>小 U 希望至少有一个英雄能够达到<code>2000000000000000</code>级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。</p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>要使至少有一个英雄达到<code>2000000000000000</code>级，必须确保有英雄能够不断提升等级。观察历练规则：</p>
+<ul>
+<li><strong>相同等级的英雄</strong>无法提升。</li>
+<li><strong>不同等级的英雄</strong>中，等级较高的英雄每次历练都会增加 1 级。</li>
 </ul>
-</li>
+<p>因此，只有不是最低等级的英雄才有可能通过不断历练达到高等级。最低等级的英雄无法提升，因此它们不具备达成目标的潜力。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li><strong>找出最低等级</strong>：确定所有英雄中当前的最低等级。</li>
+<li><strong>计算最低等级英雄的数量</strong>：这些英雄无法通过历练提升。</li>
+<li><strong>潜力英雄数量</strong>：总英雄数减去最低等级英雄的数量。</li>
 </ol>
-<p>这种方法确保了在每一步操作中，都将当前的<code>&#39;0&#39;</code>尽可能地向左移动，从而整体上达到了字典序最小的目标。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, ops: <span class="hljs-built_in">int</span>, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    s = <span class="hljs-built_in">list</span>(s)<br>    j = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&#x27;0&#x27;</span>:<br>            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(j, i):<br>                <span class="hljs-keyword">if</span> s[k] == <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">and</span> (i - k) &lt;= ops:<br>                    s[k] = <span class="hljs-string">&#x27;0&#x27;</span><br>                    s[i] = <span class="hljs-string">&#x27;1&#x27;</span><br>                    ops -= (i - k)<br>                    j = k + <span class="hljs-number">1</span>  <span class="hljs-comment"># 更新j的位置</span><br>                    <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(s)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;01010&quot;</span>) == <span class="hljs-string">&#x27;00101&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;1101001&quot;</span>) == <span class="hljs-string">&#x27;0110101&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;1001&quot;</span>) == <span class="hljs-string">&#x27;0101&#x27;</span>)<br></code></pre></td></tr></table></figure>
-<p>复杂度分析<br>时间复杂度：$O(n)$</p>
-<p>空间复杂度：$O(n)$<br>用于存储可变的字符串列表。</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, u: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">return</span> n - u.count(<span class="hljs-built_in">min</span>(u))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">4</span>, u = [<span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -409,8 +407,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>19 字典序最小的 01 字符串 简单 O(n)做法</div>
-      <div>https://kongshuilinhua.github.io/2024/12/22/19-字典序最小的-01-字符串-简单-O-n-做法/</div>
+      <div>27游戏英雄升级潜力评估 一行代码解决</div>
+      <div>https://kongshuilinhua.github.io/2024/12/22/27游戏英雄升级潜力评估-一行代码解决/</div>
     </div>
     <div class="license-meta">
       
@@ -454,18 +452,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/22/27%E6%B8%B8%E6%88%8F%E8%8B%B1%E9%9B%84%E5%8D%87%E7%BA%A7%E6%BD%9C%E5%8A%9B%E8%AF%84%E4%BC%B0-%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3/" title="27游戏英雄升级潜力评估 一行代码解决">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">27游戏英雄升级潜力评估 一行代码解决</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/19/146%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%B0%BE%E7%9B%B8%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0/" title="146字符串首尾相同子序列计数">
-                        <span class="hidden-mobile">146字符串首尾相同子序列计数</span>
+                      <a href="/2024/12/22/19-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84-01-%E5%AD%97%E7%AC%A6%E4%B8%B2-%E7%AE%80%E5%8D%95-O-n-%E5%81%9A%E6%B3%95/" title="19 字典序最小的 01 字符串 简单 O(n)做法">
+                        <span class="hidden-mobile">19 字典序最小的 01 字符串 简单 O(n)做法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
