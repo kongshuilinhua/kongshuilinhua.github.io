@@ -21,15 +21,15 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解小 M 拿到了一个仅由小写字母组成的字符串，她想知道在这个字符串中，有多少个子序列的首尾字符相同。子序列的定义是：从原字符串中按原顺序取出若干字符（可以不连续）组成的新字符串。 例如，对于字符串 “arcaea”，其子序列包括 “aca”, “ara”, “aaa” 等，这些子序列的首尾字符都是相同的。 你需要计算满足这一条件的子序列数量，并输出对 998244353 取模的结果。 解题思路">
+    <meta name="description" content="19 字典序最小的 01 字符串 简单 O(n)做法题目描述小 U 拥有一个由0和1组成的字符串，她可以进行最多k次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。 解题思路为了获得字典序最小的字符串，我们的目标是尽可能将&#39;0&#39;移向字符串的左侧而把&#39;1&#39;移到字符串的右侧，并且根据字典序的规则，我们应该尽量把&#39;1&amp;#3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="146字符串首尾相同子序列计数">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/19/146%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%B0%BE%E7%9B%B8%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0/index.html">
+<meta property="og:title" content="19 字典序最小的 01 字符串 简单 O(n)做法">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/22/19-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84-01-%E5%AD%97%E7%AC%A6%E4%B8%B2-%E7%AE%80%E5%8D%95-O-n-%E5%81%9A%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="题解小 M 拿到了一个仅由小写字母组成的字符串，她想知道在这个字符串中，有多少个子序列的首尾字符相同。子序列的定义是：从原字符串中按原顺序取出若干字符（可以不连续）组成的新字符串。 例如，对于字符串 “arcaea”，其子序列包括 “aca”, “ara”, “aaa” 等，这些子序列的首尾字符都是相同的。 你需要计算满足这一条件的子序列数量，并输出对 998244353 取模的结果。 解题思路">
+<meta property="og:description" content="19 字典序最小的 01 字符串 简单 O(n)做法题目描述小 U 拥有一个由0和1组成的字符串，她可以进行最多k次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。 解题思路为了获得字典序最小的字符串，我们的目标是尽可能将&#39;0&#39;移向字符串的左侧而把&#39;1&#39;移到字符串的右侧，并且根据字典序的规则，我们应该尽量把&#39;1&amp;#3">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-19T15:30:33.000Z">
-<meta property="article:modified_time" content="2024-12-21T10:02:47.879Z">
+<meta property="article:published_time" content="2024-12-21T17:38:46.000Z">
+<meta property="article:modified_time" content="2024-12-21T17:39:30.784Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>146字符串首尾相同子序列计数 - Hexo</title>
+  <title>19 字典序最小的 01 字符串 简单 O(n)做法 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -286,7 +286,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="146字符串首尾相同子序列计数"></span>
+            <span id="subtitle" data-typed-text="19 字典序最小的 01 字符串 简单 O(n)做法"></span>
           
         </div>
 
@@ -302,8 +302,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-19 23:30" pubdate>
-           2024 年 12 月 19 日 , 晚上 11:30 , 星期四
+        <time datetime="2024-12-22 01:38" pubdate>
+           2024 年 12 月 22 日 , 凌晨 01:38 , 星期日
         </time>
       </span>
     
@@ -315,7 +315,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          491 字
+          552 字
         
       </span>
     
@@ -364,33 +364,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">146字符串首尾相同子序列计数</h1>
+            <h1 id="seo-header">19 字典序最小的 01 字符串 简单 O(n)做法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><p>小 M 拿到了一个仅由小写字母组成的字符串，她想知道在这个字符串中，有多少个子序列的首尾字符相同。子序列的定义是：从原字符串中按原顺序取出若干字符（可以不连续）组成的新字符串。</p>
-<p>例如，对于字符串 “arcaea”，其子序列包括 “aca”, “ara”, “aaa” 等，这些子序列的首尾字符都是相同的。</p>
-<p>你需要计算满足这一条件的子序列数量，并输出对 998244353 取模的结果。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
-<li><p><strong>统计字符出现位置</strong>：<br>使用 <code>defaultdict</code> 来存储每个字符在字符串中出现的所有位置。</p>
-</li>
-<li><p><strong>计算子序列数量</strong>：<br>对于每个字符，考虑其所有可能的首尾位置组合 <code>(i, j)</code>，其中 $i &lt; j$。对于每一对 <code>(i, j)</code>，位于 $i$ 和 $j$ 之间的字符可以选择或不选择，因此有 $2^{j - i - 1}$ 种可能的子序列。</p>
-</li>
-<li><p><strong>累加结果</strong>：<br>将所有符合条件的子序列数量累加，同时加上单个字符的情况（每个字符本身也是一个有效的子序列）。</p>
-</li>
-<li><p><strong>取模处理</strong>：<br>最终结果对 <code>998244353</code> 取模。</p>
+                <h1 id="19-字典序最小的-01-字符串-简单-O-n-做法"><a href="#19-字典序最小的-01-字符串-简单-O-n-做法" class="headerlink" title="19 字典序最小的 01 字符串 简单 O(n)做法"></a>19 字典序最小的 01 字符串 简单 O(n)做法</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>小 U 拥有一个由<code>0</code>和<code>1</code>组成的字符串，她可以进行最多<code>k</code>次操作。每次操作可以交换相邻的两个字符。目标是通过这些操作，使得最终得到的字符串字典序最小。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>为了获得字典序最小的字符串，我们的目标是尽可能将<code>&#39;0&#39;</code>移向字符串的左侧而把<code>&#39;1&#39;</code>移到字符串的右侧，并且根据字典序的规则，我们应该尽量把<code>&#39;1&#39;</code>和最右边的<code>&#39;0&#39;</code>交换</p>
+<p>具体步骤如下：</p>
+<ol>
+<li><strong>遍历字符串</strong>：从左到右遍历字符串中的每一个字符。</li>
+<li><strong>遇到<code>&#39;0&#39;</code>时尝试和左边的最远的<code>&#39;1&#39;</code>交换</strong>：<ul>
+<li>对于当前位置的<code>&#39;0&#39;</code>，尝试将其向左边移动尽可能多的位置，但移动的步数不能超过剩余的操作次数<code>ops</code>。</li>
+<li>用指针<code>j</code>记录最左边的<code>&#39;1&#39;</code>的位置，并且<code>j</code>具有单调性，因为假设当前的<code>i - j &gt; ops</code>，这意味着本次不能交换，那么当<code>i</code>继续向右移动时,<code>i - j</code>的值只会越来越大，所以<code>j</code>也必须向右继续移动才有可能进行交换。这也意味这<code>j</code>只会从<code>0~n</code>遍历一次，复杂度为$O(n)$</li>
+<li>更新字符串，同时减少相应的操作次数<code>k</code>。</li>
+</ul>
 </li>
 </ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    d = defaultdict(<span class="hljs-built_in">list</span>)<br>    <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s):<br>        d[c].append(i)<br>    res = <span class="hljs-number">0</span><br>    mod = <span class="hljs-number">998244353</span><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> d:<br>        v = d[k]<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(v)):<br>            <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(v)):<br>                res += <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, v[j] - v[i] - <span class="hljs-number">1</span>, mod)<br>    <span class="hljs-keyword">return</span> (res + <span class="hljs-built_in">len</span>(s)) % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;arcaea&quot;</span>) == <span class="hljs-number">28</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abcabc&quot;</span>) == <span class="hljs-number">18</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;aaaaa&quot;</span>) == <span class="hljs-number">31</span>)<br></code></pre></td></tr></table></figure>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
-<li><strong>时间复杂度</strong>：<code>O(N^2)</code>，其中 <code>N</code> 是字符串的长度。主要消耗在于双重循环遍历每个字符的所有位置组合。</li>
-<li><strong>空间复杂度</strong>：<code>O(N)</code>，用于存储每个字符出现的位置。</li>
-</ul>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ul>
-<li>模数应为 <code>998244353</code>，请确保代码中 <code>mod</code> 的值正确。</li>
-<li>由于可能存在大量的子序列，务必在计算中进行取模操作以防止整数溢出。</li>
-</ul>
+<p>这种方法确保了在每一步操作中，都将当前的<code>&#39;0&#39;</code>尽可能地向左移动，从而整体上达到了字典序最小的目标。</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, ops: <span class="hljs-built_in">int</span>, s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    s = <span class="hljs-built_in">list</span>(s)<br>    j = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&#x27;0&#x27;</span>:<br>            <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(j, i):<br>                <span class="hljs-keyword">if</span> s[k] == <span class="hljs-string">&#x27;1&#x27;</span> <span class="hljs-keyword">and</span> (i - k) &lt;= ops:<br>                    s[k] = <span class="hljs-string">&#x27;0&#x27;</span><br>                    s[i] = <span class="hljs-string">&#x27;1&#x27;</span><br>                    ops -= (i - k)<br>                    j = k + <span class="hljs-number">1</span>  <span class="hljs-comment"># 更新j的位置</span><br>                    <span class="hljs-keyword">break</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>.join(s)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-string">&quot;01010&quot;</span>) == <span class="hljs-string">&#x27;00101&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">7</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;1101001&quot;</span>) == <span class="hljs-string">&#x27;0110101&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;1001&quot;</span>) == <span class="hljs-string">&#x27;0101&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p>复杂度分析<br>时间复杂度：$O(n)$</p>
+<p>空间复杂度：$O(n)$<br>用于存储可变的字符串列表。</p>
 
                 
               </div>
@@ -415,8 +409,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>146字符串首尾相同子序列计数</div>
-      <div>https://kongshuilinhua.github.io/2024/12/19/146字符串首尾相同子序列计数/</div>
+      <div>19 字典序最小的 01 字符串 简单 O(n)做法</div>
+      <div>https://kongshuilinhua.github.io/2024/12/22/19-字典序最小的-01-字符串-简单-O-n-做法/</div>
     </div>
     <div class="license-meta">
       
@@ -428,7 +422,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月19日</div>
+          <div>2024年12月22日</div>
         </div>
       
       
@@ -460,15 +454,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/22/19-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%9C%80%E5%B0%8F%E7%9A%84-01-%E5%AD%97%E7%AC%A6%E4%B8%B2-%E7%AE%80%E5%8D%95-O-n-%E5%81%9A%E6%B3%95/" title="19 字典序最小的 01 字符串 简单 O(n)做法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">19 字典序最小的 01 字符串 简单 O(n)做法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/12/19/146%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%A6%96%E5%B0%BE%E7%9B%B8%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0/" title="146字符串首尾相同子序列计数">
+                        <span class="hidden-mobile">146字符串首尾相同子序列计数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
