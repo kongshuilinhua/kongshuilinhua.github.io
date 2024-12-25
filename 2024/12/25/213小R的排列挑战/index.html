@@ -21,24 +21,23 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 问题理解 给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路  b1 b2 b3 b4 b5 b1+2b2 b2+2b3 b3+2b4 b4+2b5 b1+2b2+3b3 b2+2b">
+    <meta name="description" content="题解 小 R 有一个长度为 n 的排列，排列中的数字是 1 到 n 的整数。她每次操作可以选择两个数a_i和a_j进行交换，前提是这两个数的下标 i 和 j 的奇偶性相同（即同为奇数或同为偶数）。目标是通过最少的操作使数组变成升序排列，如果无法实现则输出-1。 思路   下标分组：将数组根据下标的奇偶性分为两部分：  奇数下标元素（0-based，即索引为 0,2,4,…） 偶数下标元素（索引为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="214小R的权值计算">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/25/214%E5%B0%8FR%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:title" content="213小R的排列挑战">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/25/213%E5%B0%8FR%E7%9A%84%E6%8E%92%E5%88%97%E6%8C%91%E6%88%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 问题理解 给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路  b1 b2 b3 b4 b5 b1+2b2 b2+2b3 b3+2b4 b4+2b5 b1+2b2+3b3 b2+2b">
+<meta property="og:description" content="题解 小 R 有一个长度为 n 的排列，排列中的数字是 1 到 n 的整数。她每次操作可以选择两个数a_i和a_j进行交换，前提是这两个数的下标 i 和 j 的奇偶性相同（即同为奇数或同为偶数）。目标是通过最少的操作使数组变成升序排列，如果无法实现则输出-1。 思路   下标分组：将数组根据下标的奇偶性分为两部分：  奇数下标元素（0-based，即索引为 0,2,4,…） 偶数下标元素（索引为">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-25T01:28:01.000Z">
-<meta property="article:modified_time" content="2024-12-25T02:00:35.060Z">
+<meta property="article:published_time" content="2024-12-25T02:15:35.000Z">
+<meta property="article:modified_time" content="2024-12-25T02:18:27.090Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="枚举 前缀和">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>214小R的权值计算 - FireFly</title>
+  <title>213小R的排列挑战 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -292,7 +291,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="214小R的权值计算"></span>
+            <span id="subtitle" data-typed-text="213小R的排列挑战"></span>
           
         </div>
 
@@ -308,8 +307,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-25 09:28" pubdate>
-           2024 年 12 月 25 日 , 上午 09:28 , 星期三
+        <time datetime="2024-12-25 10:15" pubdate>
+           2024 年 12 月 25 日 , 上午 10:15 , 星期三
         </time>
       </span>
     
@@ -321,7 +320,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          392 字
+          566 字
         
       </span>
     
@@ -333,7 +332,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -370,40 +369,45 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">214小R的权值计算</h1>
+            <h1 id="seo-header">213小R的排列挑战</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解">题解</h2>
-<h3 id="问题理解">问题理解</h3>
-<p>给定一个长度为 <code>n</code> 的数组 <code>a</code>，小 R 定义任意子数组的权值为 <code>1×b₁ + 2×b₂ + ... + m×bₘ</code>，其中 <code>m</code> 是子数组的长度，<code>b₁, b₂, ..., bₘ</code> 是子数组中的元素。要求计算所有子数组权值的和，结果需对 <code>10^9 + 7</code> 取模。</p>
-<h3 id="解题思路">解题思路</h3>
-<blockquote>
-<p>b1 b2 b3 b4 b5<br>
-b1+2b2 b2+2b3 b3+2b4 b4+2b5<br>
-b1+2b2+3b3 b2+2b3+3b4 b3+2b4+3b5<br>
-b1+2b2+3b3+4b4 b2+2b3+3b4+4b5<br>
-b1+2b2+3b3+4b4+5b5<br>
-根据规律可以看出长度为 length 的子数组转移的时候，只需要加上 length*a[i] - (s[i-1] - s[i-length-1])即可</p>
-</blockquote>
+                <h1>题解</h1>
+<p>小 R 有一个长度为 n 的排列，排列中的数字是 1 到 n 的整数。她每次操作可以选择两个数<code>a_i</code>和<code>a_j</code>进行交换，前提是这两个数的下标 i 和 j 的奇偶性相同（即同为奇数或同为偶数）。目标是通过最少的操作使数组变成升序排列，如果无法实现则输出-1。</p>
+<h2 id="思路">思路</h2>
 <ol>
 <li>
-<p><strong>前缀和计算</strong>：<br>
-使用前缀和 <code>s</code> 来快速计算任意子数组的元素和，<code>s[i]</code> 表示前 <code>i</code> 个元素的和。</p>
+<p><strong>下标分组</strong>：将数组根据下标的奇偶性分为两部分：</p>
+<ul>
+<li>奇数下标元素（0-based，即索引为 0,2,4,…）</li>
+<li>偶数下标元素（索引为 1,3,5,…）</li>
+</ul>
 </li>
 <li>
-<p><strong>权值计算</strong>：<br>
-对于每个子数组长度 <code>length</code>，遍历所有可能的子数组，计算当前子数组的权值 <code>cur</code>。</p>
+<p><strong>排序验证</strong>：</p>
 <ul>
-<li>初始时，计算第一个长度为 <code>length</code> 的子数组的权值。</li>
-<li>随着窗口的滑动，通过更新 <code>cur</code> 来计算下一个子数组的权值：<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">cur += length * a<span class="hljs-comment">[i]</span> - (s<span class="hljs-comment">[i - 1]</span> - s<span class="hljs-comment">[i - length - 1]</span>)<br></code></pre></td></tr></table></figure>
-这里，<code>length * a[i]</code> 是新加入元素对权值的贡献，<code>(s[i - 1] - s[i - length - 1])</code> 是窗口内之前元素权值的调整。</li>
+<li>奇数下标的元素在最终的升序排列中应该是奇数序列，即<code>1,3,5,...</code>。</li>
+<li>如果奇数下标的排序结果不符合预期，则无法通过交换操作将数组排序，返回-1。</li>
+</ul>
+</li>
+<li>
+<p><strong>逆序数计算</strong>：</p>
+<ul>
+<li>分别计算奇数下标和偶数下标部分的逆序数。</li>
+<li>逆序数代表需要多少次交换才能使该部分有序。</li>
+<li>总交换次数为奇数下标和偶数下标部分的逆序数之和。</li>
 </ul>
 </li>
 </ol>
-<h3 id="代码实现">代码实现</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a<br>    s = <span class="hljs-built_in">list</span>(accumulate(a))<br>    <span class="hljs-comment"># 枚举子数组的长度</span><br>    <span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cur = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, length + <span class="hljs-number">1</span>):<br>            cur += a[i] * i<br>        res = (res + cur) % mod<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length + <span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>            cur += length * a[i] - (s[i - <span class="hljs-number">1</span>] - s[i - length - <span class="hljs-number">1</span>])<br>            res = (res + cur) % mod<br>    <span class="hljs-keyword">return</span> res % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) == <span class="hljs-number">33</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">203</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">2</span>, [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>]) == <span class="hljs-number">80</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="代码实现">代码实现</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><br><span class="hljs-comment"># from bisect import bisect_right</span><br><span class="hljs-comment"># class BIT:</span><br><span class="hljs-comment">#     def __init__(self, n):</span><br><span class="hljs-comment">#         self.tree = [0] * n  # 注意下标从1开始</span><br><br><span class="hljs-comment">#     def lowbit(self, x):</span><br><span class="hljs-comment">#         return x &amp; (-x)</span><br><br><span class="hljs-comment">#     # arr[i] += val</span><br><span class="hljs-comment">#     def update(self, i, val):</span><br><span class="hljs-comment">#         while i &lt; len(self.tree):</span><br><span class="hljs-comment">#             self.tree[i] += val</span><br><span class="hljs-comment">#             i += self.lowbit(i)</span><br><br><span class="hljs-comment">#     # 返回arr[:i+1]的sum</span><br><span class="hljs-comment">#     def query(self, i):</span><br><span class="hljs-comment">#         res = 0</span><br><span class="hljs-comment">#         while i &gt; 0:</span><br><span class="hljs-comment">#             res += self.tree[i]</span><br><span class="hljs-comment">#             i -= self.lowbit(i)</span><br><span class="hljs-comment">#         return res</span><br><span class="hljs-comment"># 树状数组求解逆序对，时间复杂度为nlogn</span><br><span class="hljs-comment"># def inv(a):</span><br><span class="hljs-comment">#     n = len(a)</span><br><span class="hljs-comment">#     res = 0</span><br><span class="hljs-comment">#     tree = BIT(n + 1)</span><br><span class="hljs-comment">#     b = sorted(a)</span><br><span class="hljs-comment">#     for x in a:</span><br><span class="hljs-comment">#         i = bisect_right(b, x)</span><br><span class="hljs-comment">#         res += tree.query(n) - tree.query(i)</span><br><span class="hljs-comment">#         tree.update(i, 1)</span><br><span class="hljs-comment">#     return res</span><br><br><span class="hljs-comment"># 暴力求解逆序对，时间复杂度为n²</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">inv</span>(<span class="hljs-params">a</span>):<br>    n = <span class="hljs-built_in">len</span>(a)<br>    res = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">if</span> a[i] &gt; a[j]:<br>                res += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    odd, even = [], []<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">if</span> i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>:<br>            odd.append(a[i])<br>        <span class="hljs-keyword">else</span>:<br>            even.append(a[i])<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">sorted</span>(odd) != <span class="hljs-built_in">list</span>(<span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>, <span class="hljs-number">2</span>)):<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> inv(odd) + inv(even)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) == <span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]) == -<span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]) == -<span class="hljs-number">1</span>)<br><br><br></code></pre></td></tr></table></figure>
+<h2 id="复杂度分析">复杂度分析</h2>
+<ul>
+<li><strong>时间复杂度</strong>：O(n²)，主要由逆序数的双重循环计算决定。(可以用树状数组求解逆序对，时间复杂度为 O(nlogn))</li>
+<li><strong>空间复杂度</strong>：O(n)，用于存储奇数和偶数下标的元素。</li>
+</ul>
 
                 
               </div>
@@ -413,13 +417,6 @@ b1+2b2+3b3+4b4+5b5<br>
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%9E%9A%E4%B8%BE-%E5%89%8D%E7%BC%80%E5%92%8C/" class="print-no-link">#枚举 前缀和</a>
-      
-    </div>
-  
 </div>
 
 
@@ -428,8 +425,8 @@ b1+2b2+3b3+4b4+5b5<br>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>214小R的权值计算</div>
-      <div>https://kongshuilinhua.github.io/2024/12/25/214小R的权值计算/</div>
+      <div>213小R的排列挑战</div>
+      <div>https://kongshuilinhua.github.io/2024/12/25/213小R的排列挑战/</div>
     </div>
     <div class="license-meta">
       
@@ -473,18 +470,12 @@ b1+2b2+3b3+4b4+5b5<br>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/25/213%E5%B0%8FR%E7%9A%84%E6%8E%92%E5%88%97%E6%8C%91%E6%88%98/" title="213小R的排列挑战">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">213小R的排列挑战</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/24/211%E5%B0%8FR%E7%9A%84%E5%B9%B6%E9%9B%86%E5%A4%A7%E5%B0%8F%E6%9C%9F%E6%9C%9B%E8%AE%A1%E7%AE%97/" title="211小R的并集大小期望计算">
-                        <span class="hidden-mobile">211小R的并集大小期望计算</span>
+                      <a href="/2024/12/25/214%E5%B0%8FR%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97/" title="214小R的权值计算">
+                        <span class="hidden-mobile">214小R的权值计算</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
