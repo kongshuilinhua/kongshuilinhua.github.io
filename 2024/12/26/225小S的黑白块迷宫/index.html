@@ -21,24 +21,24 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题描述在一座高度为 $H$ 的山上，每个高度 $i$ 处生成了 $a_i$ 个雪球。当雪球从海拔高度 $i$ 滚到地面时，它的体积会膨胀 $x^i$ 倍。也就是说，雪球的初始体积为 $1$，滚动距离 $i$ 会使体积变成 $1 \times x^i$。我们需要计算所有滚落到地面的雪球的总体积，并对结果取模 $10^9 + 7$。 思路 理解雪球体积膨胀规则：  每个雪球从高度 $i$ 滚落到">
+    <meta name="description" content="问题描述在一个 n×m 的网格迷宫中，初始位置在左上角 (1,1)，目标是到达右下角 (n,m)。每个格子可以是黑色（表示为 1）或者白色（表示为 0）。移动时可以向上、下、左、右四个方向移动，但不能走出迷宫的边界。要求在移动过程中经过的黑色格子尽可能少。 解题思路本题可以使用广度优先搜索（BFS）算法来解决。由于需要最小化经过的黑色格子数量，可以将其视为带权图的最短路径问题，其中白色格子的权重为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="217小R的雪球滚落计算">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/25/217%E5%B0%8FR%E7%9A%84%E9%9B%AA%E7%90%83%E6%BB%9A%E8%90%BD%E8%AE%A1%E7%AE%97/index.html">
+<meta property="og:title" content="225小S的黑白块迷宫">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/26/225%E5%B0%8FS%E7%9A%84%E9%BB%91%E7%99%BD%E5%9D%97%E8%BF%B7%E5%AE%AB/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题描述在一座高度为 $H$ 的山上，每个高度 $i$ 处生成了 $a_i$ 个雪球。当雪球从海拔高度 $i$ 滚到地面时，它的体积会膨胀 $x^i$ 倍。也就是说，雪球的初始体积为 $1$，滚动距离 $i$ 会使体积变成 $1 \times x^i$。我们需要计算所有滚落到地面的雪球的总体积，并对结果取模 $10^9 + 7$。 思路 理解雪球体积膨胀规则：  每个雪球从高度 $i$ 滚落到">
+<meta property="og:description" content="问题描述在一个 n×m 的网格迷宫中，初始位置在左上角 (1,1)，目标是到达右下角 (n,m)。每个格子可以是黑色（表示为 1）或者白色（表示为 0）。移动时可以向上、下、左、右四个方向移动，但不能走出迷宫的边界。要求在移动过程中经过的黑色格子尽可能少。 解题思路本题可以使用广度优先搜索（BFS）算法来解决。由于需要最小化经过的黑色格子数量，可以将其视为带权图的最短路径问题，其中白色格子的权重为">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-25T02:28:29.000Z">
-<meta property="article:modified_time" content="2024-12-25T02:32:16.032Z">
+<meta property="article:published_time" content="2024-12-26T01:20:41.000Z">
+<meta property="article:modified_time" content="2024-12-26T01:26:32.093Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="快速幂">
+<meta property="article:tag" content="BFS">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>217小R的雪球滚落计算 - FireFly</title>
+  <title>225小S的黑白块迷宫 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -292,7 +292,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="217小R的雪球滚落计算"></span>
+            <span id="subtitle" data-typed-text="225小S的黑白块迷宫"></span>
           
         </div>
 
@@ -308,8 +308,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-25 10:28" pubdate>
-           2024 年 12 月 25 日 , 上午 10:28 , 星期三
+        <time datetime="2024-12-26 09:20" pubdate>
+           2024 年 12 月 26 日 , 上午 09:20 , 星期四
         </time>
       </span>
     
@@ -321,7 +321,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          377 字
+          516 字
         
       </span>
     
@@ -333,7 +333,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -370,36 +370,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">217小R的雪球滚落计算</h1>
+            <h1 id="seo-header">225小S的黑白块迷宫</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在一座高度为 $H$ 的山上，每个高度 $i$ 处生成了 $a_i$ 个雪球。当雪球从海拔高度 $i$ 滚到地面时，它的体积会膨胀 $x^i$ 倍。也就是说，雪球的初始体积为 $1$，滚动距离 $i$ 会使体积变成 $1 \times x^i$。我们需要计算所有滚落到地面的雪球的总体积，并对结果取模 $10^9 + 7$。</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
-<li><p><strong>理解雪球体积膨胀规则</strong>：</p>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在一个 n×m 的网格迷宫中，初始位置在左上角 (1,1)，目标是到达右下角 (n,m)。每个格子可以是黑色（表示为 1）或者白色（表示为 0）。移动时可以向上、下、左、右四个方向移动，但不能走出迷宫的边界。要求在移动过程中经过的黑色格子尽可能少。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>本题可以使用广度优先搜索（BFS）算法来解决。由于需要最小化经过的黑色格子数量，可以将其视为带权图的最短路径问题，其中白色格子的权重为 0，黑色格子的权重为 1。</p>
+<p><strong>BFS 遍历</strong>：</p>
 <ul>
-<li>每个雪球从高度 $i$ 滚落到地面时，其体积变为 $x^i$。</li>
-<li>同一高度 $i$ 处有 $a_i$ 个雪球，因此该高度的雪球总体积为 $a_i \times x^i$。</li>
+<li>从队列中取出当前格子 <code>(x, y, d)</code>。</li>
+<li>如果当前的黑色格子数 d 大于已记录的最小值，跳过此格子。</li>
+<li>遍历四个可能的移动方向，计算新位置 <code>(nx, ny)</code>。</li>
+<li>如果新位置在迷宫范围内，并且通过当前路径到达新位置的黑色格子数更少，则更新 dis[nx][ny]并将新位置加入队列。</li>
 </ul>
-</li>
-<li><p><strong>计算总体积</strong>：</p>
-<ul>
-<li>对所有高度 $i$，计算 $a_i \times x^i$ 的总和。</li>
-<li>由于体积可能会非常大，需要在计算过程中对每一项取模 $10^9 + 7$，最终结果也取模。</li>
-</ul>
-</li>
-<li><p><strong>优化幂运算</strong>：</p>
-<ul>
-<li>使用 Python 内置的 <code>pow</code> 函数，利用其三个参数形式 <code>pow(x, i + 1, mod)</code>，高效计算 $x^{i+1} \mod (10^9 + 7)$。</li>
-</ul>
-</li>
-</ol>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">H: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">sum</span>(<span class="hljs-built_in">pow</span>(x, i + <span class="hljs-number">1</span>, mod) * a[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(a))) % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">2830</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">2</span>, <span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">55</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]) == <span class="hljs-number">42</span>)<br></code></pre></td></tr></table></figure>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
-<li><strong>时间复杂度</strong>：$O(nlog(n))$，其中 $n$ 是数组 $a$ 的长度。每个雪球体积的计算需要 $O(log(n))$ 的时间复杂度。</li>
-<li><strong>空间复杂度</strong>：$O(1)$，只使用了常数空间存储结果。</li>
-</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque<br>dx, dy = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, grid: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    q = deque([(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)])<br>    dis = [[n * m] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>    dis[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = grid[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>    <span class="hljs-keyword">while</span> q:<br>        x, y, d = q.popleft()<br>        <span class="hljs-keyword">if</span> d &gt; dis[x][y]:<br>            <span class="hljs-keyword">continue</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">4</span>):<br>            nx, ny = x + dx[i], y + dy[i]<br>            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m:<br>                <span class="hljs-keyword">if</span> dis[nx][ny] &gt; dis[x][y] + grid[nx][ny]:<br>                    dis[nx][ny] = dis[x][y] + grid[nx][ny]<br>                    q.append((nx, ny, dis[nx][ny]))<br>    <span class="hljs-keyword">return</span> dis[-<span class="hljs-number">1</span>][-<span class="hljs-number">1</span>]<br><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, [[<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>], [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>]]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">4</span>, [[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, [[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>]]) == <span class="hljs-number">0</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>该算法的时间复杂度为 O(nm)，其中 n 和 m 分别是网格的行数和列数。每个格子最多被访问一次。</p>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>空间复杂度为 O(nm)，用于存储 dis 数组和队列中的元素。</p>
 
                 
               </div>
@@ -412,7 +399,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82/" class="print-no-link">#快速幂</a>
+        <a href="/tags/BFS/" class="print-no-link">#BFS</a>
       
     </div>
   
@@ -424,8 +411,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>217小R的雪球滚落计算</div>
-      <div>https://kongshuilinhua.github.io/2024/12/25/217小R的雪球滚落计算/</div>
+      <div>225小S的黑白块迷宫</div>
+      <div>https://kongshuilinhua.github.io/2024/12/26/225小S的黑白块迷宫/</div>
     </div>
     <div class="license-meta">
       
@@ -437,7 +424,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月25日</div>
+          <div>2024年12月26日</div>
         </div>
       
       
@@ -469,9 +456,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/26/284%E6%A8%A1%E6%9D%BF%E4%B8%B2%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/" title="284模板串匹配问题">
+                      <a href="/2024/12/26/285%E6%B0%B4%E6%9E%9C%E5%BA%97%E6%9E%9C%E7%AF%AE%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC%E9%97%AE%E9%A2%98/" title="285水果店果篮最小成本问题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">284模板串匹配问题</span>
+                        <span class="hidden-mobile">285水果店果篮最小成本问题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -479,8 +466,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/25/213%E5%B0%8FR%E7%9A%84%E6%8E%92%E5%88%97%E6%8C%91%E6%88%98/" title="213小R的排列挑战">
-                        <span class="hidden-mobile">213小R的排列挑战</span>
+                      <a href="/2024/12/26/284%E6%A8%A1%E6%9D%BF%E4%B8%B2%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/" title="284模板串匹配问题">
+                        <span class="hidden-mobile">284模板串匹配问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
