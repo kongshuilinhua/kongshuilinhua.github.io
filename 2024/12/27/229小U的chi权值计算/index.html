@@ -21,23 +21,24 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题概述小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水果的">
+    <meta name="description" content="问题描述给定一个由字符&#39;c&#39;、&#39;h&#39;、&#39;i&#39;、&#39;?&#39;组成的字符串，其中&#39;?&#39;可以替换为&#39;c&#39;、&#39;h&#39;或&#39;i&#39;。定义字符串的权值基于所有字符&#39;h&#39;的位置计算。对于每个&#39;h&#39;，其前面的&#39;c&#39;和后面的&#39;i&#39;都会对其">
 <meta property="og:type" content="article">
-<meta property="og:title" content="285水果店果篮最小成本问题">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/26/285%E6%B0%B4%E6%9E%9C%E5%BA%97%E6%9E%9C%E7%AF%AE%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="229小U的chi权值计算">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/27/229%E5%B0%8FU%E7%9A%84chi%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题概述小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水果的">
+<meta property="og:description" content="问题描述给定一个由字符&#39;c&#39;、&#39;h&#39;、&#39;i&#39;、&#39;?&#39;组成的字符串，其中&#39;?&#39;可以替换为&#39;c&#39;、&#39;h&#39;或&#39;i&#39;。定义字符串的权值基于所有字符&#39;h&#39;的位置计算。对于每个&#39;h&#39;，其前面的&#39;c&#39;和后面的&#39;i&#39;都会对其">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-26T02:11:52.000Z">
-<meta property="article:modified_time" content="2024-12-26T02:21:07.029Z">
+<meta property="article:published_time" content="2024-12-27T02:20:54.000Z">
+<meta property="article:modified_time" content="2024-12-27T02:45:31.072Z">
 <meta property="article:author" content="FireFLy">
+<meta property="article:tag" content="组合 贡献">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>285水果店果篮最小成本问题 - FireFly</title>
+  <title>229小U的chi权值计算 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -291,7 +292,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="285水果店果篮最小成本问题"></span>
+            <span id="subtitle" data-typed-text="229小U的chi权值计算"></span>
           
         </div>
 
@@ -307,8 +308,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-26 10:11" pubdate>
-           2024 年 12 月 26 日 , 上午 10:11 , 星期四
+        <time datetime="2024-12-27 10:20" pubdate>
+           2024 年 12 月 27 日 , 上午 10:20 , 星期五
         </time>
       </span>
     
@@ -320,7 +321,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          693 字
+          640 字
         
       </span>
     
@@ -369,49 +370,44 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">285水果店果篮最小成本问题</h1>
+            <h1 id="seo-header">229小U的chi权值计算</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h3><p>小 C 需要将 <code>n</code> 个编号为 1 到 <code>n</code> 的水果打包成若干个果篮。每个果篮最多可以容纳 <code>m</code> 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定：</p>
-<p>[ \text{成本} = k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ]</p>
-<p>其中：</p>
-<ul>
-<li><code>k</code> 是果篮中水果的数量。</li>
-<li><code>u</code> 是果篮中水果的最大体积。</li>
-<li><code>v</code> 是果篮中水果的最小体积。</li>
-<li><code>s</code> 是一个常数。</li>
-<li>(\left\lfloor x \right\rfloor) 表示对 <code>x</code> 进行下取整。</li>
-</ul>
-<p>目标是找到一种打包方式，使得总成本最小。</p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题可以使用<strong>动态规划</strong>的方法来解决。设 <code>f[i]</code> 表示前 <code>i</code> 个水果的最小总成本。状态转移方程的核心思想是考虑最后一个果篮包含的水果数量，并选择使总成本最小的分割方式。</p>
-<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><ol>
-<li><p><strong>初始化：</strong></p>
-<ul>
-<li>定义一个数组 <code>f</code>，长度为 <code>n + 1</code>，初始化所有元素为正无穷大，表示初始状态下成本无限大。</li>
-<li>设置 <code>f[0] = 0</code>，表示不放入任何水果时的成本为 0。</li>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个由字符<code>&#39;c&#39;</code>、<code>&#39;h&#39;</code>、<code>&#39;i&#39;</code>、<code>&#39;?&#39;</code>组成的字符串，其中<code>&#39;?&#39;</code>可以替换为<code>&#39;c&#39;</code>、<code>&#39;h&#39;</code>或<code>&#39;i&#39;</code>。定义字符串的权值基于所有字符<code>&#39;h&#39;</code>的位置计算。对于每个<code>&#39;h&#39;</code>，其前面的<code>&#39;c&#39;</code>和后面的<code>&#39;i&#39;</code>都会对其贡献 1 的权值。求所有可能替换方案的权值之和，结果对 (10^9 + 7) 取模。</p>
+<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><ol>
+<li><strong>统计未知字符</strong>：首先统计字符串中 <code>?</code> 的总数，用 <code>cnt</code> 表示。</li>
+<li><strong>前缀计数</strong>：<ul>
+<li><code>prec</code> 记录当前位置前面的 <code>c</code> 数量。</li>
+<li><code>pre</code> 记录前面 <code>?</code> 的数量。</li>
 </ul>
 </li>
-<li><p><strong>动态规划转移：</strong></p>
-<ul>
-<li>遍历每一个水果位置 <code>i</code>（从 1 到 <code>n</code>），尝试将第 <code>i</code> 个水果作为当前果篮的结尾。</li>
-<li>对于每个位置 <code>i</code>，向前遍历最多 <code>m</code> 个水果（因为每个果篮最多容纳 <code>m</code> 个水果），计算当前果篮的成本，并更新 <code>f[i]</code>。</li>
-<li>在遍历过程中，维护当前果篮中水果的最小值 <code>mi</code> 和最大值 <code>mx</code>，以及当前果篮中水果的数量 <code>cnt</code>。</li>
-<li>计算当前果篮的成本，并与之前的最小成本进行比较，取较小值作为 <code>f[i]</code> 的值。</li>
-<li>如果当前果篮中的水果数量达到 <code>m</code>，则停止遍历，避免超过果篮的最大容量。</li>
+<li><strong>后缀计数</strong>：<ul>
+<li><code>sufi</code> 记录当前位置后面的 <code>i</code> 数量。</li>
+<li><code>suf</code> 记录后面 <code>?</code> 的数量。</li>
 </ul>
 </li>
-<li><p><strong>结果输出：</strong></p>
-<ul>
-<li>最终，<code>f[n]</code> 即为将所有 <code>n</code> 个水果打包的最小总成本。</li>
+<li><strong>遍历字符串</strong>：<ul>
+<li>对于每个字符：<ul>
+<li>如果是 <code>c</code>，则增加 <code>prec</code>。</li>
+<li>如果是 <code>i</code>，则减少 <code>sufi</code>。</li>
+<li>如果是 <code>h</code>，计算其贡献：<ul>
+<li>固定 <code>h</code> 的贡献为 <code>prec + sufi</code>，乘以当前 <code>?</code> 的排列组合数。每个 <code>?</code> 都可以替换成 <code>c</code>、<code>h</code>、<code>i</code> 这三种字符，所以总共的替换方案为 <code>pow(3, cnt, mod)</code>。因此前面的 <code>c</code> 和 <code>i</code> 的贡献为 <code>pow(3, cnt, mod) * (prec + sufi)</code>。</li>
+<li>考虑前面的 <code>?</code> 替换为 <code>c</code> 和后面的 <code>?</code> 替换为 <code>i</code> 的情况。前面的 <code>?</code> 替换成 <code>c</code> 也有贡献，一个 <code>?</code> 在 <code>pow(3, cnt - 1, mod)</code> 种情况下可以替换成 <code>c</code>，而当前位置前面共有<code>pre</code>个<code>?</code>,所以前面的 <code>?</code> 的贡献为 <code>pre * pow(3, cnt - 1, mod)</code>。后面的 <code>?</code> 同理为 <code>suf * pow(3, cnt - 1, mod)</code>。</li>
 </ul>
 </li>
+<li>如果是 <code>?</code>，考虑其替换为 <code>h</code> 的情况，类似地计算贡献，并更新 <code>pre</code> 和 <code>suf</code>。当前的 <code>?</code> 已经替换成了 <code>h</code>，所以后面的 <code>?</code> 的贡献为 <code>suf * pow(3, cnt - 2, mod)</code>。前面的 <code>?</code> 同理为 <code>pre * pow(3, cnt - 2, mod)</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>取模</strong>：最终结果对 (10^9 + 7) 取模。</li>
 </ol>
-<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">inf = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, s: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># f[i] 表示放入i个水果的最小价值</span><br>    f = [inf] * (n + <span class="hljs-number">1</span>)<br>    f[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a  <span class="hljs-comment"># 使水果编号从1开始</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cnt = <span class="hljs-number">0</span><br>        mi = inf<br>        mx = -inf<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>            mi = <span class="hljs-built_in">min</span>(mi, a[j])<br>            mx = <span class="hljs-built_in">max</span>(mx, a[j])<br>            cnt += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># 计算当前分组的成本</span><br>            current_cost = f[j - <span class="hljs-number">1</span>] + s + ((mx + mi) // <span class="hljs-number">2</span>) * cnt<br>            <span class="hljs-comment"># 更新f[i]为当前最小成本</span><br>            f[i] = <span class="hljs-built_in">min</span>(f[i], current_cost)<br>            <span class="hljs-keyword">if</span> cnt &gt;= m:<br>                <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 超过最大容量，停止遍历</span><br>    <span class="hljs-keyword">return</span> f[n]<br></code></pre></td></tr></table></figure>
-<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
-<li><strong>时间复杂度：</strong> O(n * m)，其中 <code>n</code> 是水果的数量，<code>m</code> 是果篮的最大容量。对于每个水果位置，需要遍历最多 <code>m</code> 个位置。</li>
-<li><strong>空间复杂度：</strong> O(n)，用于存储动态规划数组 <code>f</code>。</li>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    pre = <span class="hljs-number">0</span><br>    cnt = suf = s.count(<span class="hljs-string">&#x27;?&#x27;</span>)<br>    prec = <span class="hljs-number">0</span><br>    sufi = s.count(<span class="hljs-string">&#x27;i&#x27;</span>)<br>    res = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">len</span>(s)):<br>        <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&#x27;i&#x27;</span>:<br>            sufi -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">elif</span> s[i] == <span class="hljs-string">&#x27;c&#x27;</span>:<br>            prec += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">elif</span> s[i] == <span class="hljs-string">&quot;h&quot;</span>:<br>            res = (res + <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt, mod) * (prec + sufi) + pre * <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt - <span class="hljs-number">1</span>, mod) + suf * <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt - <span class="hljs-number">1</span>, mod)) % mod<br>        <span class="hljs-keyword">else</span>:<br>            suf -= <span class="hljs-number">1</span><br>            res = (res + <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt - <span class="hljs-number">1</span>, mod) * (prec + sufi) + pre * <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt - <span class="hljs-number">2</span>, mod) + suf * <span class="hljs-built_in">pow</span>(<span class="hljs-number">3</span>, cnt - <span class="hljs-number">2</span>, mod)) % mod<br>            pre += <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> res<br><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;ch?hi&quot;</span>) == <span class="hljs-number">16</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;ccch&quot;</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;c?i&quot;</span>) == <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<li><strong>时间复杂度</strong>：(O(n))，其中(n)是字符串的长度。（实现中可以预处理快速幂的结果，使每步计算都是(O(1))的时间复杂度）</li>
+<li><strong>空间复杂度</strong>：(O(1))，只使用了常数额外空间。</li>
 </ul>
 
                 
@@ -422,6 +418,13 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%BB%84%E5%90%88-%E8%B4%A1%E7%8C%AE/" class="print-no-link">#组合 贡献</a>
+      
+    </div>
+  
 </div>
 
 
@@ -430,8 +433,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>285水果店果篮最小成本问题</div>
-      <div>https://kongshuilinhua.github.io/2024/12/26/285水果店果篮最小成本问题/</div>
+      <div>229小U的chi权值计算</div>
+      <div>https://kongshuilinhua.github.io/2024/12/27/229小U的chi权值计算/</div>
     </div>
     <div class="license-meta">
       
@@ -443,7 +446,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月26日</div>
+          <div>2024年12月27日</div>
         </div>
       
       
@@ -475,9 +478,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/26/Git%E5%91%BD%E4%BB%A4/" title="Git命令">
+                      <a href="/2024/12/27/235%E5%B0%8FU%E7%9A%84%E5%A5%BD%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="235小U的好字符串">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Git命令</span>
+                        <span class="hidden-mobile">235小U的好字符串</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -485,8 +488,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/26/225%E5%B0%8FS%E7%9A%84%E9%BB%91%E7%99%BD%E5%9D%97%E8%BF%B7%E5%AE%AB/" title="225小S的黑白块迷宫">
-                        <span class="hidden-mobile">225小S的黑白块迷宫</span>
+                      <a href="/2024/12/27/206%E5%B0%8FR%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E6%8E%A2%E9%99%A9/" title="206小R的二叉树探险">
+                        <span class="hidden-mobile">206小R的二叉树探险</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
