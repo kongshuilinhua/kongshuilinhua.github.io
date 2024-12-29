@@ -4,6 +4,65 @@
   
   
   <entry>
+    <title>260数字匹配问题</title>
+    <link href="/2024/12/29/260%E6%95%B0%E5%AD%97%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/12/29/260%E6%95%B0%E5%AD%97%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题解">题解</h2><h3 id="问题概述">问题概述</h3><p>小 F 拥有一串数字，需按照以下规则将这些数字两两配对：</p><ol><li>数字对中两个数字的差的绝对值必须大于等于给定的差异值 <code>M</code>。</li><li>每个数字只能被配对一次，不能出现在多个数字对中。<br>目标是找出最多能配对出多少对数字。</li></ol><h3 id="解题思路">解题思路</h3><p>为了最大化配对数，采取贪心策略：</p><ol><li><strong>排序</strong>：首先对数字列表 <code>X</code> 进行排序，以便于后续配对时能够高效地找到满足条件的数字对。</li><li><strong>双指针方法</strong>：<ul><li>题目中要求数字两两配对并且不能重复，因此最多的配对个数为$\lfloor \frac{n}{2} \rfloor$，因为数组是有序的。最优的情况一定是其中一个数字来自数组的左半部分，另一个数字来自右半部分</li><li>将列表分为两部分，左指针 <code>l</code> 指向较小的数字，右指针 <code>r</code> 从中间开始指向较大的数字。遍历右指针，尝试找到与左指针指向的数字差值至少为 <code>M</code> 的配对。如果差值小于<code>M</code>，那么继续移动右指针。</li></ul></li><li><strong>终止条件</strong>：当左指针超过中间位置，停止配对过程。</li></ol><h3 id="代码解析">代码解析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">N: <span class="hljs-built_in">int</span>, M: <span class="hljs-built_in">int</span>, X: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = <span class="hljs-number">0</span><br>    X.sort()  <span class="hljs-comment"># 对列表进行排序</span><br>    l = <span class="hljs-number">0</span>  <span class="hljs-comment"># 初始化左指针</span><br>    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(N // <span class="hljs-number">2</span>, N):  <span class="hljs-comment"># 右指针从中间开始遍历</span><br>        <span class="hljs-keyword">if</span> X[r] - X[l] &gt;= M <span class="hljs-keyword">and</span> l &lt; N // <span class="hljs-number">2</span>:<br>            res += <span class="hljs-number">1</span>  <span class="hljs-comment"># 成功配对，计数器加一</span><br>            l += <span class="hljs-number">1</span>  <span class="hljs-comment"># 移动左指针，确保数字只被使用一次</span><br>    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure><h3 id="时间复杂度">时间复杂度</h3><ul><li>排序的时间复杂度为 <code>O(N log N)</code>。</li><li>空间复杂度<code>O(1)</code></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>贪心，双指针</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>251巧克力板选择问题</title>
+    <link href="/2024/12/29/251%E5%B7%A7%E5%85%8B%E5%8A%9B%E6%9D%BF%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/"/>
+    <url>/2024/12/29/251%E5%B7%A7%E5%85%8B%E5%8A%9B%E6%9D%BF%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h3 id="题解">题解</h3><p>题目要求在多个背包的承重限制下，计算每个背包中最多可以携带的巧克力板数量。每块巧克力板的重量为其边长的平方。需要为每个背包找到在不超过其最大承重的情况下，能够携带的最多巧克力板数。</p><h4 id="思路分析">思路分析</h4><ol><li><p><strong>动态规划（01 背包）</strong>：</p><ul><li>对于每个背包，使用动态规划来计算在承重限制下可以携带的最大巧克力板数。</li><li>状态 <code>f[j]</code> 表示在承重 <code>j</code> 下可以携带的最大巧克力板数。</li></ul></li><li><p><strong>状态转移</strong>：</p><ul><li>遍历每块巧克力板，重量为 <code>x^2</code>。</li><li>对于每个背包容量 <code>j</code> 从大到小遍历：<ul><li>如果选择当前巧克力板，则 <code>f[j] = max(f[j], f[j - x^2] + 1)</code>。</li></ul></li></ul></li><li><p><strong>优化</strong>：</p><ul><li>计算所有查询中的最大承重 <code>vol</code>，并初始化动态规划数组 <code>f</code>。</li><li>最终对于每个查询，直接返回对应的 <code>f[q]</code>。</li></ul></li></ol><h4 id="代码解析">代码解析</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span>, queries: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">list</span>:<br>    vol = <span class="hljs-built_in">max</span>(queries)<br>    f = [<span class="hljs-number">0</span>] * (vol + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> a:<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(vol, x ** <span class="hljs-number">2</span> - <span class="hljs-number">1</span>, -<span class="hljs-number">1</span>):<br>            f[j] = <span class="hljs-built_in">max</span>(f[j], f[j - x ** <span class="hljs-number">2</span>] + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">return</span> [f[q] <span class="hljs-keyword">for</span> q <span class="hljs-keyword">in</span> queries]<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>, <span class="hljs-number">15</span>]) == [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>])<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">10</span>, <span class="hljs-number">20</span>]) == [<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>])<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, <span class="hljs-number">4</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">8</span>, <span class="hljs-number">12</span>, <span class="hljs-number">18</span>, <span class="hljs-number">25</span>]) == [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">4</span>])<br></code></pre></td></tr></table></figure><h4 id="复杂度分析">复杂度分析</h4><ul><li><strong>时间复杂度</strong>：$O(nvol)$，其中 <code>n</code> 是巧克力板的数量，<code>vol</code> 是最大承重。</li><li><strong>空间复杂度</strong>：$O(vol)$，使用了一维数组 <code>f</code> 来存储状态。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+      <tag>01背包</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>248小X的区间或值和</title>
+    <link href="/2024/12/29/248%E5%B0%8FX%E7%9A%84%E5%8C%BA%E9%97%B4%E6%88%96%E5%80%BC%E5%92%8C/"/>
+    <url>/2024/12/29/248%E5%B0%8FX%E7%9A%84%E5%8C%BA%E9%97%B4%E6%88%96%E5%80%BC%E5%92%8C/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题解">题解</h2><h3 id="题目描述">题目描述</h3><p>题目要求计算数组中所有可能的连续子数组的权值和，权值定义为子数组中所有选取两个元素按位或（OR）的值之和。最终结果需要对 (10^9 + 7) 取模。</p><h3 id="思路分析">思路分析</h3><p>首先我们不妨考虑一个暴力一些的做法，计算所有数对的按位或值之和。<br>对于数对<code>a[i]</code> 和 <code>a[j]</code>，$(0 &lt;= i &lt; j &lt; n)$。想要连续子数组包含 <code>a[i]</code> 和 <code>a[j]</code>，那么连续子数组的左端点$l$的范围为$0 &lt;= l &lt;= i$，连续子数组的右端点$r$的范围为$j &lt;= r &lt; n$。因此数对的贡献和为<code>(a[i] | a[j]) * (i + 1) * (n - j)</code>所以我们只需要枚举所有数对，将贡献累加即可</p><p>这种方法的时间复杂度为 $O(n ^ 2)$，对于数组长度大于<code>1e5</code>的情况会超时。</p><h3 id="参考代码">参考代码</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">mod</span> = <span class="hljs-keyword">int</span>(<span class="hljs-number">1</span>e9 + <span class="hljs-number">7</span>)<br>def solution(n: <span class="hljs-keyword">int</span>, <span class="hljs-keyword">a</span>: <span class="hljs-keyword">list</span>) -&gt; <span class="hljs-keyword">int</span>:<br>    <span class="hljs-keyword">res</span> = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i in <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">for</span> <span class="hljs-keyword">j</span> in <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">res</span> += (<span class="hljs-keyword">a</span>[i] | <span class="hljs-keyword">a</span>[<span class="hljs-keyword">j</span>]) * (i + <span class="hljs-number">1</span>) * (n - <span class="hljs-keyword">j</span>)<br>            <span class="hljs-keyword">res</span> %= <span class="hljs-keyword">mod</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">res</span> % <span class="hljs-keyword">mod</span><br></code></pre></td></tr></table></figure><p>这种方法的时间复杂度为 $O(n ^ 2)$，对于数组长度大于<code>1e5</code>的情况会超时。</p><h3 id="优化">优化</h3><ul><li>因为每一个比特位之间相互独立，我们可以分开考虑每一位的贡献。<br>对于数对<code>a[i]</code>和<code>a[j]</code>的第<code>k</code>个比特位,我们同样可以采用上述的暴力思路去枚举每个比特位之间的贡献。</li><li>当前比特位的大小是<code>1 &lt;&lt; k</code>,同时注意到当我们固定<code>a[i]</code>而去枚举<code>a[j]</code>时，连续子数组左端点$l$的范围始终是$0&lt;=l&lt;=i$。那我们直接累加所有右端点的取值不就可以了！！！</li><li>在实现时，我们枚举连续子数组的右端点而累加左端点的值, 根据按位与的性质，当前比特位为<code>1</code>时，左端点可以取任意的值,而当前比特位为<code>0</code>时，只能和左端点包含<code>1</code>的连续子数组产生贡献。</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-built_in">max</span>(a).bit_length()):<br>        cnt0 = cnt1 = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            <span class="hljs-keyword">if</span> a[j] &gt;&gt; i &amp; <span class="hljs-number">1</span>:<br>                res += (cnt1 + cnt0) * (n - j) * (<span class="hljs-number">1</span> &lt;&lt; i) % mod<br>                cnt1 += j + <span class="hljs-number">1</span><br>            <span class="hljs-keyword">else</span>:<br>                res += cnt1 * (n - j) * (<span class="hljs-number">1</span> &lt;&lt; i) % mod<br>                cnt0 += j + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> res % mod<br></code></pre></td></tr></table></figure><h4 id="复杂度分析">复杂度分析</h4><ul><li>时间复杂度：$O(nlogm)$，其中 (n) 是数组长度，(m) 是数组中最大值。</li><li>空间复杂度：$O(1)$，使用常数级额外空间。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>位运算</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>246小U走排列问题</title>
     <link href="/2024/12/28/246%E5%B0%8FU%E8%B5%B0%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/"/>
     <url>/2024/12/28/246%E5%B0%8FU%E8%B5%B0%E6%8E%92%E5%88%97%E9%97%AE%E9%A2%98/</url>
