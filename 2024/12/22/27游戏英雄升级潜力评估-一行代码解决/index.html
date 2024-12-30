@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述 小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析 要使至少有一个英雄达到200">
+    <meta name="description" content="问题描述小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析要使至少有一个英雄达到20000">
 <meta property="og:type" content="article">
 <meta property="og:title" content="27游戏英雄升级潜力评估 一行代码解决">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/22/27%E6%B8%B8%E6%88%8F%E8%8B%B1%E9%9B%84%E5%8D%87%E7%BA%A7%E6%BD%9C%E5%8A%9B%E8%AF%84%E4%BC%B0-%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="问题描述 小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析 要使至少有一个英雄达到200">
+<meta property="og:description" content="问题描述小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。 小 U 希望至少有一个英雄能够达到2000000000000000级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。 问题分析要使至少有一个英雄达到20000">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-21T17:52:12.000Z">
 <meta property="article:modified_time" content="2024-12-21T17:58:39.000Z">
@@ -375,24 +375,20 @@
             
               <div class="markdown-body">
                 
-                <h2 id="问题描述">问题描述</h2>
-<p>小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。</p>
+                <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小 U 在一款挂机游戏中拥有 n 个英雄。游戏中有一种历练升级机制，每天可以选择两个英雄进行历练，如果两位英雄的等级相同，则他们的等级都不会改变。如果英雄等级不同，那么等级较高的英雄会增加 1 级，而等级较低的英雄则保持不变。</p>
 <p>小 U 希望至少有一个英雄能够达到<code>2000000000000000</code>级，现需要确定有多少英雄有潜力通过历练达到这个目标等级。</p>
-<h3 id="问题分析">问题分析</h3>
-<p>要使至少有一个英雄达到<code>2000000000000000</code>级，必须确保有英雄能够不断提升等级。观察历练规则：</p>
+<h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>要使至少有一个英雄达到<code>2000000000000000</code>级，必须确保有英雄能够不断提升等级。观察历练规则：</p>
 <ul>
 <li><strong>相同等级的英雄</strong>无法提升。</li>
 <li><strong>不同等级的英雄</strong>中，等级较高的英雄每次历练都会增加 1 级。</li>
 </ul>
 <p>因此，只有不是最低等级的英雄才有可能通过不断历练达到高等级。最低等级的英雄无法提升，因此它们不具备达成目标的潜力。</p>
-<h3 id="解题思路">解题思路</h3>
-<ol>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
 <li><strong>找出最低等级</strong>：确定所有英雄中当前的最低等级。</li>
 <li><strong>计算最低等级英雄的数量</strong>：这些英雄无法通过历练提升。</li>
 <li><strong>潜力英雄数量</strong>：总英雄数减去最低等级英雄的数量。</li>
 </ol>
-<h3 id="代码实现">代码实现</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, u: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">return</span> n - u.count(<span class="hljs-built_in">min</span>(u))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">4</span>, u = [<span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, u: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">return</span> n - u.count(<span class="hljs-built_in">min</span>(u))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">4</span>, u = [<span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>, <span class="hljs-number">100000</span>]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>, u = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
 
                 
               </div>

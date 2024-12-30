@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 问题概述 小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水">
+    <meta name="description" content="题解问题概述小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水果的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="285水果店果篮最小成本问题">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/26/285%E6%B0%B4%E6%9E%9C%E5%BA%97%E6%9E%9C%E7%AF%AE%E6%9C%80%E5%B0%8F%E6%88%90%E6%9C%AC%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 问题概述 小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水">
+<meta property="og:description" content="题解问题概述小 C 需要将 n 个编号为 1 到 n 的水果打包成若干个果篮。每个果篮最多可以容纳 m 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定： [ \text{成本} &#x3D; k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ] 其中：  k 是果篮中水果的数量。 u 是果篮中水果的最大体积。 v 是果篮中水果的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-26T02:11:52.000Z">
 <meta property="article:modified_time" content="2024-12-27T06:32:14.308Z">
@@ -375,9 +375,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题解">题解</h2>
-<h3 id="问题概述">问题概述</h3>
-<p>小 C 需要将 <code>n</code> 个编号为 1 到 <code>n</code> 的水果打包成若干个果篮。每个果篮最多可以容纳 <code>m</code> 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定：</p>
+                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题概述"><a href="#问题概述" class="headerlink" title="问题概述"></a>问题概述</h3><p>小 C 需要将 <code>n</code> 个编号为 1 到 <code>n</code> 的水果打包成若干个果篮。每个果篮最多可以容纳 <code>m</code> 个水果，且果篮中的水果编号必须连续。每个果篮的成本由以下公式决定：</p>
 <p>[ \text{成本} = k \times \left\lfloor \frac{u + v}{2} \right\rfloor + s ]</p>
 <p>其中：</p>
 <ul>
@@ -388,19 +386,15 @@
 <li>(\left\lfloor x \right\rfloor) 表示对 <code>x</code> 进行下取整。</li>
 </ul>
 <p>目标是找到一种打包方式，使得总成本最小。</p>
-<h3 id="解题思路">解题思路</h3>
-<p>本题可以使用<strong>动态规划</strong>的方法来解决。设 <code>f[i]</code> 表示前 <code>i</code> 个水果的最小总成本。状态转移方程的核心思想是考虑最后一个果篮包含的水果数量，并选择使总成本最小的分割方式。</p>
-<h3 id="具体步骤">具体步骤</h3>
-<ol>
-<li>
-<p><strong>初始化：</strong></p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题可以使用<strong>动态规划</strong>的方法来解决。设 <code>f[i]</code> 表示前 <code>i</code> 个水果的最小总成本。状态转移方程的核心思想是考虑最后一个果篮包含的水果数量，并选择使总成本最小的分割方式。</p>
+<h3 id="具体步骤"><a href="#具体步骤" class="headerlink" title="具体步骤"></a>具体步骤</h3><ol>
+<li><p><strong>初始化：</strong></p>
 <ul>
 <li>定义一个数组 <code>f</code>，长度为 <code>n + 1</code>，初始化所有元素为正无穷大，表示初始状态下成本无限大。</li>
 <li>设置 <code>f[0] = 0</code>，表示不放入任何水果时的成本为 0。</li>
 </ul>
 </li>
-<li>
-<p><strong>动态规划转移：</strong></p>
+<li><p><strong>动态规划转移：</strong></p>
 <ul>
 <li>遍历每一个水果位置 <code>i</code>（从 1 到 <code>n</code>），尝试将第 <code>i</code> 个水果作为当前果篮的结尾。</li>
 <li>对于每个位置 <code>i</code>，向前遍历最多 <code>m</code> 个水果（因为每个果篮最多容纳 <code>m</code> 个水果），计算当前果篮的成本，并更新 <code>f[i]</code>。</li>
@@ -409,17 +403,14 @@
 <li>如果当前果篮中的水果数量达到 <code>m</code>，则停止遍历，避免超过果篮的最大容量。</li>
 </ul>
 </li>
-<li>
-<p><strong>结果输出：</strong></p>
+<li><p><strong>结果输出：</strong></p>
 <ul>
 <li>最终，<code>f[n]</code> 即为将所有 <code>n</code> 个水果打包的最小总成本。</li>
 </ul>
 </li>
 </ol>
-<h3 id="代码解析">代码解析</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">inf = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, s: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># f[i] 表示放入i个水果的最小价值</span><br>    f = [inf] * (n + <span class="hljs-number">1</span>)<br>    f[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a  <span class="hljs-comment"># 使水果编号从1开始</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cnt = <span class="hljs-number">0</span><br>        mi = inf<br>        mx = -inf<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>            mi = <span class="hljs-built_in">min</span>(mi, a[j])<br>            mx = <span class="hljs-built_in">max</span>(mx, a[j])<br>            cnt += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># 计算当前分组的成本</span><br>            current_cost = f[j - <span class="hljs-number">1</span>] + s + ((mx + mi) // <span class="hljs-number">2</span>) * cnt<br>            <span class="hljs-comment"># 更新f[i]为当前最小成本</span><br>            f[i] = <span class="hljs-built_in">min</span>(f[i], current_cost)<br>            <span class="hljs-keyword">if</span> cnt &gt;= m:<br>                <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 超过最大容量，停止遍历</span><br>    <span class="hljs-keyword">return</span> f[n]<br></code></pre></td></tr></table></figure>
-<h3 id="复杂度分析">复杂度分析</h3>
-<ul>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs python">inf = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, s: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># f[i] 表示放入i个水果的最小价值</span><br>    f = [inf] * (n + <span class="hljs-number">1</span>)<br>    f[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a  <span class="hljs-comment"># 使水果编号从1开始</span><br><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cnt = <span class="hljs-number">0</span><br>        mi = inf<br>        mx = -inf<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>            mi = <span class="hljs-built_in">min</span>(mi, a[j])<br>            mx = <span class="hljs-built_in">max</span>(mx, a[j])<br>            cnt += <span class="hljs-number">1</span><br>            <span class="hljs-comment"># 计算当前分组的成本</span><br>            current_cost = f[j - <span class="hljs-number">1</span>] + s + ((mx + mi) // <span class="hljs-number">2</span>) * cnt<br>            <span class="hljs-comment"># 更新f[i]为当前最小成本</span><br>            f[i] = <span class="hljs-built_in">min</span>(f[i], current_cost)<br>            <span class="hljs-keyword">if</span> cnt &gt;= m:<br>                <span class="hljs-keyword">break</span>  <span class="hljs-comment"># 超过最大容量，停止遍历</span><br>    <span class="hljs-keyword">return</span> f[n]<br></code></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
 <li><strong>时间复杂度：</strong> O(n * m)，其中 <code>n</code> 是水果的数量，<code>m</code> 是果篮的最大容量。对于每个水果位置，需要遍历最多 <code>m</code> 个位置。</li>
 <li><strong>空间复杂度：</strong> O(n)，用于存储动态规划数组 <code>f</code>。</li>
 </ul>
