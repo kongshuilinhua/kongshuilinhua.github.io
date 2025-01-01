@@ -29,7 +29,7 @@
 <meta property="og:description" content="本文介绍一些常用的 py 库函数  内置函数 1.1 abs(x) 返回一个数字的绝对值。参数可以是整数、浮点数、复数等。如果参数是一个复数，则返回它的模。 1.2 all(iterable) 如果 iterable 的所有元素均为真值（或可迭代对象为空）则返回 True 。 示例代码: 123nums &#x3D; [1, 2, 3, 4, 5]# 检查是否所有元素都是偶数print(all(x % 2">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T10:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-01T07:11:51.249Z">
+<meta property="article:modified_time" content="2025-01-01T07:14:05.596Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Python">
@@ -319,7 +319,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2k 字
+          2.1k 字
         
       </span>
     
@@ -331,7 +331,7 @@
         
         
           <!-- compatible with older versions-->
-          17 分钟
+          18 分钟
         
       </span>
     
@@ -467,6 +467,12 @@
 <p>将 item 放入堆中，然后弹出并返回 heap 的最小元素。</p>
 <h3 id="3-6-nlargest-n-iterable-key-None-和-nsmallest-n-iterable-key-None">3.6 nlargest(n, iterable, key=None) 和 nsmallest(n, iterable, key=None)</h3>
 <p>从 iterable 所定义的数据集中返回前 n 个最大/最小元素组成的列表。 如果提供了 key 则其应指定一个单参数的函数</p>
+<blockquote>
+<p>注意 [heapify] 初始化生成的堆是最小堆，如果需要最大堆，可以将元素取负值。<br>
+涉及到堆的弹出操作，需要先判断堆是否为空。否则会抛出异常。<br>
+堆的组合操作 [heappushpop] 和 [heapreplace] 比两次操作组合起来更快。<br>
+[nlargest] 和 [nsmallest] 函数适用于 n 比较小的情况，n 比较大时，推荐使用 sorted 函数。</p>
+</blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> heapq <span class="hljs-keyword">import</span> *<br>h = [<span class="hljs-number">5</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">1</span>]<br>heapify(h)<br><span class="hljs-built_in">print</span>(h)<br><span class="hljs-built_in">print</span>(heappop(h)) <span class="hljs-comment"># 1</span><br>heappush(h, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(h) <span class="hljs-comment"># [2, 3, 7, 4, 5]</span><br><span class="hljs-comment"># 先push再pop</span><br><span class="hljs-built_in">print</span>(heappushpop(h, <span class="hljs-number">1</span>)) <span class="hljs-comment"># 1</span><br><span class="hljs-built_in">print</span>(h) <span class="hljs-comment"># [2, 3, 7, 4, 5]</span><br><span class="hljs-comment"># 先pop再push</span><br><span class="hljs-built_in">print</span>(heapreplace(h, <span class="hljs-number">1</span>)) <span class="hljs-comment"># 2</span><br>a = [<span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>, <span class="hljs-number">2</span>]<br><span class="hljs-built_in">print</span>(nlargest(<span class="hljs-number">3</span>, a)) <span class="hljs-comment"># [8, 7, 5]</span><br><span class="hljs-built_in">print</span>(nsmallest(<span class="hljs-number">3</span>, a)) <span class="hljs-comment"># [1, 2, 3]</span><br><br></code></pre></td></tr></table></figure>
 <h2 id="4-bisect-二分查找算法">4. bisect 二分查找算法</h2>
 <h3 id="4-1-bisect-left-a-x-lo-0-hi-len-a">4.1 bisect_left(a, x, lo=0, hi=len(a))</h3>
