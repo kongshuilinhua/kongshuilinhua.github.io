@@ -21,24 +21,24 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题描述小 U 有一个字符串 s，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。 你的任务是帮助小 U 计算 s 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。 例如：  当 s &#x3D; &quot;abc&quot; 时，所有不同的非空子序列包括 &quot;a&quot;, &amp;qu">
+    <meta name="description" content="问题描述小 R 有一排长度为 n 的格子，每个格子从左到右编号为 1 到 n。起初，部分格子已经被染成了红色，其他格子则没有颜色。红色格子的状态由一个长度为 n 的字符串 s 描述，其中 s[i] &#x3D; 1 表示第 i 个格子是红色的，而 s[i] &#x3D; 0 表示该格子没有颜色。 小 R 希望通过以下两种操作将所有格子都染成红色：  如果第 i 个格子是红色的，且 i + 1 ≤ n，则可以将第 i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="326不同子序列计数问题">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/31/326%E4%B8%8D%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="299红色格子染色方案数计算">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/01/299%E7%BA%A2%E8%89%B2%E6%A0%BC%E5%AD%90%E6%9F%93%E8%89%B2%E6%96%B9%E6%A1%88%E6%95%B0%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题描述小 U 有一个字符串 s，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。 你的任务是帮助小 U 计算 s 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。 例如：  当 s &#x3D; &quot;abc&quot; 时，所有不同的非空子序列包括 &quot;a&quot;, &amp;qu">
+<meta property="og:description" content="问题描述小 R 有一排长度为 n 的格子，每个格子从左到右编号为 1 到 n。起初，部分格子已经被染成了红色，其他格子则没有颜色。红色格子的状态由一个长度为 n 的字符串 s 描述，其中 s[i] &#x3D; 1 表示第 i 个格子是红色的，而 s[i] &#x3D; 0 表示该格子没有颜色。 小 R 希望通过以下两种操作将所有格子都染成红色：  如果第 i 个格子是红色的，且 i + 1 ≤ n，则可以将第 i">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-31T05:03:15.000Z">
-<meta property="article:modified_time" content="2024-12-31T05:10:20.188Z">
+<meta property="article:published_time" content="2025-01-01T01:50:12.000Z">
+<meta property="article:modified_time" content="2025-01-01T02:45:36.857Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="组合数学">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>326不同子序列计数问题 - FireFly</title>
+  <title>299红色格子染色方案数计算 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -292,7 +292,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="326不同子序列计数问题"></span>
+            <span id="subtitle" data-typed-text="299红色格子染色方案数计算"></span>
           
         </div>
 
@@ -308,8 +308,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-31 13:03" pubdate>
-           2024 年 12 月 31 日 , 下午 01:03 , 星期二
+        <time datetime="2025-01-01 09:50" pubdate>
+           2025 年 01 月 01 日 , 上午 09:50 , 星期三
         </time>
       </span>
     
@@ -321,7 +321,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          533 字
+          680 字
         
       </span>
     
@@ -333,7 +333,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -370,44 +370,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">326不同子序列计数问题</h1>
+            <h1 id="seo-header">299红色格子染色方案数计算</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小 U 有一个字符串 <code>s</code>，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。</p>
-<p>你的任务是帮助小 U 计算 <code>s</code> 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。</p>
-<p><strong>例如</strong>：</p>
-<ul>
-<li>当 <code>s = &quot;abc&quot;</code> 时，所有不同的非空子序列包括 <code>&quot;a&quot;</code>, <code>&quot;b&quot;</code>, <code>&quot;c&quot;</code>, <code>&quot;ab&quot;</code>, <code>&quot;ac&quot;</code>, <code>&quot;bc&quot;</code>, 和 <code>&quot;abc&quot;</code>，总数为 <code>7</code>。</li>
-</ul>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
-<li><p><strong>动态规划状态定义</strong>:</p>
-<ul>
-<li>定义 <code>f[i]</code> 为字符串 <code>s</code> 的前 <code>i</code> 个字符所能形成的不同非空子序列的数量。字典 <code>last</code> 记录每个字符上一次出现的位置。</li>
-</ul>
-</li>
-<li><p><strong>动态规划转移</strong>:</p>
-<ul>
-<li>遍历字符串 <code>s</code>，对于每一个字符 <code>c</code> 在索引 <code>i</code> 位置：<ul>
-<li>如果 <code>c</code> 是第一次出现，即 <code>c</code> 不在 <code>last</code> 中：<ul>
-<li>则 <code>f[i] = f[i-1] * 2 + 1</code>。这里 <code>f[i-1] * 2</code> 表示在所有前 <code>i-1</code> 个子序列基础上，每个子序列可以选择添加或不添加 <code>c</code>，<code>+1</code> 表示包含只有 <code>c</code> 这个字符的子序列。</li>
-</ul>
-</li>
-<li>如果 <code>c</code> 之前出现过：<ul>
-<li>则 <code>f[i] = f[i-1] * 2 - f[last[c] - 1]</code>。<code>f[i-1] * 2</code> 同理，但需要减去 <code>f[last[c] - 1]</code>，以消除由上一次出现 <code>c</code> 到当前 <code>c</code> 之间重复形成的子序列，保证每个子序列唯一。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>更新 <code>last[c] = i</code>，记录字符 <code>c</code> 的最新出现位置。</li>
-</ul>
-</li>
+                <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小 R 有一排长度为 n 的格子，每个格子从左到右编号为 1 到 n。起初，部分格子已经被染成了红色，其他格子则没有颜色。红色格子的状态由一个长度为 n 的字符串 s 描述，其中 s[i] = 1 表示第 i 个格子是红色的，而 s[i] = 0 表示该格子没有颜色。</p>
+<p>小 R 希望通过以下两种操作将所有格子都染成红色：</p>
+<ol>
+<li>如果第 i 个格子是红色的，且 i + 1 ≤ n，则可以将第 i + 1 个没有颜色的格子染成红色。</li>
+<li>如果第 i 个格子是红色的，且 i - 1 ≥ 1，则可以将第 i - 1 个没有颜色的格子染成红色。</li>
 </ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    last = &#123;&#125;<br>    n = <span class="hljs-built_in">len</span>(s)<br>    f = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s, <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> last:<br>            f[i] = f[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span> + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            f[i] = f[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span> - f[last[c] - <span class="hljs-number">1</span>]<br>        last[c] = i<br>        f[i] %= mod<br><br>    <span class="hljs-keyword">return</span> f[-<span class="hljs-number">1</span>]<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abc&quot;</span>) == <span class="hljs-number">7</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;aaa&quot;</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abcd&quot;</span>) == <span class="hljs-number">15</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abac&quot;</span>) == <span class="hljs-number">13</span>)<br></code></pre></td></tr></table></figure>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
-<li>该算法的时间复杂度为 <code>O(n)</code>，其中 <code>n</code> 是字符串的长度。</li>
-<li>空间复杂度为 <code>O(n)</code>，用于存储动态规划数组 <code>f</code> 和字符最后出现位置的哈希表 <code>last</code>。</li>
+<p>请你帮小 R 计算出，存在多少种不同的染色顺序可以使所有格子最终都被染成红色，并输出答案对 10^9 + 7 取模后的结果。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>1.<strong>子数组内部的染色方案数</strong><br>首先考虑一个长度为<code>k</code>的全部未染色的格子，可以有多少种染色方案。</p>
+<ul>
+<li>假如这段连续的格子处于两个已染色的格子之间，那么这段格子的染色方案数为<code>2^(k-1)</code>。</li>
+<li>假如这段连续的格子只有一端被染色，那么显然只有一种染色方案。</li>
+</ul>
+<ol>
+<li><strong>合并所有的方案数</strong></li>
+</ol>
+<ul>
+<li>假设有<code>x</code>段连续的未染色格子，那么可以发现，这<code>x</code>段格子的染色方案数是独立的，可以相乘。问题相当于把这<code>x</code>段格子放入长度为<code>m</code>的数组中，<code>m</code>为未染色的格子总数。</li>
+<li>例如 有长度为<code>x1</code>、<code>x2</code>、<code>x3</code>、<code>x4</code>的未染色格子，一共有<code>m</code>个未染色格子，放入其中的方案数为<code>C(m, x1) * C(m-x1, x2) * C(m-x1-x2, x3) * C(m-x1-x2-x3, x4)</code>。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br>mx = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e5</span> + <span class="hljs-number">10</span>)<br><br><span class="hljs-comment"># 预处理组合数</span><br>fac = [<span class="hljs-number">0</span>] * mx<br>fac[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, mx):<br>    fac[i] = fac[i - <span class="hljs-number">1</span>] * i % mod<br><br>inv_fac = [<span class="hljs-number">0</span>] * mx<br>inv_fac[mx - <span class="hljs-number">1</span>] = <span class="hljs-built_in">pow</span>(fac[mx - <span class="hljs-number">1</span>], -<span class="hljs-number">1</span>, mod)<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(mx - <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>    inv_fac[i - <span class="hljs-number">1</span>] = inv_fac[i] * i % mod<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">comb</span>(<span class="hljs-params">n, m</span>):<br>    <span class="hljs-keyword">if</span> n &lt; m:<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-keyword">return</span> fac[n] * inv_fac[m] % mod * inv_fac[n - m] % mod<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n, s</span>):<br>    a = [i <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n) <span class="hljs-keyword">if</span> s[i] == <span class="hljs-string">&#x27;1&#x27;</span>]<br>    <span class="hljs-comment"># 未染色的格子数</span><br>    cnt = n - <span class="hljs-built_in">len</span>(a)<br>    <span class="hljs-comment"># 处理首尾</span><br>    res = comb(cnt, a[<span class="hljs-number">0</span>]) * comb(cnt - a[<span class="hljs-number">0</span>], n - a[-<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>) % mod<br>    cnt -= (a[<span class="hljs-number">0</span>] + n - a[-<span class="hljs-number">1</span>] - <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(a)):<br>        k = a[i] - a[i - <span class="hljs-number">1</span>] - <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> k &gt; <span class="hljs-number">0</span>:<br>            <span class="hljs-comment"># 内部的方案数和放置的方案数相乘</span><br>            res *= <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, k - <span class="hljs-number">1</span>, mod) * comb(cnt, k) % mod<br>            cnt -= k<br>    <span class="hljs-keyword">return</span> res % mod<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>,s = <span class="hljs-string">&quot;00101&quot;</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>,s = <span class="hljs-string">&quot;100001&quot;</span>) == <span class="hljs-number">8</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">7</span>,s = <span class="hljs-string">&quot;0001000&quot;</span>) == <span class="hljs-number">20</span>)<br><br></code></pre></td></tr></table></figure>
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li><strong>时间复杂度</strong>：<code>O(n)</code>，可以预处理<code>pow</code></li>
+<li><strong>空间复杂度</strong>：<code>O(n)</code></li>
 </ul>
 
                 
@@ -421,7 +411,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+        <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="print-no-link">#组合数学</a>
       
     </div>
   
@@ -433,8 +423,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>326不同子序列计数问题</div>
-      <div>https://kongshuilinhua.github.io/2024/12/31/326不同子序列计数问题/</div>
+      <div>299红色格子染色方案数计算</div>
+      <div>https://kongshuilinhua.github.io/2025/01/01/299红色格子染色方案数计算/</div>
     </div>
     <div class="license-meta">
       
@@ -446,7 +436,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月31日</div>
+          <div>2025年1月1日</div>
         </div>
       
       
@@ -478,9 +468,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/01/299%E7%BA%A2%E8%89%B2%E6%A0%BC%E5%AD%90%E6%9F%93%E8%89%B2%E6%96%B9%E6%A1%88%E6%95%B0%E8%AE%A1%E7%AE%97/" title="299红色格子染色方案数计算">
+                      <a href="/2025/01/01/370%E5%AD%90%E5%8C%BA%E9%97%B4%E5%B9%B3%E5%9D%87%E5%80%BC%E9%97%AE%E9%A2%98/" title="370子区间平均值问题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">299红色格子染色方案数计算</span>
+                        <span class="hidden-mobile">370子区间平均值问题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -488,8 +478,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/31/320-icci-%E5%9E%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/" title="320&#39;icci&#39;型字符串子序列问题">
-                        <span class="hidden-mobile">320&#39;icci&#39;型字符串子序列问题</span>
+                      <a href="/2024/12/31/326%E4%B8%8D%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/" title="326不同子序列计数问题">
+                        <span class="hidden-mobile">326不同子序列计数问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

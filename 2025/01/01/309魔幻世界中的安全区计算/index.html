@@ -21,24 +21,24 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题描述小 U 有一个字符串 s，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。 你的任务是帮助小 U 计算 s 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。 例如：  当 s &#x3D; &quot;abc&quot; 时，所有不同的非空子序列包括 &quot;a&quot;, &amp;qu">
+    <meta name="description" content="题解问题分析在一个大小为 n x m 的二维数组中，每个格子的值表示该位置的危险程度。小 F 的能力值为 X，当某个格子的危险程度小于等于 X 时，该格子被认为是安全的。相邻（上下左右连通）的安全格子组成一个安全区。需要计算整个二维数组中有多少个安全区。 解题思路这题本质就是计算连通块的数量。使用广度优先搜索（BFS）遍历二维数组，标记已访问的安全格子。对于每一个未访问且安全的格子，启动一次 BF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="326不同子序列计数问题">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/31/326%E4%B8%8D%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="309魔幻世界中的安全区计算">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/01/309%E9%AD%94%E5%B9%BB%E4%B8%96%E7%95%8C%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E5%8C%BA%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题描述小 U 有一个字符串 s，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。 你的任务是帮助小 U 计算 s 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。 例如：  当 s &#x3D; &quot;abc&quot; 时，所有不同的非空子序列包括 &quot;a&quot;, &amp;qu">
+<meta property="og:description" content="题解问题分析在一个大小为 n x m 的二维数组中，每个格子的值表示该位置的危险程度。小 F 的能力值为 X，当某个格子的危险程度小于等于 X 时，该格子被认为是安全的。相邻（上下左右连通）的安全格子组成一个安全区。需要计算整个二维数组中有多少个安全区。 解题思路这题本质就是计算连通块的数量。使用广度优先搜索（BFS）遍历二维数组，标记已访问的安全格子。对于每一个未访问且安全的格子，启动一次 BF">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-31T05:03:15.000Z">
-<meta property="article:modified_time" content="2024-12-31T05:10:20.188Z">
+<meta property="article:published_time" content="2025-01-01T05:09:26.000Z">
+<meta property="article:modified_time" content="2025-01-01T05:15:14.500Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="BFS">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>326不同子序列计数问题 - FireFly</title>
+  <title>309魔幻世界中的安全区计算 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -292,7 +292,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="326不同子序列计数问题"></span>
+            <span id="subtitle" data-typed-text="309魔幻世界中的安全区计算"></span>
           
         </div>
 
@@ -308,8 +308,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-31 13:03" pubdate>
-           2024 年 12 月 31 日 , 下午 01:03 , 星期二
+        <time datetime="2025-01-01 13:09" pubdate>
+           2025 年 01 月 01 日 , 下午 01:09 , 星期三
         </time>
       </span>
     
@@ -321,7 +321,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          533 字
+          387 字
         
       </span>
     
@@ -333,7 +333,7 @@
         
         
           <!-- compatible with older versions-->
-          5 分钟
+          4 分钟
         
       </span>
     
@@ -370,45 +370,15 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">326不同子序列计数问题</h1>
+            <h1 id="seo-header">309魔幻世界中的安全区计算</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小 U 有一个字符串 <code>s</code>，他想计算该字符串的所有不同非空子序列的个数。子序列是通过删除原字符串中的部分字符（也可以不删除），且保持剩余字符的相对顺序形成的新字符串。</p>
-<p>你的任务是帮助小 U 计算 <code>s</code> 的不同非空子序列的总数，并返回对 $10^9 + 7$ 取余的结果。</p>
-<p><strong>例如</strong>：</p>
-<ul>
-<li>当 <code>s = &quot;abc&quot;</code> 时，所有不同的非空子序列包括 <code>&quot;a&quot;</code>, <code>&quot;b&quot;</code>, <code>&quot;c&quot;</code>, <code>&quot;ab&quot;</code>, <code>&quot;ac&quot;</code>, <code>&quot;bc&quot;</code>, 和 <code>&quot;abc&quot;</code>，总数为 <code>7</code>。</li>
-</ul>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
-<li><p><strong>动态规划状态定义</strong>:</p>
-<ul>
-<li>定义 <code>f[i]</code> 为字符串 <code>s</code> 的前 <code>i</code> 个字符所能形成的不同非空子序列的数量。字典 <code>last</code> 记录每个字符上一次出现的位置。</li>
-</ul>
-</li>
-<li><p><strong>动态规划转移</strong>:</p>
-<ul>
-<li>遍历字符串 <code>s</code>，对于每一个字符 <code>c</code> 在索引 <code>i</code> 位置：<ul>
-<li>如果 <code>c</code> 是第一次出现，即 <code>c</code> 不在 <code>last</code> 中：<ul>
-<li>则 <code>f[i] = f[i-1] * 2 + 1</code>。这里 <code>f[i-1] * 2</code> 表示在所有前 <code>i-1</code> 个子序列基础上，每个子序列可以选择添加或不添加 <code>c</code>，<code>+1</code> 表示包含只有 <code>c</code> 这个字符的子序列。</li>
-</ul>
-</li>
-<li>如果 <code>c</code> 之前出现过：<ul>
-<li>则 <code>f[i] = f[i-1] * 2 - f[last[c] - 1]</code>。<code>f[i-1] * 2</code> 同理，但需要减去 <code>f[last[c] - 1]</code>，以消除由上一次出现 <code>c</code> 到当前 <code>c</code> 之间重复形成的子序列，保证每个子序列唯一。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>更新 <code>last[c] = i</code>，记录字符 <code>c</code> 的最新出现位置。</li>
-</ul>
-</li>
-</ol>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    last = &#123;&#125;<br>    n = <span class="hljs-built_in">len</span>(s)<br>    f = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> i, c <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(s, <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> last:<br>            f[i] = f[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span> + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            f[i] = f[i - <span class="hljs-number">1</span>] * <span class="hljs-number">2</span> - f[last[c] - <span class="hljs-number">1</span>]<br>        last[c] = i<br>        f[i] %= mod<br><br>    <span class="hljs-keyword">return</span> f[-<span class="hljs-number">1</span>]<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abc&quot;</span>) == <span class="hljs-number">7</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;aaa&quot;</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abcd&quot;</span>) == <span class="hljs-number">15</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abac&quot;</span>) == <span class="hljs-number">13</span>)<br></code></pre></td></tr></table></figure>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><ul>
-<li>该算法的时间复杂度为 <code>O(n)</code>，其中 <code>n</code> 是字符串的长度。</li>
-<li>空间复杂度为 <code>O(n)</code>，用于存储动态规划数组 <code>f</code> 和字符最后出现位置的哈希表 <code>last</code>。</li>
-</ul>
+                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h3><p>在一个大小为 <code>n x m</code> 的二维数组中，每个格子的值表示该位置的危险程度。小 F 的能力值为 <code>X</code>，当某个格子的危险程度小于等于 <code>X</code> 时，该格子被认为是安全的。相邻（上下左右连通）的安全格子组成一个安全区。需要计算整个二维数组中有多少个安全区。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>这题本质就是计算连通块的数量。使用广度优先搜索（BFS）遍历二维数组，标记已访问的安全格子。对于每一个未访问且安全的格子，启动一次 BFS，将所有相连的安全格子标记为已访问，并将安全区计数加一。</p>
+<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> deque<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, X: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">list</span>[<span class="hljs-built_in">int</span>]]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    vis = [[<span class="hljs-number">0</span>] * m <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n)]<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">bfs</span>(<span class="hljs-params">x, y</span>):<br>        q = deque([(x, y)])<br>        vis[x][y] = <span class="hljs-number">1</span><br>        <span class="hljs-keyword">while</span> q:<br>            x, y = q.popleft()<br>            <span class="hljs-keyword">for</span> dx, dy <span class="hljs-keyword">in</span> [(<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (-<span class="hljs-number">1</span>, <span class="hljs-number">0</span>), (<span class="hljs-number">0</span>, <span class="hljs-number">1</span>), (<span class="hljs-number">0</span>, -<span class="hljs-number">1</span>)]:<br>                nx, ny = x + dx, y + dy<br>                <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= nx &lt; n <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= ny &lt; m <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> vis[nx][ny] <span class="hljs-keyword">and</span> a[nx][ny] &lt;= X:<br>                    vis[nx][ny] = <span class="hljs-number">1</span><br>                    q.append((nx, ny))<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    res = <span class="hljs-built_in">sum</span>(bfs(i, j) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n) <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(m) <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> vis[i][j] <span class="hljs-keyword">and</span> a[i][j] &lt;= X)<br>    <span class="hljs-keyword">return</span> res<br><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, [[<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>]]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">2</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, [[<span class="hljs-number">6</span>, <span class="hljs-number">6</span>], [<span class="hljs-number">6</span>, <span class="hljs-number">4</span>]]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>, [[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2</span>], [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">3</span>], [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]]) == <span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p><strong>时间复杂度</strong>:通过 BFS 方法遍历整个二维数组，每个格子最多只被遍历一次，所以时间复杂度为 <code>O(n * m)</code>。<br><strong>空间复杂度</strong>:空间复杂度 <code>O(n * m)</code>。</p>
 
                 
               </div>
@@ -421,7 +391,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="print-no-link">#动态规划</a>
+        <a href="/tags/BFS/" class="print-no-link">#BFS</a>
       
     </div>
   
@@ -433,8 +403,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>326不同子序列计数问题</div>
-      <div>https://kongshuilinhua.github.io/2024/12/31/326不同子序列计数问题/</div>
+      <div>309魔幻世界中的安全区计算</div>
+      <div>https://kongshuilinhua.github.io/2025/01/01/309魔幻世界中的安全区计算/</div>
     </div>
     <div class="license-meta">
       
@@ -446,7 +416,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月31日</div>
+          <div>2025年1月1日</div>
         </div>
       
       
@@ -478,18 +448,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/01/01/299%E7%BA%A2%E8%89%B2%E6%A0%BC%E5%AD%90%E6%9F%93%E8%89%B2%E6%96%B9%E6%A1%88%E6%95%B0%E8%AE%A1%E7%AE%97/" title="299红色格子染色方案数计算">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">299红色格子染色方案数计算</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/31/320-icci-%E5%9E%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/" title="320&#39;icci&#39;型字符串子序列问题">
-                        <span class="hidden-mobile">320&#39;icci&#39;型字符串子序列问题</span>
+                      <a href="/2025/01/01/370%E5%AD%90%E5%8C%BA%E9%97%B4%E5%B9%B3%E5%9D%87%E5%80%BC%E9%97%AE%E9%A2%98/" title="370子区间平均值问题">
+                        <span class="hidden-mobile">370子区间平均值问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
