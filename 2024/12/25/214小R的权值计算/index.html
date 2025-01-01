@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题理解给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路 b1 b2 b3 b4 b5b1+2b2 b2+2b3 b3+2b4 b4+2b5b1+2b2+3b3 b2+2b3+3b4">
+    <meta name="description" content="题解 问题理解 给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路  b1 b2 b3 b4 b5 b1+2b2 b2+2b3 b3+2b4 b4+2b5 b1+2b2+3b3 b2+2b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="214小R的权值计算">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/25/214%E5%B0%8FR%E7%9A%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题理解给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路 b1 b2 b3 b4 b5b1+2b2 b2+2b3 b3+2b4 b4+2b5b1+2b2+3b3 b2+2b3+3b4">
+<meta property="og:description" content="题解 问题理解 给定一个长度为 n 的数组 a，小 R 定义任意子数组的权值为 1×b₁ + 2×b₂ + ... + m×bₘ，其中 m 是子数组的长度，b₁, b₂, ..., bₘ 是子数组中的元素。要求计算所有子数组权值的和，结果需对 10^9 + 7 取模。 解题思路  b1 b2 b3 b4 b5 b1+2b2 b2+2b3 b3+2b4 b4+2b5 b1+2b2+3b3 b2+2b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-25T01:28:01.000Z">
 <meta property="article:modified_time" content="2024-12-27T06:32:43.043Z">
@@ -372,14 +372,26 @@
             
               <div class="markdown-body">
                 
-                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="问题理解"><a href="#问题理解" class="headerlink" title="问题理解"></a>问题理解</h3><p>给定一个长度为 <code>n</code> 的数组 <code>a</code>，小 R 定义任意子数组的权值为 <code>1×b₁ + 2×b₂ + ... + m×bₘ</code>，其中 <code>m</code> 是子数组的长度，<code>b₁, b₂, ..., bₘ</code> 是子数组中的元素。要求计算所有子数组权值的和，结果需对 <code>10^9 + 7</code> 取模。</p>
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><blockquote>
-<p>b1 b2 b3 b4 b5<br>b1+2b2 b2+2b3 b3+2b4 b4+2b5<br>b1+2b2+3b3 b2+2b3+3b4 b3+2b4+3b5<br>b1+2b2+3b3+4b4 b2+2b3+3b4+4b5<br>b1+2b2+3b3+4b4+5b5<br>根据规律可以看出长度为 length 的子数组转移的时候，只需要加上 length*a[i] - (s[i-1] - s[i-length-1])即可</p>
+                <h2 id="题解">题解</h2>
+<h3 id="问题理解">问题理解</h3>
+<p>给定一个长度为 <code>n</code> 的数组 <code>a</code>，小 R 定义任意子数组的权值为 <code>1×b₁ + 2×b₂ + ... + m×bₘ</code>，其中 <code>m</code> 是子数组的长度，<code>b₁, b₂, ..., bₘ</code> 是子数组中的元素。要求计算所有子数组权值的和，结果需对 <code>10^9 + 7</code> 取模。</p>
+<h3 id="解题思路">解题思路</h3>
+<blockquote>
+<p>b1 b2 b3 b4 b5<br>
+b1+2b2 b2+2b3 b3+2b4 b4+2b5<br>
+b1+2b2+3b3 b2+2b3+3b4 b3+2b4+3b5<br>
+b1+2b2+3b3+4b4 b2+2b3+3b4+4b5<br>
+b1+2b2+3b3+4b4+5b5<br>
+根据规律可以看出长度为 length 的子数组转移的时候，只需要加上 length*a[i] - (s[i-1] - s[i-length-1])即可</p>
 </blockquote>
 <ol>
-<li><p><strong>前缀和计算</strong>：<br>使用前缀和 <code>s</code> 来快速计算任意子数组的元素和，<code>s[i]</code> 表示前 <code>i</code> 个元素的和。</p>
+<li>
+<p><strong>前缀和计算</strong>：<br>
+使用前缀和 <code>s</code> 来快速计算任意子数组的元素和，<code>s[i]</code> 表示前 <code>i</code> 个元素的和。</p>
 </li>
-<li><p><strong>权值计算</strong>：<br>对于每个子数组长度 <code>length</code>，遍历所有可能的子数组，计算当前子数组的权值 <code>cur</code>。</p>
+<li>
+<p><strong>权值计算</strong>：<br>
+对于每个子数组长度 <code>length</code>，遍历所有可能的子数组，计算当前子数组的权值 <code>cur</code>。</p>
 <ul>
 <li>初始时，计算第一个长度为 <code>length</code> 的子数组的权值。</li>
 <li>随着窗口的滑动，通过更新 <code>cur</code> 来计算下一个子数组的权值：<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">cur += length * a<span class="hljs-comment">[i]</span> - (s<span class="hljs-comment">[i - 1]</span> - s<span class="hljs-comment">[i - length - 1]</span>)<br></code></pre></td></tr></table></figure>
@@ -387,7 +399,8 @@
 </ul>
 </li>
 </ol>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a<br>    s = <span class="hljs-built_in">list</span>(accumulate(a))<br>    <span class="hljs-comment"># 枚举子数组的长度</span><br>    <span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cur = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, length + <span class="hljs-number">1</span>):<br>            cur += a[i] * i<br>        res = (res + cur) % mod<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length + <span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>            cur += length * a[i] - (s[i - <span class="hljs-number">1</span>] - s[i - length - <span class="hljs-number">1</span>])<br>            res = (res + cur) % mod<br>    <span class="hljs-keyword">return</span> res % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) == <span class="hljs-number">33</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">203</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">2</span>, [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>]) == <span class="hljs-number">80</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="代码实现">代码实现</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> itertools <span class="hljs-keyword">import</span> accumulate<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = <span class="hljs-number">0</span><br>    a = [<span class="hljs-number">0</span>] + a<br>    s = <span class="hljs-built_in">list</span>(accumulate(a))<br>    <span class="hljs-comment"># 枚举子数组的长度</span><br>    <span class="hljs-keyword">for</span> length <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        cur = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, length + <span class="hljs-number">1</span>):<br>            cur += a[i] * i<br>        res = (res + cur) % mod<br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(length + <span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>            cur += length * a[i] - (s[i - <span class="hljs-number">1</span>] - s[i - length - <span class="hljs-number">1</span>])<br>            res = (res + cur) % mod<br>    <span class="hljs-keyword">return</span> res % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]) == <span class="hljs-number">33</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">203</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">2</span>, [<span class="hljs-number">10</span>, <span class="hljs-number">20</span>]) == <span class="hljs-number">80</span>)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
