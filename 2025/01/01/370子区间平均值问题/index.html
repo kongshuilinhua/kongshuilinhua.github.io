@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 问题描述 给定一个长度为 n 的整数数组 arr，以及一个有理数 u&#x2F;v。需要找出数组中有多少个连续的子区间，其平均值恰好等于 u&#x2F;v。 解题思路   转化问题：要求子区间的平均值等于 u&#x2F;v，即子区间的总和等于 (u&#x2F;v) * 长度。为了简化计算，我们可以将数组的每个元素都减去 u&#x2F;v，然后问题转化为找出有多少个子区间的和为 0。   前缀和与哈希表：  使用前缀和 s 来记录从起始到当前">
+    <meta name="description" content="题解问题描述 给定一个长度为 n 的整数数组 arr，以及一个有理数 u&#x2F;v。需要找出数组中有多少个连续的子区间，其平均值恰好等于 u&#x2F;v。 解题思路  转化问题：要求子区间的平均值等于 u&#x2F;v，即子区间的总和等于 (u&#x2F;v) * 长度。为了简化计算，我们可以将数组的每个元素都减去 u&#x2F;v，然后问题转化为找出有多少个子区间的和为 0。  前缀和与哈希表：  使用前缀和 s 来记录从起始到当前元素的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="370子区间平均值问题">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/01/370%E5%AD%90%E5%8C%BA%E9%97%B4%E5%B9%B3%E5%9D%87%E5%80%BC%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 问题描述 给定一个长度为 n 的整数数组 arr，以及一个有理数 u&#x2F;v。需要找出数组中有多少个连续的子区间，其平均值恰好等于 u&#x2F;v。 解题思路   转化问题：要求子区间的平均值等于 u&#x2F;v，即子区间的总和等于 (u&#x2F;v) * 长度。为了简化计算，我们可以将数组的每个元素都减去 u&#x2F;v，然后问题转化为找出有多少个子区间的和为 0。   前缀和与哈希表：  使用前缀和 s 来记录从起始到当前">
+<meta property="og:description" content="题解问题描述 给定一个长度为 n 的整数数组 arr，以及一个有理数 u&#x2F;v。需要找出数组中有多少个连续的子区间，其平均值恰好等于 u&#x2F;v。 解题思路  转化问题：要求子区间的平均值等于 u&#x2F;v，即子区间的总和等于 (u&#x2F;v) * 长度。为了简化计算，我们可以将数组的每个元素都减去 u&#x2F;v，然后问题转化为找出有多少个子区间的和为 0。  前缀和与哈希表：  使用前缀和 s 来记录从起始到当前元素的">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-01T02:57:18.000Z">
 <meta property="article:modified_time" content="2025-01-01T05:01:53.633Z">
@@ -371,21 +371,17 @@
             
               <div class="markdown-body">
                 
-                <h3 id="题解">题解</h3>
-<p><strong>问题描述</strong></p>
+                <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p><strong>问题描述</strong></p>
 <p>给定一个长度为 <code>n</code> 的整数数组 <code>arr</code>，以及一个有理数 <code>u/v</code>。需要找出数组中有多少个连续的子区间，其平均值恰好等于 <code>u/v</code>。</p>
 <p><strong>解题思路</strong></p>
 <ol>
-<li>
-<p><strong>转化问题</strong>：要求子区间的平均值等于 <code>u/v</code>，即子区间的总和等于 <code>(u/v) * 长度</code>。为了简化计算，我们可以将数组的每个元素都减去 <code>u/v</code>，然后问题转化为找出有多少个子区间的和为 <code>0</code>。</p>
+<li><p><strong>转化问题</strong>：要求子区间的平均值等于 <code>u/v</code>，即子区间的总和等于 <code>(u/v) * 长度</code>。为了简化计算，我们可以将数组的每个元素都减去 <code>u/v</code>，然后问题转化为找出有多少个子区间的和为 <code>0</code>。</p>
 </li>
-<li>
-<p><strong>前缀和与哈希表</strong>：</p>
+<li><p><strong>前缀和与哈希表</strong>：</p>
 <ul>
 <li>使用前缀和 <code>s</code> 来记录从起始到当前元素的累积和。</li>
 <li>使用哈希表 <code>d</code> 来存储每个前缀和出现的次数。</li>
-<li>遍历数组，对于每个位置 <code>i</code>，计算当前的前缀和 <code>s[i]</code>：
-<ul>
+<li>遍历数组，对于每个位置 <code>i</code>，计算当前的前缀和 <code>s[i]</code>：<ul>
 <li>如果在之前的某个位置 <code>j</code>（<code>j &lt; i</code>），<code>s[j]</code> 与 <code>s[i]</code> 相等，则子区间 <code>(j+1, i)</code> 的和为 <code>0</code>。</li>
 <li>因此，结果 <code>res</code> 增加 <code>d[s[i]]</code> 的值。</li>
 <li>然后更新 <code>d[s[i]]</code> 的计数。</li>
