@@ -4,6 +4,71 @@
   
   
   <entry>
+    <title>606画作</title>
+    <link href="/2025/01/25/606%E7%94%BB%E4%BD%9C/"/>
+    <url>/2025/01/25/606%E7%94%BB%E4%BD%9C/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述">问题描述</h3><p>在一个充满色彩的艺术画廊里，小艾拥有 <code>n</code> 幅长度不一的画作，每幅画的长度都是从 <code>1</code> 到 <code>n</code> 的自然数。小艾的目标是将这些画作以特定的顺序摆放，并确保从入口处可以清晰地恰好看到 <code>k</code> 幅画作。判断某幅画是否可见的标准是：它左侧的画作中没有比它更高的遮挡物。</p><p>小艾想要计算出所有可能的摆放方式，以满足上述可见性条件。由于结果可能会非常庞大，需要将最终的答案对 <code>10^9 + 7</code> 进行取模后输出。</p><p><strong>约束条件：</strong></p><ul><li>时间限制：3 秒</li><li>数据范围为 <code>1 ≤ k ≤ n ≤ 3000</code></li></ul><h3 id="解题思路">解题思路</h3><p>这道题目可以通过动态规划来解决。定义 <code>dp[i][j]</code> 表示前 <code>i</code> 幅画中恰好有 <code>j</code> 幅画可见的排列数。对于每一幅画，我们有两种选择：</p><ol><li><strong>当前画作是最高的</strong>：此时它一定是可见的，因此 <code>dp[i][j] += dp[i-1][j-1]</code>。</li><li><strong>当前画作不是最高的</strong>：这样它不会被看到，除了最高的还有 <code>i</code> 种选择来保持不是最高的状态，因此 <code>dp[i][j] += dp[i-1][j] * i</code>。</li></ol><p>为了优化空间复杂度，可以使用滚动数组，仅保留前一状态和当前状态。</p><h3 id="代码实现">代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><br>mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    pre = [<span class="hljs-number">0</span>] * (k + <span class="hljs-number">1</span>)<br>    pre[<span class="hljs-number">0</span>] = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        cur = [<span class="hljs-number">0</span>] * (k + <span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, k + <span class="hljs-number">1</span>):<br>            cur[j] = (pre[j - <span class="hljs-number">1</span>] + i * pre[j]) % mod<br>        pre = cur.copy()<br>    <span class="hljs-keyword">return</span> pre[k]<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n=<span class="hljs-number">4</span>, k=<span class="hljs-number">2</span>) == <span class="hljs-number">11</span>)<br>    <span class="hljs-built_in">print</span>(solution(n=<span class="hljs-number">6</span>, k=<span class="hljs-number">3</span>) == <span class="hljs-number">225</span>)<br>    <span class="hljs-built_in">print</span>(solution(n=<span class="hljs-number">7</span>, k=<span class="hljs-number">4</span>) == <span class="hljs-number">735</span>)<br>    <span class="hljs-built_in">print</span>(solution(n=<span class="hljs-number">9</span>, k=<span class="hljs-number">5</span>) == <span class="hljs-number">22449</span>)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+      <tag>稀土掘金</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>602金银珠宝的数值</title>
+    <link href="/2025/01/25/602%E9%87%91%E9%93%B6%E7%8F%A0%E5%AE%9D%E7%9A%84%E6%95%B0%E5%80%BC/"/>
+    <url>/2025/01/25/602%E9%87%91%E9%93%B6%E7%8F%A0%E5%AE%9D%E7%9A%84%E6%95%B0%E5%80%BC/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述">问题描述</h3><p>在一个神秘的竞技场中，勇敢的探险者小青拥有两个宝箱：一个宝箱里装满了 n 个金银珠宝的数值，另一个则是一个包含 m 个神秘符文的序列。小青面临着一个挑战：在接下来的 m 轮中，他必须在这两者之间做出明智的选择，以获得最高的财富。</p><p>在每一轮（第 i 轮）中，小青可以选择从宝箱的最上面或最下面取出一个珠宝 x。然后，他会将这个珠宝的价值乘以对应的符文 c[i]，并把结果累加到他的总财富中。被取出的珠宝将从宝箱中消失，接着小青会继续下一轮操作，直到完成 m 轮。</p><p>你的任务是帮助小青计算，在完成 m 轮挑战后，他可以获得的最高财富是多少。</p><p><strong>输入：</strong></p><ul><li><code>stones</code>：宝箱中 n 个金银珠宝的数值</li><li><code>c</code>：m 个神秘符文</li></ul><p><strong>约束条件：</strong></p><ul><li>时间限制：3 秒</li><li>1 ≤ m ≤ n ≤ 2000</li><li>-1000 ≤ stones[i], c[i] ≤ 1000</li></ul><h3 id="解题思路">解题思路</h3><p>这道题目可以通过动态规划和记忆化搜索来解决。小青在每一轮可以选择从宝箱的最上面或最下面取出一个珠宝，并将其价值乘以对应的符文，累加到总财富中。目标是最大化总财富。</p><p>使用递归加缓存（memoization）的方式来避免重复计算。定义一个函数 <code>dfs(i, j)</code>，表示在当前选择了 前<code>i</code> 个左端元素和 后<code>j</code> 个右端元素后的最大财富。</p><h3 id="代码实现">代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cache<br><span class="hljs-keyword">from</span> sys <span class="hljs-keyword">import</span> setrecursionlimit<br>setrecursionlimit(<span class="hljs-number">4010</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">stones: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], c: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    n, m = <span class="hljs-built_in">len</span>(stones), <span class="hljs-built_in">len</span>(c)<br><span class="hljs-meta">    @cache</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i, j</span>):<br>        <span class="hljs-keyword">if</span> n - (j - i + <span class="hljs-number">1</span>) &gt;= m:<br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(dfs(i + <span class="hljs-number">1</span>, j) + stones[i] * c[n - (j - i + <span class="hljs-number">1</span>)], dfs(i, j - <span class="hljs-number">1</span>) + stones[j] * c[n - (j - i + <span class="hljs-number">1</span>)])<br>    <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>, n - <span class="hljs-number">1</span>)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(stones=[-<span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>], c=[<span class="hljs-number">2</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">3</span>]) == <span class="hljs-number">25</span>)<br>    <span class="hljs-built_in">print</span>(solution(stones=[<span class="hljs-number">6</span>, -<span class="hljs-number">7</span>, <span class="hljs-number">1</span>], c=[<span class="hljs-number">4</span>, -<span class="hljs-number">3</span>]) == <span class="hljs-number">45</span>)<br>    <span class="hljs-built_in">print</span>(solution(stones=[<span class="hljs-number">3</span>, <span class="hljs-number">5</span>, -<span class="hljs-number">2</span>, <span class="hljs-number">9</span>], c=[<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, -<span class="hljs-number">5</span>]) == <span class="hljs-number">40</span>)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>记忆化搜索</tag>
+      
+      <tag>稀土掘金</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>600数组递增操作问题</title>
+    <link href="/2025/01/25/600%E6%95%B0%E7%BB%84%E9%80%92%E5%A2%9E%E6%93%8D%E4%BD%9C%E9%97%AE%E9%A2%98/"/>
+    <url>/2025/01/25/600%E6%95%B0%E7%BB%84%E9%80%92%E5%A2%9E%E6%93%8D%E4%BD%9C%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述">问题描述</h3><p>在一个神秘的森林里，两个探险家，小智和小璇，面临着一项艰巨的任务。他们拥有两个魔法宝箱，分别装有整数列表 <code>list1</code> 和 <code>list2</code>。他们的目标是通过某种方式将 <code>list1</code> 转变为一个严格递增的序列。</p><p>他们可以执行的操作是：在任意时刻，选择 <code>list1</code> 中的一个元素和 <code>list2</code> 中的一个元素进行替换。具体来说，他们可以选择 <code>list1</code> 的某个位置 <code>i</code> 和 <code>list2</code> 的某个位置 <code>j</code>，并将 <code>list1[i]</code> 设置为 <code>list2[j]</code>。</p><p>现在，小智和小璇需要你帮助他们计算出，通过最少的操作次数，是否可以将 <code>list1</code> 变为严格递增的序列。如果可以做到，请返回所需的最少操作次数；如果不可能，请返回 <code>-1</code>。</p><h3 id="测试样例">测试样例</h3><p>样例 1：</p><p>输入：<code>list1 = [3, 8, 4, 10, 11]</code>, <code>list2 = [2, 7, 5, 9]</code><br>输出：<code>1</code></p><p>样例 2：</p><p>输入：<code>list1 = [5, 9, 7, 11]</code>, <code>list2 = [1, 6, 8, 12]</code><br>输出：<code>1</code></p><p>样例 3：</p><p>输入：<code>list1 = [1, 3, 4, 6]</code>, <code>list2 = [2, 5]</code><br>输出：<code>0</code></p><h2 id="题解">题解</h2><p>这道题目要求通过最小的操作次数，将 <code>list1</code> 转变为一个严格递增的序列。可以选择将 <code>list1</code> 中的任意元素替换为 <code>list2</code> 中的任意元素。</p><h3 id="解题思路">解题思路</h3><p>使用动态规划来解决这个问题。维护一个字典 <code>pre</code>，其中键表示当前序列的最后一个元素，值表示达到该值并且序列是严格递增的所需的最小操作次数。</p><ol><li><strong>初始化</strong>：将 <code>pre</code> 初始化为 <code>&#123; -inf: 0 &#125;</code>，表示在序列开始前，最后一个元素为负无穷，操作次数为 0。</li><li><strong>遍历 <code>list1</code></strong>：对于 <code>list1</code> 中的每一个元素 <code>x</code>，<ul><li>创建一个新的字典 <code>cur</code> 来记录当前状态。</li><li>对于 <code>pre</code> 中的每一个状态 <code>k</code>，<ul><li>如果 <code>x &gt; k</code>，则可以不替换，直接更新 <code>cur[x]</code>。</li><li>使用二分查找找到 <code>list2</code> 中第一个大于 <code>k</code> 的元素 <code>a[j]</code>，将 <code>cur[a[j]]</code> 更新为 <code>v + 1</code>。</li></ul></li></ul></li><li><strong>更新状态</strong>：将 <code>pre</code> 更新为 <code>cur</code> 的副本。</li><li><strong>结果</strong>：遍历完成后，如果 <code>cur</code> 不为空，返回最小的操作次数，否则返回 -1。</li></ol><h3 id="代码实现">代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span><br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_right<br><br>inf = <span class="hljs-built_in">float</span>(<span class="hljs-string">&quot;inf&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">list1: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>], list2: <span class="hljs-type">List</span>[<span class="hljs-built_in">int</span>]</span>) -&gt; <span class="hljs-built_in">int</span>:<br>    a = <span class="hljs-built_in">sorted</span>(<span class="hljs-built_in">set</span>(list2))<br>    pre = defaultdict(<span class="hljs-keyword">lambda</span>: inf)<br>    pre[-inf] = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i, x <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(list1):<br>        cur = defaultdict(<span class="hljs-keyword">lambda</span>: inf)<br>        <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> pre.items():<br>            <span class="hljs-keyword">if</span> x &gt; k:<br>                cur[x] = <span class="hljs-built_in">min</span>(cur[x], v)<br>            j = bisect_right(a, k)<br>            <span class="hljs-keyword">if</span> j &lt; <span class="hljs-built_in">len</span>(a):<br>                cur[a[j]] = <span class="hljs-built_in">min</span>(cur[a[j]], v + <span class="hljs-number">1</span>)<br>        pre = cur.copy()<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> cur:<br>            <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">min</span>(cur.values())<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(list1=[<span class="hljs-number">3</span>, <span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>], list2=[<span class="hljs-number">2</span>, <span class="hljs-number">7</span>, <span class="hljs-number">5</span>, <span class="hljs-number">9</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(list1=[<span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">11</span>], list2=[<span class="hljs-number">1</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">12</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(list1=[<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>], list2=[<span class="hljs-number">2</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure><h3 id="复杂度分析">复杂度分析</h3><ul><li><strong>时间复杂度</strong>：$O(n ^ 2 log m)$，其中 n 是 <code>list1</code> 的长度，m 是 <code>list2</code> 的长度。主要由排序和二分查找操作决定。</li><li><strong>空间复杂度</strong>：$O(m)$，用于存储动态规划的状态。</li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>动态规划</tag>
+      
+      <tag>稀土掘金</tag>
+      
+      <tag>二分查找</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>357区间和匹配问题</title>
     <link href="/2025/01/24/357%E5%8C%BA%E9%97%B4%E5%92%8C%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/"/>
     <url>/2025/01/24/357%E5%8C%BA%E9%97%B4%E5%92%8C%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/</url>
@@ -317,9 +382,9 @@
     
     <tags>
       
-      <tag>模拟</tag>
-      
       <tag>栈</tag>
+      
+      <tag>模拟</tag>
       
     </tags>
     
