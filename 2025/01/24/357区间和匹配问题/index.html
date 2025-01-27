@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述 小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？ 解题思路   前缀和预处理  使用前缀和数组 SA 和 SB 分别存储数组 A 和 B 的累积和    二分查找  遍历每个右端点 i 对于每个右端点，需">
+    <meta name="description" content="问题描述小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？ 解题思路 前缀和预处理  使用前缀和数组 SA 和 SB 分别存储数组 A 和 B 的累积和   二分查找  遍历每个右端点 i 对于每个右端点，需要找到合">
 <meta property="og:type" content="article">
 <meta property="og:title" content="357区间和匹配问题">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/24/357%E5%8C%BA%E9%97%B4%E5%92%8C%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="问题描述 小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？ 解题思路   前缀和预处理  使用前缀和数组 SA 和 SB 分别存储数组 A 和 B 的累积和    二分查找  遍历每个右端点 i 对于每个右端点，需">
+<meta property="og:description" content="问题描述小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？ 解题思路 前缀和预处理  使用前缀和数组 SA 和 SB 分别存储数组 A 和 B 的累积和   二分查找  遍历每个右端点 i 对于每个右端点，需要找到合">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-24T07:44:16.000Z">
 <meta property="article:modified_time" content="2025-01-24T07:50:41.131Z">
@@ -373,26 +373,21 @@
             
               <div class="markdown-body">
                 
-                <h3 id="问题描述">问题描述</h3>
-<p>小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？</p>
-<h3 id="解题思路">解题思路</h3>
-<ol>
-<li>
-<p><strong>前缀和预处理</strong></p>
+                <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小 U 手上有两个长度为 n 的数组 A 和 B。她需要找到所有的区间[L, R]，满足在这个区间内，数组 A 的元素和在范围[La, Ra]之间，同时数组 B 的元素和在范围[Lb, Rb]之间。你能帮助她计算满足条件的区间数量吗？</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li><p><strong>前缀和预处理</strong></p>
 <ul>
 <li>使用前缀和数组 SA 和 SB 分别存储数组 A 和 B 的累积和</li>
 </ul>
 </li>
-<li>
-<p><strong>二分查找</strong></p>
+<li><p><strong>二分查找</strong></p>
 <ul>
 <li>遍历每个右端点 i</li>
 <li>对于每个右端点，需要找到合适的左端点范围</li>
 <li>使用二分查找快速定位满足条件的左端点区间</li>
 </ul>
 </li>
-<li>
-<p><strong>区间条件转换</strong></p>
+<li><p><strong>区间条件转换</strong></p>
 <ul>
 <li>对于区间[L,R]，其和必须在[La,Ra]之间</li>
 <li>可以转换为: SA[R] - SA[L-1] ∈ [La,Ra]</li>
@@ -401,16 +396,13 @@
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">N: <span class="hljs-built_in">int</span>, A: <span class="hljs-built_in">list</span>, B: <span class="hljs-built_in">list</span>, La: <span class="hljs-built_in">int</span>, Ra: <span class="hljs-built_in">int</span>, Lb: <span class="hljs-built_in">int</span>, Rb: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-comment"># 计算前缀和数组</span><br>    SA = <span class="hljs-built_in">list</span>(accumulate(A, initial=<span class="hljs-number">0</span>))  <span class="hljs-comment"># A的前缀和</span><br>    SB = <span class="hljs-built_in">list</span>(accumulate(B, initial=<span class="hljs-number">0</span>))  <span class="hljs-comment"># B的前缀和</span><br>    res = <span class="hljs-number">0</span><br><br>    <span class="hljs-comment"># 遍历每个右端点</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, <span class="hljs-built_in">len</span>(A) + <span class="hljs-number">1</span>):<br>        <span class="hljs-comment"># 对数组A，计算左端点应满足的值域范围</span><br>        x, y = SA[i] - La, SA[i] - Ra  <span class="hljs-comment"># y &lt;= SA[L-1] &lt;= x</span><br>        l1, r1 = bisect_left(SA, y), bisect_right(SA, x)<br><br>        <span class="hljs-comment"># 对数组B，计算左端点应满足的值域范围</span><br>        x, y = SB[i] - Lb, SB[i] - Rb  <span class="hljs-comment"># y &lt;= SB[L-1] &lt;= x</span><br>        l2, r2 = bisect_left(SB, y), bisect_right(SB, x)<br><br>        <span class="hljs-comment"># 取两个数组共同满足的左端点范围</span><br>        l = <span class="hljs-built_in">max</span>(l1, l2)  <span class="hljs-comment"># 左端点的最大值</span><br>        r = <span class="hljs-built_in">min</span>(r1, r2)  <span class="hljs-comment"># 右端点的最小值</span><br>        res += <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, r - l)  <span class="hljs-comment"># 累加满足条件的区间数</span><br><br>    <span class="hljs-keyword">return</span> res<br></code></pre></td></tr></table></figure>
-<h3 id="复杂度分析">复杂度分析</h3>
-<ul>
-<li>时间复杂度：O(N log N)
-<ul>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>时间复杂度：O(N log N)<ul>
 <li>前缀和计算：O(N)</li>
 <li>对每个右端点进行二分查找：O(N log N)</li>
 </ul>
 </li>
-<li>空间复杂度：O(N)
-<ul>
+<li>空间复杂度：O(N)<ul>
 <li>需要存储两个前缀和数组</li>
 </ul>
 </li>
