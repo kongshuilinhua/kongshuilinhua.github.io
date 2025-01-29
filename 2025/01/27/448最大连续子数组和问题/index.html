@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解问题描述给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 x。求经过修改后，能够得到的连续子数组的最大和。 解题思路一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。  特殊情况处理：  当数组长度为 1 时，返回 x。 如果数组中所有元素都小于等于 0，返回数组中最大的元素和 x 中的较大者。   前缀和计算：  使用后缀数组 suf，其中 suf[i">
+    <meta name="description" content="题解 问题描述 给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 x。求经过修改后，能够得到的连续子数组的最大和。 解题思路 一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。   特殊情况处理：  当数组长度为 1 时，返回 x。 如果数组中所有元素都小于等于 0，返回数组中最大的元素和 x 中的较大者。    前缀和计算：  使用后缀数组 suf，其中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="448最大连续子数组和问题">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/27/448%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解问题描述给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 x。求经过修改后，能够得到的连续子数组的最大和。 解题思路一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。  特殊情况处理：  当数组长度为 1 时，返回 x。 如果数组中所有元素都小于等于 0，返回数组中最大的元素和 x 中的较大者。   前缀和计算：  使用后缀数组 suf，其中 suf[i">
+<meta property="og:description" content="题解 问题描述 给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 x。求经过修改后，能够得到的连续子数组的最大和。 解题思路 一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。   特殊情况处理：  当数组长度为 1 时，返回 x。 如果数组中所有元素都小于等于 0，返回数组中最大的元素和 x 中的较大者。    前缀和计算：  使用后缀数组 suf，其中">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-01-27T09:09:38.000Z">
 <meta property="article:modified_time" content="2025-01-27T09:23:07.138Z">
@@ -373,22 +373,28 @@
             
               <div class="markdown-body">
                 
-                <h1 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 <code>x</code>。求经过修改后，能够得到的连续子数组的最大和。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。</p>
+                <h1>题解</h1>
+<h2 id="问题描述">问题描述</h2>
+<p>给定一个整数数组，允许最多进行一次修改，将任意一个元素修改为任意给定的值 <code>x</code>。求经过修改后，能够得到的连续子数组的最大和。</p>
+<h2 id="解题思路">解题思路</h2>
+<p>一个比较经典的动态规划，需要注意的是题目要求的是必须恰好修改一次。</p>
 <ol>
-<li><p><strong>特殊情况处理</strong>：</p>
+<li>
+<p><strong>特殊情况处理</strong>：</p>
 <ul>
 <li>当数组长度为 1 时，返回 <code>x</code>。</li>
 <li>如果数组中所有元素都小于等于 0，返回数组中最大的元素和 <code>x</code> 中的较大者。</li>
 </ul>
 </li>
-<li><p><strong>前缀和计算</strong>：</p>
+<li>
+<p><strong>前缀和计算</strong>：</p>
 <ul>
 <li>使用后缀数组 <code>suf</code>，其中 <code>suf[i]</code> 表示从第 <code>i</code> 个元素开始的最大子数组和。</li>
 <li>从数组末尾向前遍历，更新 <code>suf[i]</code> 为 <code>suf[i+1] + a[i-1]</code> 和 <code>0</code> 的较大值。</li>
 </ul>
 </li>
-<li><p><strong>遍历数组并计算结果</strong>：</p>
+<li>
+<p><strong>遍历数组并计算结果</strong>：</p>
 <ul>
 <li>使用变量 <code>f</code> 来记录当前的最大子数组和。</li>
 <li>对于每个位置 <code>i</code>，计算将 <code>a[i-1]</code> 修改为 <code>x</code> 后的最大子数组和，更新结果 <code>res</code>。</li>
@@ -396,8 +402,10 @@
 </ul>
 </li>
 </ol>
-<h2 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>: <span class="hljs-keyword">return</span> x<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">all</span>(i &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(a + [x])<br>    suf = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>        suf[i] = <span class="hljs-built_in">max</span>(suf[i + <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">1</span>], <span class="hljs-number">0</span>)<br>    res = f = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        res = <span class="hljs-built_in">max</span>(res, f + suf[i + <span class="hljs-number">1</span>] + x, f, suf[i + <span class="hljs-number">1</span>])<br>        f = <span class="hljs-built_in">max</span>(f + a[i - <span class="hljs-number">1</span>], <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>, x = <span class="hljs-number">10</span>, a = [<span class="hljs-number">5</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">5</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">15</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">2</span>, x = -<span class="hljs-number">3</span>, a = [-<span class="hljs-number">5</span>, -<span class="hljs-number">2</span>]) == -<span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>, x = <span class="hljs-number">10</span>, a = [<span class="hljs-number">4</span>, -<span class="hljs-number">2</span>, -<span class="hljs-number">11</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">1</span>]) == <span class="hljs-number">15</span>)<br><br></code></pre></td></tr></table></figure>
-<h2 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h2><ul>
+<h2 id="代码解析">代码解析</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">if</span> n == <span class="hljs-number">1</span>: <span class="hljs-keyword">return</span> x<br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">all</span>(i &lt;= <span class="hljs-number">0</span> <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> a):<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(a + [x])<br>    suf = [<span class="hljs-number">0</span>] * (n + <span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>        suf[i] = <span class="hljs-built_in">max</span>(suf[i + <span class="hljs-number">1</span>] + a[i - <span class="hljs-number">1</span>], <span class="hljs-number">0</span>)<br>    res = f = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        res = <span class="hljs-built_in">max</span>(res, f + suf[i + <span class="hljs-number">1</span>] + x, f, suf[i + <span class="hljs-number">1</span>])<br>        f = <span class="hljs-built_in">max</span>(f + a[i - <span class="hljs-number">1</span>], <span class="hljs-number">0</span>)<br><br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">5</span>, x = <span class="hljs-number">10</span>, a = [<span class="hljs-number">5</span>, -<span class="hljs-number">1</span>, -<span class="hljs-number">5</span>, -<span class="hljs-number">3</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">15</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">2</span>, x = -<span class="hljs-number">3</span>, a = [-<span class="hljs-number">5</span>, -<span class="hljs-number">2</span>]) == -<span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">6</span>, x = <span class="hljs-number">10</span>, a = [<span class="hljs-number">4</span>, -<span class="hljs-number">2</span>, -<span class="hljs-number">11</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">4</span>, -<span class="hljs-number">1</span>]) == <span class="hljs-number">15</span>)<br><br></code></pre></td></tr></table></figure>
+<h2 id="复杂度分析">复杂度分析</h2>
+<ul>
 <li><strong>时间复杂度</strong>：O(n)，其中 n 是数组的长度。需要两次遍历数组。</li>
 <li><strong>空间复杂度</strong>：O(n)，用于存储后缀数组 <code>suf</code>。</li>
 </ul>

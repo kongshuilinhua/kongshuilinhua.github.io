@@ -21,24 +21,25 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题目描述 小 U 定义了一种特殊的字符串类型，称为 “icci” 型字符串。要满足这个类型，字符串必须具备以下条件：  它的长度为 4。 第一个和第四个字符必须是元音字母（‘a’, ‘e’, ‘i’, ‘o’, ‘u’）。 第二个和第三个字符必须是辅音字母（除了元音以外的字母）。 该字符串是一个回文串。  例如，字符串 “awwa” 和 “uttu” 都是 “icci” 型字符串。现在给定一个字符">
+    <meta name="description" content="题目描述 小 R 拿到了一个数组，她可以进行如下操作：使得一个元素加1，另一个元素减1。她希望最终数组的每个元素大小都在$ [l, r] $的范围内。小 R 想知道，最少需要多少次操作可以达到目标。 如果无法通过有限次操作使所有元素都落在指定范围内，则返回 -1。 解题思路 为了使数组中的所有元素都落在区间 ([l, r]) 内，小 R 可以通过进行以下操作来调整数组：   统计调整需求：  遍历">
 <meta property="og:type" content="article">
-<meta property="og:title" content="320&#39;icci&#39;型字符串子序列问题">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/31/320-icci-%E5%9E%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%AD%90%E5%BA%8F%E5%88%97%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="398小L的元素修改问题">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/29/398%E5%B0%8FL%E7%9A%84%E5%85%83%E7%B4%A0%E4%BF%AE%E6%94%B9%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题目描述 小 U 定义了一种特殊的字符串类型，称为 “icci” 型字符串。要满足这个类型，字符串必须具备以下条件：  它的长度为 4。 第一个和第四个字符必须是元音字母（‘a’, ‘e’, ‘i’, ‘o’, ‘u’）。 第二个和第三个字符必须是辅音字母（除了元音以外的字母）。 该字符串是一个回文串。  例如，字符串 “awwa” 和 “uttu” 都是 “icci” 型字符串。现在给定一个字符">
+<meta property="og:description" content="题目描述 小 R 拿到了一个数组，她可以进行如下操作：使得一个元素加1，另一个元素减1。她希望最终数组的每个元素大小都在$ [l, r] $的范围内。小 R 想知道，最少需要多少次操作可以达到目标。 如果无法通过有限次操作使所有元素都落在指定范围内，则返回 -1。 解题思路 为了使数组中的所有元素都落在区间 ([l, r]) 内，小 R 可以通过进行以下操作来调整数组：   统计调整需求：  遍历">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-12-31T02:27:48.000Z">
-<meta property="article:modified_time" content="2024-12-31T02:44:00.000Z">
+<meta property="article:published_time" content="2025-01-29T10:18:00.000Z">
+<meta property="article:modified_time" content="2025-01-29T11:08:05.891Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="计数">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="稀土掘金">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>320&#39;icci&#39;型字符串子序列问题 - FireFly</title>
+  <title>398小L的元素修改问题 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -288,7 +289,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="320&#39;icci&#39;型字符串子序列问题"></span>
+            <span id="subtitle" data-typed-text="398小L的元素修改问题"></span>
           
         </div>
 
@@ -304,8 +305,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-31 10:27" pubdate>
-           2024 年 12 月 31 日 , 上午 10:27 , 星期二
+        <time datetime="2025-01-29 18:18" pubdate>
+           2025 年 01 月 29 日 , 晚上 06:18 , 星期三
         </time>
       </span>
     
@@ -317,7 +318,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          476 字
+          421 字
         
       </span>
     
@@ -366,53 +367,47 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">320&#39;icci&#39;型字符串子序列问题</h1>
+            <h1 id="seo-header">398小L的元素修改问题</h1>
             
             
               <div class="markdown-body">
                 
                 <h3 id="题目描述">题目描述</h3>
-<p>小 U 定义了一种特殊的字符串类型，称为 “icci” 型字符串。要满足这个类型，字符串必须具备以下条件：</p>
-<ol>
-<li>它的长度为 4。</li>
-<li>第一个和第四个字符必须是元音字母（‘a’, ‘e’, ‘i’, ‘o’, ‘u’）。</li>
-<li>第二个和第三个字符必须是辅音字母（除了元音以外的字母）。</li>
-<li>该字符串是一个回文串。</li>
-</ol>
-<p>例如，字符串 “awwa” 和 “uttu” 都是 “icci” 型字符串。现在给定一个字符串，小 U 想知道其中有多少个 “icci” 型的子序列。</p>
-<h3 id="题解">题解</h3>
-<p>记录单个字符的数量、二元组的数量、三元组的数量。因为每次更新只和当前字符有关，可以在<code>O(26)</code>的复杂度下完成每次更新。</p>
+<p>小 R 拿到了一个数组，她可以进行如下操作：使得一个元素加<code>1</code>，另一个元素减<code>1</code>。她希望最终数组的每个元素大小都在$ [l, r] $的范围内。小 R 想知道，最少需要多少次操作可以达到目标。</p>
+<p>如果无法通过有限次操作使所有元素都落在指定范围内，则返回 <code>-1</code>。</p>
+<h3 id="解题思路">解题思路</h3>
+<p>为了使数组中的所有元素都落在区间 ([l, r]) 内，小 R 可以通过进行以下操作来调整数组：</p>
 <ol>
 <li>
-<p><strong>更新结果</strong>:</p>
+<p><strong>统计调整需求</strong>：</p>
 <ul>
-<li>如果当前字符 <code>c</code> 是元音，将 <code>triplet[x]</code> 加到结果 <code>res</code> 中，表示以 <code>x</code> 结尾的三元组可以形成有效的四元组。</li>
+<li>遍历数组，计算所有小于 (l) 的元素需要增加的总次数（记为 <code>cnt1</code>）。</li>
+<li>计算所有大于 (r) 的元素需要减少的总次数（记为 <code>cnt2</code>）。</li>
 </ul>
 </li>
 <li>
-<p><strong>更新三元组</strong>:</p>
+<p><strong>验证总和条件</strong>：</p>
 <ul>
-<li>如果当前字符 <code>c</code> 不是元音，对每个字母 <code>ch</code>，将 <code>pairCount[ch][x]</code> 加到 <code>triplet[ch]</code> 中，表示以 <code>ch</code> 开头、<code>x</code> 结尾的三元组数量增加。</li>
+<li>
+<p>计算数组元素的总和 (s)。</p>
+</li>
+<li>
+<p>检查是否满足 (l \times n \leq s \leq r \times n)。</p>
+<ul>
+<li>如果不满足，说明无法通过有限次操作将所有元素调整到指定范围内，返回 <code>-1</code>。</li>
 </ul>
 </li>
 <li>
-<p><strong>更新二元组</strong>:</p>
-<ul>
-<li>对每个字母 <code>ch</code>，将 <code>cnt[ch]</code> 加到 <code>pairCount[ch][x]</code> 中，表示以 <code>ch</code> 开头、<code>x</code> 结尾的二元组数量增加。</li>
-</ul>
+<p>如果满足总和条件，所需的最小操作次数为 <code>cnt1</code> 和 <code>cnt2</code> 中的较大值。这是因为每一次操作可以同时满足一个增加和一个减少的需求。</p>
 </li>
-<li>
-<p><strong>更新字母计数</strong>:</p>
-<ul>
-<li>增加当前字母 <code>x</code> 的出现次数 <code>cnt[x]</code>。</li>
 </ul>
 </li>
 </ol>
-<h3 id="代码">代码</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><br>mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br>p = <span class="hljs-built_in">set</span>(<span class="hljs-string">&quot;aeiou&quot;</span>)<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span>  <span class="hljs-comment"># 每个字符的计数</span><br>    triplet = [<span class="hljs-number">0</span>] * <span class="hljs-number">26</span>   <span class="hljs-comment"># 以ch开头的三元组</span><br>    pairCount = [[<span class="hljs-number">0</span> <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>)] <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>)]  <span class="hljs-comment"># i j 二元组</span><br>    res = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> s:<br>        x = <span class="hljs-built_in">ord</span>(c) - <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)<br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">in</span> p:<br>            res = (res + triplet[x]) % mod<br>        <span class="hljs-keyword">if</span> c <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> p:<br>            <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>                triplet[ch] = (triplet[ch] + pairCount[ch][x]) % mod<br>        <span class="hljs-keyword">for</span> ch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">26</span>):<br>            pairCount[ch][x] = (pairCount[ch][x] + cnt[ch]) % mod<br>        cnt[x] += <span class="hljs-number">1</span><br><br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;iiaabbii&quot;</span>) == <span class="hljs-number">4</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;aekekeo&quot;</span>) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abcdefg&quot;</span>) == <span class="hljs-number">0</span>)<br><br></code></pre></td></tr></table></figure>
-<h3 id="复杂度">复杂度</h3>
-<p><strong>时间复杂度</strong>：<code>O(26n)</code>，其中 n 是字符串长度。<br>
-<strong>空间复杂度</strong>: <code>O(26 * 26)</code></p>
+<h3 id="代码实现">代码实现</h3>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, l: <span class="hljs-built_in">int</span>, r: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt1 = cnt2 = s = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> a:<br>        <span class="hljs-keyword">if</span> x &lt; l:<br>            cnt1 += l - x<br>        <span class="hljs-keyword">if</span> x &gt; r:<br>            cnt2 += x - r<br>        s += x<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(cnt1, cnt2) <span class="hljs-keyword">if</span> l * n &lt;= s &lt;= r * n <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">2</span>, l = <span class="hljs-number">3</span>, r = <span class="hljs-number">5</span>, a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == -<span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">3</span>, l = <span class="hljs-number">4</span>, r = <span class="hljs-number">6</span>, a = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">4</span>, l = <span class="hljs-number">2</span>, r = <span class="hljs-number">8</span>, a = [<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>]) == <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
+<h3 id="复杂度分析">复杂度分析</h3>
+<p>时间复杂度：$O(n)$，其中$ n $是数组的长度。<br>
+空间复杂度：$O(1)$。</p>
 
                 
               </div>
@@ -425,7 +420,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%A1%E6%95%B0/" class="print-no-link">#计数</a>
+        <a href="/tags/%E8%B4%AA%E5%BF%83/" class="print-no-link">#贪心</a>
+      
+        <a href="/tags/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/" class="print-no-link">#稀土掘金</a>
       
     </div>
   
@@ -437,8 +434,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>320&#39;icci&#39;型字符串子序列问题</div>
-      <div>https://kongshuilinhua.github.io/2024/12/31/320-icci-型字符串子序列问题/</div>
+      <div>398小L的元素修改问题</div>
+      <div>https://kongshuilinhua.github.io/2025/01/29/398小L的元素修改问题/</div>
     </div>
     <div class="license-meta">
       
@@ -450,7 +447,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年12月31日</div>
+          <div>2025年1月29日</div>
         </div>
       
       
@@ -482,9 +479,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/31/326%E4%B8%8D%E5%90%8C%E5%AD%90%E5%BA%8F%E5%88%97%E8%AE%A1%E6%95%B0%E9%97%AE%E9%A2%98/" title="326不同子序列计数问题">
+                      <a href="/2025/01/29/403%E5%B0%8FN%E7%9A%84%E6%94%B9%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98/" title="403小N的改数组问题">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">326不同子序列计数问题</span>
+                        <span class="hidden-mobile">403小N的改数组问题</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -492,8 +489,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/31/304%E8%AE%A1%E7%AE%97%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E5%9B%9B%E5%85%83%E7%BB%84%E6%95%B0%E9%87%8F/" title="304计算特定条件下的四元组数量">
-                        <span class="hidden-mobile">304计算特定条件下的四元组数量</span>
+                      <a href="/2025/01/27/433%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0%E9%97%AE%E9%A2%98/" title="433数组元素最小操作次数问题">
+                        <span class="hidden-mobile">433数组元素最小操作次数问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
