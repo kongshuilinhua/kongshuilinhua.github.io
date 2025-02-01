@@ -21,25 +21,23 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 问题描述 小 R 有一个长度为 n 的数组，数组相邻元素的差值最多为 1，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 n，数组的和为 m，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。 约束条件：  1 ≤ p ≤ n ≤ m  解题思路   二分查找：  使用二分查找在范">
+    <meta name="description" content="问题描述 小 F 需要在初始金额 x 内购物，每个商品有价格 a[i] 和喜爱度 b[i]。目标是在不超出预算的情况下获得最大化的喜爱度和。特殊之处在于：  初始没有优惠机会，只有在原价购买（支付 a[i]）后，才获得下一个商品半价购买（支付 a[i]&#x2F;&#x2F;2）的优惠机会； 如果优惠机会未使用（状态 op 为 1），可以选择对当前商品使用优惠（半价购买），但使用后恢复普通状态（op 变为 0）； 跳">
 <meta property="og:type" content="article">
-<meta property="og:title" content="410小R的数组构造挑战">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/31/410%E5%B0%8FR%E7%9A%84%E6%95%B0%E7%BB%84%E6%9E%84%E9%80%A0%E6%8C%91%E6%88%98/index.html">
+<meta property="og:title" content="393小F的超市购物策略">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/02/01/393%E5%B0%8FF%E7%9A%84%E8%B6%85%E5%B8%82%E8%B4%AD%E7%89%A9%E7%AD%96%E7%95%A5/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 问题描述 小 R 有一个长度为 n 的数组，数组相邻元素的差值最多为 1，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 n，数组的和为 m，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。 约束条件：  1 ≤ p ≤ n ≤ m  解题思路   二分查找：  使用二分查找在范">
+<meta property="og:description" content="问题描述 小 F 需要在初始金额 x 内购物，每个商品有价格 a[i] 和喜爱度 b[i]。目标是在不超出预算的情况下获得最大化的喜爱度和。特殊之处在于：  初始没有优惠机会，只有在原价购买（支付 a[i]）后，才获得下一个商品半价购买（支付 a[i]&#x2F;&#x2F;2）的优惠机会； 如果优惠机会未使用（状态 op 为 1），可以选择对当前商品使用优惠（半价购买），但使用后恢复普通状态（op 变为 0）； 跳">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-31T12:04:44.000Z">
-<meta property="article:modified_time" content="2025-01-31T12:13:37.976Z">
+<meta property="article:published_time" content="2025-02-01T07:58:55.000Z">
+<meta property="article:modified_time" content="2025-02-01T08:10:02.021Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="稀土掘金">
-<meta property="article:tag" content="二分">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>410小R的数组构造挑战 - FireFly</title>
+  <title>393小F的超市购物策略 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -289,7 +287,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="410小R的数组构造挑战"></span>
+            <span id="subtitle" data-typed-text="393小F的超市购物策略"></span>
           
         </div>
 
@@ -305,8 +303,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-31 20:04" pubdate>
-           2025 年 01 月 31 日 , 晚上 08:04 , 星期五
+        <time datetime="2025-02-01 15:58" pubdate>
+           2025 年 02 月 01 日 , 下午 03:58 , 星期六
         </time>
       </span>
     
@@ -318,7 +316,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          421 字
+          529 字
         
       </span>
     
@@ -330,7 +328,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -367,54 +365,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">410小R的数组构造挑战</h1>
+            <h1 id="seo-header">393小F的超市购物策略</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解">题解</h2>
-<h3 id="问题描述">问题描述</h3>
-<p>小 R 有一个长度为 <code>n</code> 的数组，数组相邻元素的差值最多为 <code>1</code>，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 <code>n</code>，数组的和为 <code>m</code>，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。</p>
-<h4 id="约束条件：">约束条件：</h4>
+                <h3 id="问题描述">问题描述</h3>
+<p>小 F 需要在初始金额 x 内购物，每个商品有价格 a[i] 和喜爱度 b[i]。目标是在不超出预算的情况下获得最大化的喜爱度和。特殊之处在于：</p>
 <ul>
-<li><code>1 ≤ p ≤ n ≤ m</code></li>
+<li>初始没有优惠机会，只有在原价购买（支付 a[i]）后，才获得下一个商品半价购买（支付 a[i]//2）的优惠机会；</li>
+<li>如果优惠机会未使用（状态 op 为 1），可以选择对当前商品使用优惠（半价购买），但使用后恢复普通状态（op 变为 0）；</li>
+<li>跳过或使用优惠购买后，优惠机会均被重置为 0，即必须重新原价购买才能获得优惠资格。</li>
 </ul>
 <h3 id="解题思路">解题思路</h3>
-<ol>
-<li>
-<p><strong>二分查找</strong>：</p>
+<p>用 DFS + 记忆化（cache）来搜索所有可能的购买组合。<br>
+定义递归函数 dfs(i, j, op)：</p>
 <ul>
-<li>使用二分查找在范围 <code>[1, m]</code> 内寻找 <code>a_p</code> 的最大可能值。</li>
-<li><code>l</code> 表示当前范围的下界，<code>r</code> 表示上界。</li>
+<li>i：当前处理的商品下标</li>
+<li>j：剩余金额</li>
+<li>op：优惠状态（1 表示可以半价购买，0 表示无优惠机会）<br>
+对于每个商品有三种选择：</li>
+<li>跳过该商品：金额不变，且状态重置为 0</li>
+<li>如果有优惠机会（op == 1）且剩余金额够商品半价，则可半价购买，金额减少 a[i]//2，购买后状态置为 0</li>
+<li>如果剩余金额够以原价购买，则购买该商品，金额减少 a[i]，同时获得下一个商品使用优惠的机会，即状态变为 1<br>
+最终返回达到末尾时获得的喜爱度总和的最大值。</li>
 </ul>
-</li>
-<li>
-<p><strong>辅助函数 <code>calc(i, v)</code></strong>：</p>
-<ul>
-<li>计算从位置 <code>i</code> 开始，向两边扩展时，每个位置的值如何分配，使得相邻元素差值不超过 <code>1</code>。</li>
-<li>如果 <code>v &gt; i</code>，则左侧的元素从 <code>v - i + 1</code> 递增到 <code>v</code>，形成等差数列。</li>
-<li>如果 <code>v ≤ i</code>，则前 <code>v</code> 个元素递增，剩下的元素为 <code>1</code>。</li>
-<li>可以通过等差数列求和公式$O(1)$计算。</li>
-</ul>
-</li>
-</ol>
 <h3 id="实现代码">实现代码</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, p: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">calc</span>(<span class="hljs-params">i, v</span>):<br>        <span class="hljs-keyword">if</span> v &gt; i:<br>            <span class="hljs-keyword">return</span> (v + v - i + <span class="hljs-number">1</span>) * i // <span class="hljs-number">2</span><br>        <span class="hljs-keyword">return</span> v * (v + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span> + i - v<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">x</span>):<br>        <span class="hljs-keyword">return</span> calc(p, x) + calc(n - p + <span class="hljs-number">1</span>, x) - x<br><br>    l, r = <span class="hljs-number">1</span>, m<br>    <span class="hljs-keyword">while</span> l &lt;= r:<br>        mid = l + r &gt;&gt; <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> check(mid) &lt;= m:<br>            l = mid + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            r = mid - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> r<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>) == <span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cache<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span>, b: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br><span class="hljs-meta">    @cache</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i, j, op</span>):<br>        <span class="hljs-keyword">if</span> i == n:  <span class="hljs-comment"># 所有商品处理完毕</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 不购买，且状态重置为 0</span><br>        res = dfs(i + <span class="hljs-number">1</span>, j, <span class="hljs-number">0</span>)<br>        <span class="hljs-comment"># 若有优惠机会，尝试半价购买</span><br>        <span class="hljs-keyword">if</span> op == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> j &gt;= a[i] // <span class="hljs-number">2</span>:<br>            res = <span class="hljs-built_in">max</span>(res, dfs(i + <span class="hljs-number">1</span>, j - a[i] // <span class="hljs-number">2</span>, <span class="hljs-number">0</span>) + b[i])<br>        <span class="hljs-comment"># 尝试原价购买，并获得优惠机会</span><br>        <span class="hljs-keyword">if</span> j &gt;= a[i]:<br>            res = <span class="hljs-built_in">max</span>(res, dfs(i + <span class="hljs-number">1</span>, j - a[i], <span class="hljs-number">1</span>) + b[i])<br>        <span class="hljs-keyword">return</span> res<br><br>    <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>, x, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
 <h3 id="复杂度分析">复杂度分析</h3>
-<ul>
-<li>
-<p><strong>时间复杂度</strong>：</p>
-<ul>
-<li>二分查找的时间复杂度为 <code>O(log m)</code>。每次 <code>check</code> 调用的时间复杂度为 <code>O(1)</code>，因为 <code>calc</code> 函数的计算是常数时间。因此，总的时间复杂度为 <code>O(log m)</code>。</li>
-</ul>
-</li>
-<li>
-<p><strong>空间复杂度</strong>：</p>
-<ul>
-<li>使用了常数级别的额外空间，空间复杂度为 <code>O(1)</code>。</li>
-</ul>
-</li>
-</ul>
+<p>时间复杂度：$O(n * x)$，其中 n 为商品数量，x 为初始金额。<br>
+空间复杂度：$O(n * x)$。</p>
 
                 
               </div>
@@ -424,15 +404,6 @@
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/" class="print-no-link">#稀土掘金</a>
-      
-        <a href="/tags/%E4%BA%8C%E5%88%86/" class="print-no-link">#二分</a>
-      
-    </div>
-  
 </div>
 
 
@@ -441,8 +412,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>410小R的数组构造挑战</div>
-      <div>https://kongshuilinhua.github.io/2025/01/31/410小R的数组构造挑战/</div>
+      <div>393小F的超市购物策略</div>
+      <div>https://kongshuilinhua.github.io/2025/02/01/393小F的超市购物策略/</div>
     </div>
     <div class="license-meta">
       
@@ -454,7 +425,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月31日</div>
+          <div>2025年2月1日</div>
         </div>
       
       
@@ -486,18 +457,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" title="374字符串权值最小化分割问题">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">374字符串权值最小化分割问题</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/29/403%E5%B0%8FN%E7%9A%84%E6%94%B9%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98/" title="403小N的改数组问题">
-                        <span class="hidden-mobile">403小N的改数组问题</span>
+                      <a href="/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/" title="386小C的合法k-size字符串问题">
+                        <span class="hidden-mobile">386小C的合法k-size字符串问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

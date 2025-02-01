@@ -4,6 +4,61 @@
   
   
   <entry>
+    <title>393小F的超市购物策略</title>
+    <link href="/2025/02/01/393%E5%B0%8FF%E7%9A%84%E8%B6%85%E5%B8%82%E8%B4%AD%E7%89%A9%E7%AD%96%E7%95%A5/"/>
+    <url>/2025/02/01/393%E5%B0%8FF%E7%9A%84%E8%B6%85%E5%B8%82%E8%B4%AD%E7%89%A9%E7%AD%96%E7%95%A5/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述">问题描述</h3><p>小 F 需要在初始金额 x 内购物，每个商品有价格 a[i] 和喜爱度 b[i]。目标是在不超出预算的情况下获得最大化的喜爱度和。特殊之处在于：</p><ul><li>初始没有优惠机会，只有在原价购买（支付 a[i]）后，才获得下一个商品半价购买（支付 a[i]//2）的优惠机会；</li><li>如果优惠机会未使用（状态 op 为 1），可以选择对当前商品使用优惠（半价购买），但使用后恢复普通状态（op 变为 0）；</li><li>跳过或使用优惠购买后，优惠机会均被重置为 0，即必须重新原价购买才能获得优惠资格。</li></ul><h3 id="解题思路">解题思路</h3><p>用 DFS + 记忆化（cache）来搜索所有可能的购买组合。<br>定义递归函数 dfs(i, j, op)：</p><ul><li>i：当前处理的商品下标</li><li>j：剩余金额</li><li>op：优惠状态（1 表示可以半价购买，0 表示无优惠机会）<br>对于每个商品有三种选择：</li><li>跳过该商品：金额不变，且状态重置为 0</li><li>如果有优惠机会（op == 1）且剩余金额够商品半价，则可半价购买，金额减少 a[i]//2，购买后状态置为 0</li><li>如果剩余金额够以原价购买，则购买该商品，金额减少 a[i]，同时获得下一个商品使用优惠的机会，即状态变为 1<br>最终返回达到末尾时获得的喜爱度总和的最大值。</li></ul><h3 id="实现代码">实现代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> functools <span class="hljs-keyword">import</span> cache<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, x: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span>, b: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br><span class="hljs-meta">    @cache</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">dfs</span>(<span class="hljs-params">i, j, op</span>):<br>        <span class="hljs-keyword">if</span> i == n:  <span class="hljs-comment"># 所有商品处理完毕</span><br>            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br>        <span class="hljs-comment"># 不购买，且状态重置为 0</span><br>        res = dfs(i + <span class="hljs-number">1</span>, j, <span class="hljs-number">0</span>)<br>        <span class="hljs-comment"># 若有优惠机会，尝试半价购买</span><br>        <span class="hljs-keyword">if</span> op == <span class="hljs-number">1</span> <span class="hljs-keyword">and</span> j &gt;= a[i] // <span class="hljs-number">2</span>:<br>            res = <span class="hljs-built_in">max</span>(res, dfs(i + <span class="hljs-number">1</span>, j - a[i] // <span class="hljs-number">2</span>, <span class="hljs-number">0</span>) + b[i])<br>        <span class="hljs-comment"># 尝试原价购买，并获得优惠机会</span><br>        <span class="hljs-keyword">if</span> j &gt;= a[i]:<br>            res = <span class="hljs-built_in">max</span>(res, dfs(i + <span class="hljs-number">1</span>, j - a[i], <span class="hljs-number">1</span>) + b[i])<br>        <span class="hljs-keyword">return</span> res<br><br>    <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>, x, <span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure><h3 id="复杂度分析">复杂度分析</h3><p>时间复杂度：$O(n * x)$，其中 n 为商品数量，x 为初始金额。<br>空间复杂度：$O(n * x)$。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>386小C的合法k-size字符串问题</title>
+    <link href="/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/"/>
+    <url>/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述">问题描述</h3><p>小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。</p><p>例如：</p><ul><li>字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。</li><li>字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这六段。</li></ul><p>小 C 认为，只有当每个连续段的长度至少为 2 时，该字符串才是合法的。例如，“aabbbccc” 是合法的，而 “ababaab” 不是合法的。</p><p>现在，给定字符串长度 n 和要求的连续段数量 k，小 C 想知道，长度为 n 的、仅由小写字母组成的合法的 k-size 字符串有多少个？答案可能非常大，请将结果对 10^9+7 取模。</p><h3 id="解题思路">解题思路</h3><ol><li><p><strong>分段计数</strong><br>将字符串分成 k 段，每段由相同字符组成，且每段长度至少为 2。设每段的长度为 L₁, L₂, …, Lₖ，则有<br>  L₁ + L₂ + … + Lₖ = n，并且 Lᵢ ≥ 2。<br>令 xᵢ = Lᵢ - 2（xᵢ ≥ 0），则<br>  x₁ + x₂ + … + xₖ = n - 2k。<br>非负整数解的个数即为<br>  C((n - 2k) + k - 1, k - 1) = C(n - k - 1, k - 1)。</p></li><li><p><strong>选字母方案</strong><br>每一段所用的字符均相同，且相邻段的字符不同。</p><ul><li>第一段有 26 种选法</li><li>剩余每段必须和前一段不同，因此每段有 25 种选法<br>故字母的选取方案为 26 × 25^(k - 1)。</li></ul></li><li><p><strong>最终答案</strong><br>合法的 k-size 字符串数为两部分组合，即<br>   答案 = C(n - k - 1, k - 1) × 26 × 25^(k - 1)。<br>由于 n 和 k 可能较大，计算过程中需要使用模 1e9+7。</p></li></ol><h3 id="实现代码">实现代码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">def</span> C(n, m, p):<br>    <span class="hljs-attribute">if</span> m &lt; <span class="hljs-number">0</span> or n &lt; m:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-attribute">if</span> m == <span class="hljs-number">0</span>:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-attribute">m</span> = min(m, n - m)<br>    <span class="hljs-attribute">a</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">b</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">for</span> i in range(<span class="hljs-number">1</span>, m + <span class="hljs-number">1</span>):<br>        <span class="hljs-attribute">a</span> = a * (n - i + <span class="hljs-number">1</span>) % p<br>        <span class="hljs-attribute">b</span> = (b * i) % p<br>    <span class="hljs-attribute">return</span> a * pow(b, p - <span class="hljs-number">2</span>, p) % p<br><br><span class="hljs-attribute">def</span> lucas(n, m, p):<br>    <span class="hljs-attribute">return</span> C(n % p, m % p, p) * lucas(n // p, m // p, p) % p if m else <span class="hljs-number">1</span><br><br><span class="hljs-attribute">mod</span> = int(<span class="hljs-number">1</span>e9 + <span class="hljs-number">7</span>)<br><span class="hljs-attribute">def</span> solution(n: int, k:int) -&gt; int:<br>    <span class="hljs-attribute">return</span> lucas(n - k - <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>, mod) * <span class="hljs-number">26</span> * pow(<span class="hljs-number">25</span>, k - <span class="hljs-number">1</span>, mod) % mod<br><br><span class="hljs-attribute">if</span> __name__ == &#x27;__main__&#x27;:<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">2</span>, k = <span class="hljs-number">1</span>) == <span class="hljs-number">26</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">4</span>, k = <span class="hljs-number">2</span>) == <span class="hljs-number">650</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">10</span>, k = <span class="hljs-number">5</span>) == <span class="hljs-number">10156250</span>)<br><br></code></pre></td></tr></table></figure><h3 id="复杂度分析">复杂度分析</h3><p>时间复杂度：$O(k)$。<br>空间复杂度：$O(1)$。</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>组合数学</tag>
+      
+      <tag>稀土掘金</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>374字符串权值最小化分割问题</title>
+    <link href="/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/"/>
+    <url>/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/</url>
+    
+    <content type="html"><![CDATA[<h2 id="题解">题解</h2><h3 id="问题描述">问题描述</h3><p>小 G 定义了一个字符串的权值为：字符串的长度乘以字符串中不同字母的种类数量。现在，小 G 有一个字符串，她希望将这个字符串切分成 <code>k</code> 个子串，并希望这些子串的最大权值尽可能小。你需要帮助小 G 找到最优的切分方案，使得这 <code>k</code> 个子串中的最大权值最小化。</p><h3 id="解题思路">解题思路</h3><p>看见最大值最小化直接二分答案，然后判断是否能够切分成 <code>k</code> 个子串。<br><code>check</code>的时候，遍历字符串，用一个集合记录当前子串的不同字母，如果当前子串的不同字母数量乘以当前子串的长度大于 <code>mid</code>，则说明需要切分，切分的次数加一。<br>最后判断切分的次数是否大于 <code>k</code>，如果大于 <code>k</code>，说明 <code>mid</code> 太小，需要增大，否则减小。</p><h3 id="实现代码">实现代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">s: <span class="hljs-built_in">str</span>, k: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    n = <span class="hljs-built_in">len</span>(s)<br>    l, r = <span class="hljs-number">1</span>, <span class="hljs-number">26</span> * n<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">mid</span>):<br>        d = <span class="hljs-built_in">set</span>()<br>        cnt = length = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>            length += <span class="hljs-number">1</span><br>            d.add(s[i])<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(d) * length &gt; mid:<br>                length = <span class="hljs-number">1</span><br>                d = <span class="hljs-built_in">set</span>(&#123;s[i]&#125;)<br>                cnt += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">return</span> cnt + <span class="hljs-number">1</span> &gt; k<br><br>    <span class="hljs-keyword">while</span> l &lt;= r:<br>        mid = l + r &gt;&gt; <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> check(mid):<br>            l = mid + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            r = mid - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> l<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;ababbbb&quot;</span>, <span class="hljs-number">2</span>) == <span class="hljs-number">6</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;abcabcabc&quot;</span>, <span class="hljs-number">3</span>) == <span class="hljs-number">9</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-string">&quot;aaabbbcccddd&quot;</span>, <span class="hljs-number">4</span>) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure><h3 id="复杂度分析">复杂度分析</h3><ul><li><p><strong>时间复杂度</strong>：</p><ul><li>二分查找的时间复杂度为 <code>O(log (26 * n))</code>。</li><li>每次 <code>check</code> 调用的时间复杂度为 <code>O(n)</code>，因为需要遍历整个字符串。</li><li>因此，总的时间复杂度为 <code>O(n log (26 * n))</code>。</li></ul></li><li><p><strong>空间复杂度</strong>：</p><ul><li>使用了常数级别的额外空间，空间复杂度为 <code>O(1)</code>。</li></ul></li></ul>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>稀土掘金</tag>
+      
+      <tag>二分</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>410小R的数组构造挑战</title>
     <link href="/2025/01/31/410%E5%B0%8FR%E7%9A%84%E6%95%B0%E7%BB%84%E6%9E%84%E9%80%A0%E6%8C%91%E6%88%98/"/>
     <url>/2025/01/31/410%E5%B0%8FR%E7%9A%84%E6%95%B0%E7%BB%84%E6%9E%84%E9%80%A0%E6%8C%91%E6%88%98/</url>
@@ -510,9 +565,9 @@
     
     <tags>
       
-      <tag>栈</tag>
-      
       <tag>模拟</tag>
+      
+      <tag>栈</tag>
       
     </tags>
     

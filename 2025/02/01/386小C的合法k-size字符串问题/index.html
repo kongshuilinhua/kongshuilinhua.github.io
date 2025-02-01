@@ -21,25 +21,25 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 问题描述 小 R 有一个长度为 n 的数组，数组相邻元素的差值最多为 1，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 n，数组的和为 m，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。 约束条件：  1 ≤ p ≤ n ≤ m  解题思路   二分查找：  使用二分查找在范">
+    <meta name="description" content="问题描述 小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="410小R的数组构造挑战">
-<meta property="og:url" content="https://kongshuilinhua.github.io/2025/01/31/410%E5%B0%8FR%E7%9A%84%E6%95%B0%E7%BB%84%E6%9E%84%E9%80%A0%E6%8C%91%E6%88%98/index.html">
+<meta property="og:title" content="386小C的合法k-size字符串问题">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 问题描述 小 R 有一个长度为 n 的数组，数组相邻元素的差值最多为 1，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 n，数组的和为 m，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。 约束条件：  1 ≤ p ≤ n ≤ m  解题思路   二分查找：  使用二分查找在范">
+<meta property="og:description" content="问题描述 小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-31T12:04:44.000Z">
-<meta property="article:modified_time" content="2025-01-31T12:13:37.976Z">
+<meta property="article:published_time" content="2025-02-01T06:07:43.000Z">
+<meta property="article:modified_time" content="2025-02-01T07:50:51.273Z">
 <meta property="article:author" content="FireFLy">
+<meta property="article:tag" content="组合数学">
 <meta property="article:tag" content="稀土掘金">
-<meta property="article:tag" content="二分">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>410小R的数组构造挑战 - FireFly</title>
+  <title>386小C的合法k-size字符串问题 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -289,7 +289,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="410小R的数组构造挑战"></span>
+            <span id="subtitle" data-typed-text="386小C的合法k-size字符串问题"></span>
           
         </div>
 
@@ -305,8 +305,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-31 20:04" pubdate>
-           2025 年 01 月 31 日 , 晚上 08:04 , 星期五
+        <time datetime="2025-02-01 14:07" pubdate>
+           2025 年 02 月 01 日 , 下午 02:07 , 星期六
         </time>
       </span>
     
@@ -318,7 +318,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          421 字
+          538 字
         
       </span>
     
@@ -330,7 +330,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -367,54 +367,52 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">410小R的数组构造挑战</h1>
+            <h1 id="seo-header">386小C的合法k-size字符串问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="题解">题解</h2>
-<h3 id="问题描述">问题描述</h3>
-<p>小 R 有一个长度为 <code>n</code> 的数组，数组相邻元素的差值最多为 <code>1</code>，即 $|a_i − a_{i+1}| ≤ 1$，且数组中的元素都是正整数，即 $a_i ≥ 1$。现在已知数组的长度为 <code>n</code>，数组的和为 <code>m</code>，小 R 想知道所有符合条件的数组中，第 $p$ 个位置的元素 $a_p$ 的最大值是多少。</p>
-<h4 id="约束条件：">约束条件：</h4>
+                <h3 id="问题描述">问题描述</h3>
+<p>小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。</p>
+<p>例如：</p>
 <ul>
-<li><code>1 ≤ p ≤ n ≤ m</code></li>
+<li>字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。</li>
+<li>字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这六段。</li>
 </ul>
+<p>小 C 认为，只有当每个连续段的长度至少为 2 时，该字符串才是合法的。例如，“aabbbccc” 是合法的，而 “ababaab” 不是合法的。</p>
+<p>现在，给定字符串长度 n 和要求的连续段数量 k，小 C 想知道，长度为 n 的、仅由小写字母组成的合法的 k-size 字符串有多少个？答案可能非常大，请将结果对 10^9+7 取模。</p>
 <h3 id="解题思路">解题思路</h3>
 <ol>
 <li>
-<p><strong>二分查找</strong>：</p>
+<p><strong>分段计数</strong><br>
+将字符串分成 k 段，每段由相同字符组成，且每段长度至少为 2。设每段的长度为 L₁, L₂, …, Lₖ，则有<br>
+  L₁ + L₂ + … + Lₖ = n，并且 Lᵢ ≥ 2。<br>
+令 xᵢ = Lᵢ - 2（xᵢ ≥ 0），则<br>
+  x₁ + x₂ + … + xₖ = n - 2k。<br>
+非负整数解的个数即为<br>
+  C((n - 2k) + k - 1, k - 1) = C(n - k - 1, k - 1)。</p>
+</li>
+<li>
+<p><strong>选字母方案</strong><br>
+每一段所用的字符均相同，且相邻段的字符不同。</p>
 <ul>
-<li>使用二分查找在范围 <code>[1, m]</code> 内寻找 <code>a_p</code> 的最大可能值。</li>
-<li><code>l</code> 表示当前范围的下界，<code>r</code> 表示上界。</li>
+<li>第一段有 26 种选法</li>
+<li>剩余每段必须和前一段不同，因此每段有 25 种选法<br>
+故字母的选取方案为 26 × 25^(k - 1)。</li>
 </ul>
 </li>
 <li>
-<p><strong>辅助函数 <code>calc(i, v)</code></strong>：</p>
-<ul>
-<li>计算从位置 <code>i</code> 开始，向两边扩展时，每个位置的值如何分配，使得相邻元素差值不超过 <code>1</code>。</li>
-<li>如果 <code>v &gt; i</code>，则左侧的元素从 <code>v - i + 1</code> 递增到 <code>v</code>，形成等差数列。</li>
-<li>如果 <code>v ≤ i</code>，则前 <code>v</code> 个元素递增，剩下的元素为 <code>1</code>。</li>
-<li>可以通过等差数列求和公式$O(1)$计算。</li>
-</ul>
+<p><strong>最终答案</strong><br>
+合法的 k-size 字符串数为两部分组合，即<br>
+   答案 = C(n - k - 1, k - 1) × 26 × 25^(k - 1)。<br>
+由于 n 和 k 可能较大，计算过程中需要使用模 1e9+7。</p>
 </li>
 </ol>
 <h3 id="实现代码">实现代码</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, m: <span class="hljs-built_in">int</span>, p: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">calc</span>(<span class="hljs-params">i, v</span>):<br>        <span class="hljs-keyword">if</span> v &gt; i:<br>            <span class="hljs-keyword">return</span> (v + v - i + <span class="hljs-number">1</span>) * i // <span class="hljs-number">2</span><br>        <span class="hljs-keyword">return</span> v * (v + <span class="hljs-number">1</span>) // <span class="hljs-number">2</span> + i - v<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">check</span>(<span class="hljs-params">x</span>):<br>        <span class="hljs-keyword">return</span> calc(p, x) + calc(n - p + <span class="hljs-number">1</span>, x) - x<br><br>    l, r = <span class="hljs-number">1</span>, m<br>    <span class="hljs-keyword">while</span> l &lt;= r:<br>        mid = l + r &gt;&gt; <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> check(mid) &lt;= m:<br>            l = mid + <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            r = mid - <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> r<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>) == <span class="hljs-number">2</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>, <span class="hljs-number">7</span>, <span class="hljs-number">1</span>) == <span class="hljs-number">3</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, <span class="hljs-number">9</span>, <span class="hljs-number">3</span>) == <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">def</span> C(n, m, p):<br>    <span class="hljs-attribute">if</span> m &lt; <span class="hljs-number">0</span> or n &lt; m:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-attribute">if</span> m == <span class="hljs-number">0</span>:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-attribute">m</span> = min(m, n - m)<br>    <span class="hljs-attribute">a</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">b</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">for</span> i in range(<span class="hljs-number">1</span>, m + <span class="hljs-number">1</span>):<br>        <span class="hljs-attribute">a</span> = a * (n - i + <span class="hljs-number">1</span>) % p<br>        <span class="hljs-attribute">b</span> = (b * i) % p<br>    <span class="hljs-attribute">return</span> a * pow(b, p - <span class="hljs-number">2</span>, p) % p<br><br><span class="hljs-attribute">def</span> lucas(n, m, p):<br>    <span class="hljs-attribute">return</span> C(n % p, m % p, p) * lucas(n // p, m // p, p) % p if m else <span class="hljs-number">1</span><br><br><span class="hljs-attribute">mod</span> = int(<span class="hljs-number">1</span>e9 + <span class="hljs-number">7</span>)<br><span class="hljs-attribute">def</span> solution(n: int, k:int) -&gt; int:<br>    <span class="hljs-attribute">return</span> lucas(n - k - <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>, mod) * <span class="hljs-number">26</span> * pow(<span class="hljs-number">25</span>, k - <span class="hljs-number">1</span>, mod) % mod<br><br><span class="hljs-attribute">if</span> __name__ == &#x27;__main__&#x27;:<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">2</span>, k = <span class="hljs-number">1</span>) == <span class="hljs-number">26</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">4</span>, k = <span class="hljs-number">2</span>) == <span class="hljs-number">650</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">10</span>, k = <span class="hljs-number">5</span>) == <span class="hljs-number">10156250</span>)<br><br></code></pre></td></tr></table></figure>
 <h3 id="复杂度分析">复杂度分析</h3>
-<ul>
-<li>
-<p><strong>时间复杂度</strong>：</p>
-<ul>
-<li>二分查找的时间复杂度为 <code>O(log m)</code>。每次 <code>check</code> 调用的时间复杂度为 <code>O(1)</code>，因为 <code>calc</code> 函数的计算是常数时间。因此，总的时间复杂度为 <code>O(log m)</code>。</li>
-</ul>
-</li>
-<li>
-<p><strong>空间复杂度</strong>：</p>
-<ul>
-<li>使用了常数级别的额外空间，空间复杂度为 <code>O(1)</code>。</li>
-</ul>
-</li>
-</ul>
+<p>时间复杂度：$O(k)$。<br>
+空间复杂度：$O(1)$。</p>
 
                 
               </div>
@@ -427,9 +425,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/" class="print-no-link">#稀土掘金</a>
+        <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="print-no-link">#组合数学</a>
       
-        <a href="/tags/%E4%BA%8C%E5%88%86/" class="print-no-link">#二分</a>
+        <a href="/tags/%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91/" class="print-no-link">#稀土掘金</a>
       
     </div>
   
@@ -441,8 +439,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>410小R的数组构造挑战</div>
-      <div>https://kongshuilinhua.github.io/2025/01/31/410小R的数组构造挑战/</div>
+      <div>386小C的合法k-size字符串问题</div>
+      <div>https://kongshuilinhua.github.io/2025/02/01/386小C的合法k-size字符串问题/</div>
     </div>
     <div class="license-meta">
       
@@ -454,7 +452,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月31日</div>
+          <div>2025年2月1日</div>
         </div>
       
       
@@ -486,9 +484,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" title="374字符串权值最小化分割问题">
+                      <a href="/2025/02/01/393%E5%B0%8FF%E7%9A%84%E8%B6%85%E5%B8%82%E8%B4%AD%E7%89%A9%E7%AD%96%E7%95%A5/" title="393小F的超市购物策略">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">374字符串权值最小化分割问题</span>
+                        <span class="hidden-mobile">393小F的超市购物策略</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -496,8 +494,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/29/403%E5%B0%8FN%E7%9A%84%E6%94%B9%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98/" title="403小N的改数组问题">
-                        <span class="hidden-mobile">403小N的改数组问题</span>
+                      <a href="/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" title="374字符串权值最小化分割问题">
+                        <span class="hidden-mobile">374字符串权值最小化分割问题</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
