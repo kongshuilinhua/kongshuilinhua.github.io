@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述 小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这">
+    <meta name="description" content="问题描述小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这六">
 <meta property="og:type" content="article">
 <meta property="og:title" content="386小C的合法k-size字符串问题">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="问题描述 小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这">
+<meta property="og:description" content="问题描述小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。 例如：  字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。 字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这六">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-01T06:07:43.000Z">
 <meta property="article:modified_time" content="2025-02-01T07:50:50.000Z">
@@ -372,47 +372,28 @@
             
               <div class="markdown-body">
                 
-                <h3 id="问题描述">问题描述</h3>
-<p>小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。</p>
+                <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小 C 最近在研究合法的 k-size 字符串。一个字符串被称为 k-size，是指它可以被分成恰好 k 段连续的相同字符组成的子串。</p>
 <p>例如：</p>
 <ul>
 <li>字符串 “aabbbccc” 是 3-size，因为它可以分成 [“aa”, “bbb”, “ccc”] 这三段。</li>
 <li>字符串 “ababaab” 是 6-size，因为它可以分成 [“a”, “b”, “a”, “b”, “aa”, “b”] 这六段。</li>
 </ul>
-<p>小 C 认为，只有当每个连续段的长度至少为 2 时，该字符串才是合法的。例如，“aabbbccc” 是合法的，而 “ababaab” 不是合法的。</p>
+<p>小 C 认为，只有当每个连续段的长度至少为 2 时，该字符串才是合法的。例如，”aabbbccc” 是合法的，而 “ababaab” 不是合法的。</p>
 <p>现在，给定字符串长度 n 和要求的连续段数量 k，小 C 想知道，长度为 n 的、仅由小写字母组成的合法的 k-size 字符串有多少个？答案可能非常大，请将结果对 10^9+7 取模。</p>
-<h3 id="解题思路">解题思路</h3>
-<ol>
-<li>
-<p><strong>分段计数</strong><br>
-将字符串分成 k 段，每段由相同字符组成，且每段长度至少为 2。设每段的长度为 L₁, L₂, …, Lₖ，则有<br>
-  L₁ + L₂ + … + Lₖ = n，并且 Lᵢ ≥ 2。<br>
-令 xᵢ = Lᵢ - 2（xᵢ ≥ 0），则<br>
-  x₁ + x₂ + … + xₖ = n - 2k。<br>
-非负整数解的个数即为<br>
-  C((n - 2k) + k - 1, k - 1) = C(n - k - 1, k - 1)。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li><p><strong>分段计数</strong><br> 将字符串分成 k 段，每段由相同字符组成，且每段长度至少为 2。设每段的长度为 L₁, L₂, …, Lₖ，则有<br>  L₁ + L₂ + … + Lₖ = n，并且 Lᵢ ≥ 2。<br> 令 xᵢ = Lᵢ - 2（xᵢ ≥ 0），则<br>  x₁ + x₂ + … + xₖ = n - 2k。<br> 非负整数解的个数即为<br>  C((n - 2k) + k - 1, k - 1) = C(n - k - 1, k - 1)。</p>
 </li>
-<li>
-<p><strong>选字母方案</strong><br>
-每一段所用的字符均相同，且相邻段的字符不同。</p>
+<li><p><strong>选字母方案</strong><br>每一段所用的字符均相同，且相邻段的字符不同。</p>
 <ul>
 <li>第一段有 26 种选法</li>
-<li>剩余每段必须和前一段不同，因此每段有 25 种选法<br>
-故字母的选取方案为 26 × 25^(k - 1)。</li>
+<li>剩余每段必须和前一段不同，因此每段有 25 种选法<br>故字母的选取方案为 26 × 25^(k - 1)。</li>
 </ul>
 </li>
-<li>
-<p><strong>最终答案</strong><br>
-合法的 k-size 字符串数为两部分组合，即<br>
-   答案 = C(n - k - 1, k - 1) × 26 × 25^(k - 1)。<br>
-由于 n 和 k 可能较大，计算过程中需要使用模 1e9+7。</p>
+<li><p><strong>最终答案</strong><br> 合法的 k-size 字符串数为两部分组合，即<br>   答案 = C(n - k - 1, k - 1) × 26 × 25^(k - 1)。<br> 由于 n 和 k 可能较大，计算过程中需要使用模 1e9+7。</p>
 </li>
 </ol>
-<h3 id="实现代码">实现代码</h3>
-<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">def</span> C(n, m, p):<br>    <span class="hljs-attribute">if</span> m &lt; <span class="hljs-number">0</span> or n &lt; m:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-attribute">if</span> m == <span class="hljs-number">0</span>:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-attribute">m</span> = min(m, n - m)<br>    <span class="hljs-attribute">a</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">b</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">for</span> i in range(<span class="hljs-number">1</span>, m + <span class="hljs-number">1</span>):<br>        <span class="hljs-attribute">a</span> = a * (n - i + <span class="hljs-number">1</span>) % p<br>        <span class="hljs-attribute">b</span> = (b * i) % p<br>    <span class="hljs-attribute">return</span> a * pow(b, p - <span class="hljs-number">2</span>, p) % p<br><br><span class="hljs-attribute">def</span> lucas(n, m, p):<br>    <span class="hljs-attribute">return</span> C(n % p, m % p, p) * lucas(n // p, m // p, p) % p if m else <span class="hljs-number">1</span><br><br><span class="hljs-attribute">mod</span> = int(<span class="hljs-number">1</span>e9 + <span class="hljs-number">7</span>)<br><span class="hljs-attribute">def</span> solution(n: int, k:int) -&gt; int:<br>    <span class="hljs-attribute">return</span> lucas(n - k - <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>, mod) * <span class="hljs-number">26</span> * pow(<span class="hljs-number">25</span>, k - <span class="hljs-number">1</span>, mod) % mod<br><br><span class="hljs-attribute">if</span> __name__ == &#x27;__main__&#x27;:<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">2</span>, k = <span class="hljs-number">1</span>) == <span class="hljs-number">26</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">4</span>, k = <span class="hljs-number">2</span>) == <span class="hljs-number">650</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">10</span>, k = <span class="hljs-number">5</span>) == <span class="hljs-number">10156250</span>)<br><br></code></pre></td></tr></table></figure>
-<h3 id="复杂度分析">复杂度分析</h3>
-<p>时间复杂度：$O(k)$。<br>
-空间复杂度：$O(1)$。</p>
+<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">def</span> C(n, m, p):<br>    <span class="hljs-attribute">if</span> m &lt; <span class="hljs-number">0</span> or n &lt; m:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">0</span><br>    <span class="hljs-attribute">if</span> m == <span class="hljs-number">0</span>:<br>        <span class="hljs-attribute">return</span> <span class="hljs-number">1</span><br>    <span class="hljs-attribute">m</span> = min(m, n - m)<br>    <span class="hljs-attribute">a</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">b</span> = <span class="hljs-number">1</span><br>    <span class="hljs-attribute">for</span> i in range(<span class="hljs-number">1</span>, m + <span class="hljs-number">1</span>):<br>        <span class="hljs-attribute">a</span> = a * (n - i + <span class="hljs-number">1</span>) % p<br>        <span class="hljs-attribute">b</span> = (b * i) % p<br>    <span class="hljs-attribute">return</span> a * pow(b, p - <span class="hljs-number">2</span>, p) % p<br><br><span class="hljs-attribute">def</span> lucas(n, m, p):<br>    <span class="hljs-attribute">return</span> C(n % p, m % p, p) * lucas(n // p, m // p, p) % p if m else <span class="hljs-number">1</span><br><br><span class="hljs-attribute">mod</span> = int(<span class="hljs-number">1</span>e9 + <span class="hljs-number">7</span>)<br><span class="hljs-attribute">def</span> solution(n: int, k:int) -&gt; int:<br>    <span class="hljs-attribute">return</span> lucas(n - k - <span class="hljs-number">1</span>, k - <span class="hljs-number">1</span>, mod) * <span class="hljs-number">26</span> * pow(<span class="hljs-number">25</span>, k - <span class="hljs-number">1</span>, mod) % mod<br><br><span class="hljs-attribute">if</span> __name__ == &#x27;__main__&#x27;:<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">2</span>, k = <span class="hljs-number">1</span>) == <span class="hljs-number">26</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">4</span>, k = <span class="hljs-number">2</span>) == <span class="hljs-number">650</span>)<br>    <span class="hljs-attribute">print</span>(solution(n = <span class="hljs-number">10</span>, k = <span class="hljs-number">5</span>) == <span class="hljs-number">10156250</span>)<br><br></code></pre></td></tr></table></figure>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：$O(k)$。<br>空间复杂度：$O(1)$。</p>
 
                 
               </div>
