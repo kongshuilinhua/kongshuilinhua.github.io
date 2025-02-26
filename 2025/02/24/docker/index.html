@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://s2.loli.net/2025/02/24/X6CpfRA3mSoMWzV.png">
 <meta property="og:image" content="https://s2.loli.net/2025/02/26/dcYFOhfP4VEpzqm.png">
 <meta property="article:published_time" content="2025-02-24T05:15:47.000Z">
-<meta property="article:modified_time" content="2025-02-26T16:28:54.411Z">
+<meta property="article:modified_time" content="2025-02-26T16:45:58.146Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="Linux">
@@ -321,7 +321,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.8k 字
+          4k 字
         
       </span>
     
@@ -333,7 +333,7 @@
         
         
           <!-- compatible with older versions-->
-          32 分钟
+          34 分钟
         
       </span>
     
@@ -679,6 +679,48 @@
 </tr>
 </tbody></table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.首先通过命令创建一个网络</span><br>docker network create hmall<br><br><span class="hljs-comment"># 2.然后查看网络</span><br>docker network <span class="hljs-built_in">ls</span><br><span class="hljs-comment"># 结果：</span><br><br>NETWORK ID     NAME                        DRIVER    SCOPE<br>bb101b739304   bridge                      bridge    <span class="hljs-built_in">local</span><br>7a34682225aa   hmall                       bridge    <span class="hljs-built_in">local</span><br>9bd1d9580837   host                        host      <span class="hljs-built_in">local</span><br>89cd2e5269ff   none                        null      <span class="hljs-built_in">local</span><br>f7d1b6b61018   onlinejudgedeploy_default   bridge    <span class="hljs-built_in">local</span><br><br><span class="hljs-comment"># 其中，除了hmall和我的OJ以外，其它都是默认的网络</span><br><br><span class="hljs-comment"># 3.让dd和mysql都加入该网络，注意，在加入网络时可以通过--alias给容器起别名</span><br><span class="hljs-comment"># 这样该网络内的其它容器可以用别名互相访问！</span><br><span class="hljs-comment"># 3.1.mysql容器，指定别名为db，另外每一个容器都有一个别名是容器名</span><br>docker network connect hmall mysql --<span class="hljs-built_in">alias</span> db<br><span class="hljs-comment"># 3.2.db容器，也就是我们的java项目</span><br>docker network connect hmall <span class="hljs-built_in">dd</span><br><br><span class="hljs-comment"># 4.进入dd容器，尝试利用别名访问db</span><br><span class="hljs-comment"># 4.1.进入容器</span><br>docker <span class="hljs-built_in">exec</span> -it <span class="hljs-built_in">dd</span> bash<br><span class="hljs-comment"># 4.2.用db别名访问</span><br>ping db<br><span class="hljs-comment"># 结果</span><br>PING db (172.18.0.2) 56(84) bytes of data.<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=0.070 ms<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 <span class="hljs-keyword">time</span>=0.056 ms<br><span class="hljs-comment"># 4.3.用容器名访问</span><br>ping mysql<br><span class="hljs-comment"># 结果：</span><br>PING mysql (172.18.0.2) 56(84) bytes of data.<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=0.044 ms<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 <span class="hljs-keyword">time</span>=0.054 ms<br></code></pre></td></tr></table></figure>
+
+<h1 id="3-JAVA-项目部署-Docker-Compose"><a href="#3-JAVA-项目部署-Docker-Compose" class="headerlink" title="3.JAVA 项目部署(Docker Compose)"></a>3.JAVA 项目部署(Docker Compose)</h1><h2 id="3-1-Docker-Compose"><a href="#3-1-Docker-Compose" class="headerlink" title="3.1 Docker Compose"></a>3.1 Docker Compose</h2><p>Docker Compose 可以帮助我们实现多个相互关联的 Docker 容器的快速部署。它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器。</p>
+<p>docker-compose 文件中可以定义多个相互关联的应用容器，每一个应用容器被称为一个服务（service）。由于 service 就是在定义某个应用的运行时参数，因此与 docker run 参数非常相似。</p>
+<table>
+<thead>
+<tr>
+<th><code>docker run</code> 参数</th>
+<th><code>docker compose</code> 指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>–name</td>
+<td>container_name</td>
+<td>容器名称</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>ports</td>
+<td>端口映射</td>
+</tr>
+<tr>
+<td>-e</td>
+<td>environment</td>
+<td>环境变量</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>volumes</td>
+<td>数据卷配置</td>
+</tr>
+<tr>
+<td>–network</td>
+<td>networks</td>
+<td>网络</td>
+</tr>
+</tbody></table>
+<p>举例来说，用 docker run 部署 MySQL 的命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d \<br>  --name mysql \<br>  -p 3306:3306 \<br>  -e TZ=Asia/Shanghai \<br>  -e MYSQL_ROOT_PASSWORD=123 \<br>  -v ./mysql/data:/var/lib/mysql \<br>  -v ./mysql/conf:/etc/mysql/conf.d \<br>  -v ./mysql/init:/docker-entrypoint-initdb.d \<br>  --network hmall<br>  mysql<br></code></pre></td></tr></table></figure>
+
+<p>如果用 docker-compose.yml 文件来定义，就是这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">version: <span class="hljs-string">&quot;3.8&quot;</span><br><br>services:<br>  mysql:<br>    image: mysql<br>    container_name: mysql<br>    ports:<br>      - <span class="hljs-string">&quot;3306:3306&quot;</span><br>    environment:<br>      TZ: Asia/Shanghai<br>      MYSQL_ROOT_PASSWORD: 123<br>    volumes:<br>      - <span class="hljs-string">&quot;./mysql/conf:/etc/mysql/conf.d&quot;</span><br>      - <span class="hljs-string">&quot;./mysql/data:/var/lib/mysql&quot;</span><br>    networks:<br>      - new<br>networks:<br>  new:<br>    name: hmall<br></code></pre></td></tr></table></figure>
 
                 
               </div>
