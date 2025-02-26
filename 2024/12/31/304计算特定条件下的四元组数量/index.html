@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 该题目要求在给定数组中找到满足条件 a[i] + a[j] &#x3D; a[k] ^ a[l] 且 i &lt; j &lt; k &lt; l 的四元组数量。由于答案可能非常大，需要对 10^9 + 7 取模。 解题思路   枚举所有可能的 (i, j) 对：  对于每个 数对a[i]和a[j] (i &lt; j)，计算 a[i] + a[j] 的值，并将其存储在字典 d 中，并记录对应a[j]">
+    <meta name="description" content="题解该题目要求在给定数组中找到满足条件 a[i] + a[j] &#x3D; a[k] ^ a[l] 且 i &lt; j &lt; k &lt; l 的四元组数量。由于答案可能非常大，需要对 10^9 + 7 取模。 解题思路 枚举所有可能的 (i, j) 对：  对于每个 数对a[i]和a[j] (i &lt; j)，计算 a[i] + a[j] 的值，并将其存储在字典 d 中，并记录对应a[j]的下标">
 <meta property="og:type" content="article">
 <meta property="og:title" content="304计算特定条件下的四元组数量">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/31/304%E8%AE%A1%E7%AE%97%E7%89%B9%E5%AE%9A%E6%9D%A1%E4%BB%B6%E4%B8%8B%E7%9A%84%E5%9B%9B%E5%85%83%E7%BB%84%E6%95%B0%E9%87%8F/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 该题目要求在给定数组中找到满足条件 a[i] + a[j] &#x3D; a[k] ^ a[l] 且 i &lt; j &lt; k &lt; l 的四元组数量。由于答案可能非常大，需要对 10^9 + 7 取模。 解题思路   枚举所有可能的 (i, j) 对：  对于每个 数对a[i]和a[j] (i &lt; j)，计算 a[i] + a[j] 的值，并将其存储在字典 d 中，并记录对应a[j]">
+<meta property="og:description" content="题解该题目要求在给定数组中找到满足条件 a[i] + a[j] &#x3D; a[k] ^ a[l] 且 i &lt; j &lt; k &lt; l 的四元组数量。由于答案可能非常大，需要对 10^9 + 7 取模。 解题思路 枚举所有可能的 (i, j) 对：  对于每个 数对a[i]和a[j] (i &lt; j)，计算 a[i] + a[j] 的值，并将其存储在字典 d 中，并记录对应a[j]的下标">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-31T00:46:55.000Z">
 <meta property="article:modified_time" content="2024-12-31T00:56:04.000Z">
@@ -372,37 +372,30 @@
             
               <div class="markdown-body">
                 
-                <h3 id="题解">题解</h3>
-<p>该题目要求在给定数组中找到满足条件 <code>a[i] + a[j] = a[k] ^ a[l]</code> 且 <code>i &lt; j &lt; k &lt; l</code> 的四元组数量。由于答案可能非常大，需要对 <code>10^9 + 7</code> 取模。</p>
-<h4 id="解题思路">解题思路</h4>
-<ol>
-<li>
-<p><strong>枚举所有可能的 <code>(i, j)</code> 对</strong>：</p>
+                <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>该题目要求在给定数组中找到满足条件 <code>a[i] + a[j] = a[k] ^ a[l]</code> 且 <code>i &lt; j &lt; k &lt; l</code> 的四元组数量。由于答案可能非常大，需要对 <code>10^9 + 7</code> 取模。</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ol>
+<li><p><strong>枚举所有可能的 <code>(i, j)</code> 对</strong>：</p>
 <ul>
 <li>对于每个 数对<code>a[i]</code>和<code>a[j]</code> <code>(i &lt; j)</code>，计算 <code>a[i] + a[j]</code> 的值，并将其存储在字典 <code>d</code> 中，并记录对应<code>a[j]</code>的下标</li>
 <li>对字典 <code>d</code> 中每个键对应的列表进行排序，以便后续使用二分查找。</li>
 </ul>
 </li>
-<li>
-<p><strong>枚举所有可能的 <code>(k, l)</code> 对</strong>：</p>
+<li><p><strong>枚举所有可能的 <code>(k, l)</code> 对</strong>：</p>
 <ul>
 <li>对于每个 <code>(k, l)</code>，满足<code>k &lt; l</code>，计算 <code>a[k] ^ a[l]</code> 的值。寻找是否存在 <code>(i, j)</code> 满足 <code>a[i] + a[j] = a[k] ^ a[l]</code> 且 <code>j &lt; k</code>。</li>
 <li>使用 <code>bisect_left</code> 在 <code>d[a[k] ^ a[l]]</code> 中找到满足 <code>j &lt; k</code> 的 <code>j</code> 的数量，并累加到结果 <code>res</code> 中。</li>
 </ul>
 </li>
 </ol>
-<h4 id="代码">代码</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    d = defaultdict(<span class="hljs-built_in">list</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):<br>            d[a[i] + a[j]].append(j)<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> d:<br>        d[k].sort()<br>    res = <span class="hljs-built_in">sum</span>(bisect_left(d[a[i] ^ a[j]], i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n - <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n))<br>    <span class="hljs-keyword">return</span> res % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">14</span>, [<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">13</span>,<span class="hljs-number">9</span>,<span class="hljs-number">15</span>,<span class="hljs-number">16</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>]) == <span class="hljs-number">33</span>)<br><br></code></pre></td></tr></table></figure>
-<h4 id="复杂度分析">复杂度分析</h4>
-<ul>
-<li><strong>时间复杂度</strong>：<code>O(n^2logn)</code>
-<ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict<br><span class="hljs-keyword">from</span> bisect <span class="hljs-keyword">import</span> bisect_left<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    d = defaultdict(<span class="hljs-built_in">list</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):<br>            d[a[i] + a[j]].append(j)<br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> d:<br>        d[k].sort()<br>    res = <span class="hljs-built_in">sum</span>(bisect_left(d[a[i] ^ a[j]], i) <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, n - <span class="hljs-number">1</span>) <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n))<br>    <span class="hljs-keyword">return</span> res % mod<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">4</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>]) == <span class="hljs-number">0</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">14</span>, [<span class="hljs-number">9</span>,<span class="hljs-number">2</span>,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">9</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">13</span>,<span class="hljs-number">9</span>,<span class="hljs-number">15</span>,<span class="hljs-number">16</span>,<span class="hljs-number">5</span>,<span class="hljs-number">10</span>]) == <span class="hljs-number">33</span>)<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
+<li><strong>时间复杂度</strong>：<code>O(n^2logn)</code><ul>
 <li>枚举 <code>(i, j)</code> 对需要 <code>O(n^2)</code> 时间。</li>
 <li>对每个 <code>(k, l)</code> 对进行二分查找需要 O(log n) 时间，总体为 <code>O(n^2logn)</code>。</li>
 </ul>
 </li>
-<li><strong>空间复杂度</strong>：<code>O(n^2)</code>
-<ul>
+<li><strong>空间复杂度</strong>：<code>O(n^2)</code><ul>
 <li>用于存储所有 <code>(i, j)</code> 对的和。</li>
 </ul>
 </li>

@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="题解 题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 1 到 m 的完整排列，且按升序排列。 解题思路   计数元素频次： 使用 Counter 统计数组中每个元素出现的次数。这样可以快速获取每个数字出现的数量。   迭代构建排列： 从 1 开始，依次检查每个数字 i 是否存在于数组中（即 cnt[i] &gt; 0）。   如果存在，当前排列长度为 i，可以选择的方式数为">
+    <meta name="description" content="题解题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 1 到 m 的完整排列，且按升序排列。 解题思路 计数元素频次： 使用 Counter 统计数组中每个元素出现的次数。这样可以快速获取每个数字出现的数量。  迭代构建排列： 从 1 开始，依次检查每个数字 i 是否存在于数组中（即 cnt[i] &gt; 0）。  如果存在，当前排列长度为 i，可以选择的方式数为 cnt[i">
 <meta property="og:type" content="article">
 <meta property="og:title" content="262数组子序列的排列个数">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/30/262%E6%95%B0%E7%BB%84%E5%AD%90%E5%BA%8F%E5%88%97%E7%9A%84%E6%8E%92%E5%88%97%E4%B8%AA%E6%95%B0/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="题解 题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 1 到 m 的完整排列，且按升序排列。 解题思路   计数元素频次： 使用 Counter 统计数组中每个元素出现的次数。这样可以快速获取每个数字出现的数量。   迭代构建排列： 从 1 开始，依次检查每个数字 i 是否存在于数组中（即 cnt[i] &gt; 0）。   如果存在，当前排列长度为 i，可以选择的方式数为">
+<meta property="og:description" content="题解题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 1 到 m 的完整排列，且按升序排列。 解题思路 计数元素频次： 使用 Counter 统计数组中每个元素出现的次数。这样可以快速获取每个数字出现的数量。  迭代构建排列： 从 1 开始，依次检查每个数字 i 是否存在于数组中（即 cnt[i] &gt; 0）。  如果存在，当前排列长度为 i，可以选择的方式数为 cnt[i">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-30T00:18:25.000Z">
 <meta property="article:modified_time" content="2024-12-30T00:25:58.000Z">
@@ -370,76 +370,57 @@
             
               <div class="markdown-body">
                 
-                <h3 id="题解">题解</h3>
-<p>题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 <code>1</code> 到 <code>m</code> 的完整排列，且按升序排列。</p>
-<h4 id="解题思路">解题思路</h4>
-<ol>
-<li>
-<p><strong>计数元素频次</strong>：</p>
+                <h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>题目要求计算数组中满足特定条件的子序列数量。具体来说，子序列必须是从 <code>1</code> 到 <code>m</code> 的完整排列，且按升序排列。</p>
+<h4 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h4><ol>
+<li><p><strong>计数元素频次</strong>：</p>
 <p>使用 <code>Counter</code> 统计数组中每个元素出现的次数。这样可以快速获取每个数字出现的数量。</p>
 </li>
-<li>
-<p><strong>迭代构建排列</strong>：</p>
+<li><p><strong>迭代构建排列</strong>：</p>
 <p>从 <code>1</code> 开始，依次检查每个数字 <code>i</code> 是否存在于数组中（即 <code>cnt[i] &gt; 0</code>）。</p>
 <ul>
-<li>
-<p>如果存在，当前排列长度为 <code>i</code>，可以选择的方式数为 <code>cnt[i]</code>。</p>
+<li><p>如果存在，当前排列长度为 <code>i</code>，可以选择的方式数为 <code>cnt[i]</code>。</p>
 </li>
-<li>
-<p>将当前选择方式数累乘到一个累积变量 <code>f</code> 中，表示构建长度为 <code>i</code> 的排列的总方式数。</p>
+<li><p>将当前选择方式数累乘到一个累积变量 <code>f</code> 中，表示构建长度为 <code>i</code> 的排列的总方式数。</p>
 </li>
-<li>
-<p>将 <code>f</code> 加到最终结果 <code>res</code> 中。</p>
+<li><p>将 <code>f</code> 加到最终结果 <code>res</code> 中。</p>
 </li>
-<li>
-<p>一旦发现某个数字 <code>i</code> 在数组中不存在（即 <code>cnt[i] == 0</code>），说明无法继续构建更长的排列，循环终止。</p>
+<li><p>一旦发现某个数字 <code>i</code> 在数组中不存在（即 <code>cnt[i] == 0</code>），说明无法继续构建更长的排列，循环终止。</p>
 </li>
 </ul>
 </li>
 </ol>
-<h4 id="示例分析">示例分析</h4>
-<p>以样例 1 为例：</p>
+<h4 id="示例分析"><a href="#示例分析" class="headerlink" title="示例分析"></a>示例分析</h4><p>以样例 1 为例：</p>
 <ul>
-<li>
-<p>数组 <code>[1, 1, 5, 2, 3, 4]</code> 中元素计数为 <code>&#123;1:2, 5:1, 2:1, 3:1, 4:1&#125;</code>。</p>
+<li><p>数组 <code>[1, 1, 5, 2, 3, 4]</code> 中元素计数为 <code>&#123;1:2, 5:1, 2:1, 3:1, 4:1&#125;</code>。</p>
 </li>
-<li>
-<p>依次计算：</p>
+<li><p>依次计算：</p>
 <ul>
-<li>
-<p><code>m=1</code>:</p>
+<li><p><code>m=1</code>:</p>
 <p><code>cnt[1] = 2</code> → <code>f = 2</code> → <code>res = 2</code></p>
 </li>
-<li>
-<p><code>m=2</code>:</p>
+<li><p><code>m=2</code>:</p>
 <p><code>cnt[2] = 1</code> → <code>f = 2 * 1 = 2</code> → <code>res = 4</code></p>
 </li>
-<li>
-<p><code>m=3</code>:</p>
+<li><p><code>m=3</code>:</p>
 <p><code>cnt[3] = 1</code> → <code>f = 2 * 1 * 1 = 2</code> → <code>res = 6</code></p>
 </li>
-<li>
-<p><code>m=4</code>:</p>
+<li><p><code>m=4</code>:</p>
 <p><code>cnt[4] = 1</code> → <code>f = 2 * 1 * 1 * 1 = 2</code> → <code>res = 8</code></p>
 </li>
-<li>
-<p><code>m=5</code>:</p>
+<li><p><code>m=5</code>:</p>
 <p><code>cnt[5] = 1</code> → <code>f = 2 * 1 * 1 * 1 * 1 = 2</code> → <code>res = 10</code></p>
 </li>
-<li>
-<p><code>m=6</code>:</p>
+<li><p><code>m=6</code>:</p>
 <p><code>cnt[6] = 0</code> → 终止</p>
 </li>
 </ul>
 </li>
-<li>
-<p>最终结果为 <code>10</code>。</p>
+<li><p>最终结果为 <code>10</code>。</p>
 </li>
 </ul>
-<h4 id="代码">代码</h4>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt = Counter(a)<br>    res = <span class="hljs-number">0</span><br>    f = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> cnt[i] == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span><br>        f *= cnt[i]<br>        res += f<br><br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">10</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">5</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">7</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">7</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">9</span>, [<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">8</span>]) == <span class="hljs-number">4</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>]))<br></code></pre></td></tr></table></figure>
-<h4 id="复杂度分析">复杂度分析</h4>
-<ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt = Counter(a)<br>    res = <span class="hljs-number">0</span><br>    f = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> cnt[i] == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span><br>        f *= cnt[i]<br>        res += f<br><br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">10</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">5</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">7</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">7</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">9</span>, [<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">8</span>]) == <span class="hljs-number">4</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>]))<br></code></pre></td></tr></table></figure>
+
+<h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
 <li><strong>时间复杂度</strong>：<code>O(n)</code>，其中 <code>n</code> 是数组长度，用于统计元素频次。</li>
 <li><strong>空间复杂度</strong>：<code>O(n)</code>，用于存储元素频次。</li>
 </ul>
