@@ -31,10 +31,10 @@
 <meta property="og:image" content="https://s2.loli.net/2025/03/04/uCw7IiDgHNafWGc.png">
 <meta property="og:image" content="https://s2.loli.net/2025/03/04/aASoR9YtgkqfJvy.png">
 <meta property="article:published_time" content="2025-03-04T06:03:43.000Z">
-<meta property="article:modified_time" content="2025-03-04T11:39:45.983Z">
+<meta property="article:modified_time" content="2025-03-05T08:20:19.194Z">
 <meta property="article:author" content="FireFLy">
-<meta property="article:tag" content="Java">
 <meta property="article:tag" content="微服务">
+<meta property="article:tag" content="Java">
 <meta property="article:tag" content="Elasticsearch">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://s2.loli.net/2025/03/04/uCw7IiDgHNafWGc.png">
@@ -322,7 +322,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.9k 字
+          3.9k 字
         
       </span>
     
@@ -334,7 +334,7 @@
         
         
           <!-- compatible with older versions-->
-          17 分钟
+          33 分钟
         
       </span>
     
@@ -510,6 +510,102 @@
 <p>因为 SpringBoot 默认的 ES 版本是 7.17.10，所以我们需要覆盖默认的 ES 版本</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">elasticsearch.version</span>&gt;</span>7.12.1<span class="hljs-tag">&lt;/<span class="hljs-name">elasticsearch.version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
+<h1 id="5-DSL-查询"><a href="#5-DSL-查询" class="headerlink" title="5. DSL 查询"></a>5. DSL 查询</h1><h2 id="5-1-叶子查询"><a href="#5-1-叶子查询" class="headerlink" title="5.1 叶子查询"></a>5.1 叶子查询</h2><h3 id="5-1-1-全文检索查询"><a href="#5-1-1-全文检索查询" class="headerlink" title="5.1.1.全文检索查询"></a>5.1.1.全文检索查询</h3><ul>
+<li>全文检索查询（Full Text Queries）：利用分词器对用户输入搜索条件先分词，得到词条，然后再利用倒排索引搜索词条。例如：<ul>
+<li>match：</li>
+<li>multi_match</li>
+</ul>
+</li>
+<li>精确查询（Term-level queries）：不对用户输入搜索条件分词，根据字段内容精确值匹配。但只能查找 keyword、数值、日期、boolean 类型的字段。例如：<ul>
+<li>ids</li>
+<li>term</li>
+<li>range</li>
+</ul>
+</li>
+<li>地理坐标查询：用于搜索地理位置，搜索方式很多，例如：<ul>
+<li>geo_bounding_box：按矩形搜索</li>
+<li>geo_distance：按点和半径搜索</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;multi_match&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;搜索条件&quot;</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;fields&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;字段1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;字段2&quot;</span><span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-2-精确查询"><a href="#5-1-2-精确查询" class="headerlink" title="5.1.2.精确查询"></a>5.1.2.精确查询</h3><p>精确查询，英文是 Term-level query，顾名思义，词条级别的查询。也就是说不会对用户输入的搜索条件再分词，而是作为一个词条，与搜索的字段内容精确值匹配。因此推荐查找 keyword、数值、日期、boolean 类型的字段。例如：</p>
+<ul>
+<li>id</li>
+<li>price</li>
+<li>城市</li>
+<li>地名</li>
+<li>人名<br>等等，作为一个整体才有含义的字段。</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;term&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;字段名&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;搜索条件&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="5-1-3-range-查询"><a href="#5-1-3-range-查询" class="headerlink" title="5.1.3 range 查询"></a>5.1.3 range 查询</h3><p>再来看下 range 查询，语法如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;range&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;字段名&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;gte&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>最小值<span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;lte&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>最大值<span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>range 是范围查询，对于范围筛选的关键字有：</p>
+<ul>
+<li>gte：大于等于</li>
+<li>gt：大于</li>
+<li>lte：小于等于</li>
+<li>lt：小于</li>
+</ul>
+<h2 id="5-2-复合查询"><a href="#5-2-复合查询" class="headerlink" title="5.2 复合查询"></a>5.2 复合查询</h2><h3 id="5-2-1-bool-查询"><a href="#5-2-1-bool-查询" class="headerlink" title="5.2.1 bool 查询"></a>5.2.1 bool 查询</h3><p>bool 查询，即布尔查询。就是利用逻辑运算来组合一个或多个查询子句的组合。bool 查询支持的逻辑运算有：</p>
+<ul>
+<li>must：必须匹配每个子查询，类似“与”</li>
+<li>should：选择性匹配子查询，类似“或”</li>
+<li>must_not：必须不匹配，不参与算分，类似“非”</li>
+<li>filter：必须匹配，不参与算分</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /items/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;bool&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;must&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;match&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;手机&quot;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;should&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;term&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;vivo&quot;</span> <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;term&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;brand&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span> <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;小米&quot;</span> <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;must_not&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;range&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;price&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;gte&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2500</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>      <span class="hljs-attr">&quot;filter&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;range&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;price&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-attr">&quot;lte&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1000</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-3-排序"><a href="#5-3-排序" class="headerlink" title="5.3 排序"></a>5.3 排序</h2><p>elasticsearch 默认是根据相关度算分（_score）来排序，但是也支持自定义方式对搜索结果排序。不过分词字段无法排序，能参与排序字段类型有：keyword 类型、数值类型、地理坐标类型、日期类型等。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /indexName/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;match_all&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;sort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;排序字段&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;order&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;排序方式asc和desc&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="5-4-分页"><a href="#5-4-分页" class="headerlink" title="5.4 分页"></a>5.4 分页</h2><p>elasticsearch 默认情况下只返回 top10 的数据。而如果要查询更多数据就需要修改分页参数了。</p>
+<h3 id="5-4-1-基础分页"><a href="#5-4-1-基础分页" class="headerlink" title="5.4.1 基础分页"></a>5.4.1 基础分页</h3><p>elasticsearch 中通过修改 from、size 参数来控制要返回的分页结果：</p>
+<ul>
+<li>from：从第几个文档开始</li>
+<li>size：总共查询几个文档<br>类似于 mysql 中的 limit ?, ?</li>
+</ul>
+<h3 id="5-4-2-深度分页"><a href="#5-4-2-深度分页" class="headerlink" title="5.4.2 深度分页"></a>5.4.2 深度分页</h3><p>elasticsearch 的数据一般会采用分片存储，也就是把一个索引中的数据分成 N 份，存储到不同节点上。这种存储方式比较有利于数据扩展，但给分页带来了一些麻烦。<br>比如一个索引库中有 100000 条数据，分别存储到 4 个分片，每个分片 25000 条数据。现在每页查询 10 条，查询第 99 页。那么分页查询的条件如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /items/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;from&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">990</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 从第990条开始查询</span><br>  <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><span class="hljs-punctuation">,</span> <span class="hljs-comment">// 每页查询10条</span><br>  <span class="hljs-attr">&quot;sort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;price&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;asc&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<p>试想一下，假如我们现在要查询的是第 999 页数据呢，是不是要找第 9990~10000 的数据，那岂不是需要把每个分片中的前 10000 名数据都查询出来，汇总在一起，在内存中排序？如果查询的分页深度更深呢，需要一次检索的数据岂不是更多？<br>由此可知，当查询分页深度较大时，汇总数据过多，对内存和 CPU 会产生非常大的压力。<br>因此 elasticsearch 会禁止 from+ size 超过 10000 的请求。<br>针对深度分页，elasticsearch 提供了两种解决方案：</p>
+<ul>
+<li>search after：分页时需要排序，原理是从上一次的排序值开始，查询下一页数据。官方推荐使用的方式。</li>
+<li>scroll：原理将排序后的文档 id 形成快照，保存下来，基于快照做分页。官方已经不推荐使用。</li>
+</ul>
+<p>假设你有一张按时间排序的日志表，想分页查询每页 10 条记录。</p>
+<p>传统分页（from 和 size）<br>第一页：from&#x3D;0, size&#x3D;10<br>ES 返回第 1 到 10 条记录。</p>
+<p>第二页：from&#x3D;10, size&#x3D;10<br>ES 需要从头遍历前 10 条记录，跳过它们，再返回第 11 到 20 条。</p>
+<p>第 100 页：from&#x3D;1000, size&#x3D;10<br>ES 需要从头遍历前 1000 条记录，跳过它们，再返回第 1001 到 1010 条。</p>
+<p>search_after 分页<br>第一页：size&#x3D;10, sort&#x3D;时间戳<br>ES 返回第 1 到 10 条记录，并记录第 10 条的时间戳（比如 2023-10-01 12:00:00）。</p>
+<p>第二页：size&#x3D;10, sort&#x3D;时间戳, search_after&#x3D;[2023-10-01 12:00:00]<br>ES 直接从 2023-10-01 12:00:00 之后开始查询，返回第 11 到 20 条记录。</p>
+<p>第 100 页：size&#x3D;10, sort&#x3D;时间戳, search_after&#x3D;[上次最后一条的时间戳]<br>ES 直接从上一次的最后一条记录开始查询，不需要遍历前面的数据。</p>
+<blockquote>
+<p>总结：<br>大多数情况下，我们采用普通分页就可以了。查看百度、京东等网站，会发现其分页都有限制。例如百度最多支持 77 页，每页不足 20 条。京东最多 100 页，每页最多 60 条。<br>因此，一般我们采用限制分页深度的方式即可，无需实现深度分页。</p>
+</blockquote>
+<h2 id="5-5-高亮"><a href="#5-5-高亮" class="headerlink" title="5.5 高亮"></a>5.5 高亮</h2><p>观察页面源码，你会发现两件事情：</p>
+<ul>
+<li>高亮词条都被加了<code>&lt;em&gt;</code>标签</li>
+<li><code>&lt;em&gt;</code>标签都添加了红色样式</li>
+</ul>
+<p>css 样式肯定是前端实现页面的时候写好的，但是前端编写页面的时候是不知道页面要展示什么数据的，不可能给数据加标签。而服务端实现搜索功能，要是有 elasticsearch 做分词搜索，是知道哪些词条需要高亮的。<br>因此词条的高亮标签肯定是由服务端提供数据的时候已经加上的。</p>
+<p>因此实现高亮的思路就是：</p>
+<ul>
+<li>用户输入搜索关键字搜索数据</li>
+<li>服务端根据搜索关键字到 elasticsearch 搜索，并给搜索结果中的关键字词条添加 html 标签</li>
+<li>前端提前给约定好的 html 标签添加 CSS 样式</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /<span class="hljs-punctuation">&#123;</span>索引库名<span class="hljs-punctuation">&#125;</span>/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;match&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;搜索字段&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;搜索关键字&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;highlight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;fields&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;高亮字段名称&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;pre_tags&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;em&gt;&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;post_tags&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&lt;/em&gt;&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>搜索必须有查询条件，而且是全文检索类型的查询条件，例如 match</li>
+<li>参与高亮的字段必须是 text 类型的字段</li>
+<li>默认情况下参与高亮的字段要与搜索字段一致，除非添加：required_field_match&#x3D;false</li>
+</ul>
+
                 
               </div>
             
@@ -521,9 +617,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Java/" class="print-no-link">#Java</a>
-      
         <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="print-no-link">#微服务</a>
+      
+        <a href="/tags/Java/" class="print-no-link">#Java</a>
       
         <a href="/tags/Elasticsearch/" class="print-no-link">#Elasticsearch</a>
       
