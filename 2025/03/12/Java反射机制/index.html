@@ -21,11 +21,13 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="https://kongshuilinhua.github.io/archives/page/2/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Java反射机制">
+<meta property="og:url" content="https://kongshuilinhua.github.io/2025/03/12/Java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="FireFly">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-12T03:01:01.000Z">
+<meta property="article:modified_time" content="2025-03-12T03:01:01.343Z">
 <meta property="article:author" content="FireFLy">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -33,11 +35,17 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>归档 - FireFly</title>
+  <title>Java反射机制 - FireFly</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
 
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
 
 
@@ -119,7 +127,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -271,15 +279,62 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/archives.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="归档"></span>
+            <span id="subtitle" data-typed-text="Java反射机制"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        FireFLy
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-03-12 11:01" pubdate>
+           2025 年 03 月 12 日 , 上午 11:01 , 星期三
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          0 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          1 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -295,100 +350,192 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 69 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2025</p>
-    
-    <a href="/2025/02/02/512%E4%BC%9A%E8%AE%AE%E6%8C%89%E6%97%B6%E6%8A%B5%E8%BE%BE%E6%89%80%E9%9C%80%E7%9A%84%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F%E8%B7%B3%E8%BF%87%E6%AC%A1%E6%95%B0/" class="list-group-item list-group-item-action">
-      <time>02-02</time>
-      <div class="list-group-item-title">512会议按时抵达所需的最小延迟跳过次数</div>
-    </a>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Java反射机制</h1>
+            
+            
+              <div class="markdown-body">
+                
+                
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
   
-    
-    <a href="/2025/02/01/393%E5%B0%8FF%E7%9A%84%E8%B6%85%E5%B8%82%E8%B4%AD%E7%89%A9%E7%AD%96%E7%95%A5/" class="list-group-item list-group-item-action">
-      <time>02-01</time>
-      <div class="list-group-item-title">393小F的超市购物策略</div>
-    </a>
-  
-    
-    <a href="/2025/02/01/386%E5%B0%8FC%E7%9A%84%E5%90%88%E6%B3%95k-size%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>02-01</time>
-      <div class="list-group-item-title">386小C的合法k-size字符串问题</div>
-    </a>
-  
-    
-    <a href="/2025/02/01/374%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9D%83%E5%80%BC%E6%9C%80%E5%B0%8F%E5%8C%96%E5%88%86%E5%89%B2%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>02-01</time>
-      <div class="list-group-item-title">374字符串权值最小化分割问题</div>
-    </a>
-  
-    
-    <a href="/2025/01/31/410%E5%B0%8FR%E7%9A%84%E6%95%B0%E7%BB%84%E6%9E%84%E9%80%A0%E6%8C%91%E6%88%98/" class="list-group-item list-group-item-action">
-      <time>01-31</time>
-      <div class="list-group-item-title">410小R的数组构造挑战</div>
-    </a>
-  
-    
-    <a href="/2025/01/29/403%E5%B0%8FN%E7%9A%84%E6%94%B9%E6%95%B0%E7%BB%84%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>01-29</time>
-      <div class="list-group-item-title">403小N的改数组问题</div>
-    </a>
-  
-    
-    <a href="/2025/01/29/398%E5%B0%8FL%E7%9A%84%E5%85%83%E7%B4%A0%E4%BF%AE%E6%94%B9%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>01-29</time>
-      <div class="list-group-item-title">398小L的元素修改问题</div>
-    </a>
-  
-    
-    <a href="/2025/01/27/433%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E6%9C%80%E5%B0%8F%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>01-27</time>
-      <div class="list-group-item-title">433数组元素最小操作次数问题</div>
-    </a>
-  
-    
-    <a href="/2025/01/27/448%E6%9C%80%E5%A4%A7%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C%E9%97%AE%E9%A2%98/" class="list-group-item list-group-item-action">
-      <time>01-27</time>
-      <div class="list-group-item-title">448最大连续子数组和问题</div>
-    </a>
-  
-    
-    <a href="/2025/01/27/412%E5%B0%8FS%E7%9A%84%E5%AD%90%E5%BA%8F%E5%88%97%E5%B9%B3%E5%9D%87%E6%95%B0%E4%B9%8B%E5%92%8C/" class="list-group-item list-group-item-action">
-      <time>01-27</time>
-      <div class="list-group-item-title">412小S的子序列平均数之和</div>
-    </a>
   
 </div>
 
 
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/archives/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/#board">3</a><a class="page-number" href="/archives/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/#board">7</a><a class="extend next" rel="next" href="/archives/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
+              
+  
 
-
-
-
-              </div>
-            </div>
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java反射机制</div>
+      <div>https://kongshuilinhua.github.io/2025/03/12/Java反射机制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>FireFLy</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2025年3月12日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
           </div>
         </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/03/04/elasticsearch/" title="elasticsearch">
+                        <span class="hidden-mobile">elasticsearch</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"MmdmeBQX93iJVFzXHfLmu9LV-gzGzoHsz","appKey":"yZMPcYoklf6bGVP7FZZrb6la","path":"window.location.pathname","placeholder":"留言仅限讨论，禁止广告等行为","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"https://kongshuilinhua.github.io/","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
       </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
     
 
     
@@ -507,6 +654,142 @@
 
 
 
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 
