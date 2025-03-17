@@ -384,15 +384,13 @@
 </li>
 <li><p>将 <code>f</code> 加到最终结果 <code>res</code> 中。</p>
 </li>
-<li><p>一旦发现某个数字 <code>i</code> 在数组中不存在（即 <code>cnt[i] == 0</code>），说明无法继续构建更长的排列，循环终止。</p>
-</li>
+<li>一旦发现某个数字 <code>i</code> 在数组中不存在（即 <code>cnt[i] == 0</code>），说明无法继续构建更长的排列，循环终止。</li>
 </ul>
 </li>
 </ol>
 <h4 id="示例分析"><a href="#示例分析" class="headerlink" title="示例分析"></a>示例分析</h4><p>以样例 1 为例：</p>
 <ul>
-<li><p>数组 <code>[1, 1, 5, 2, 3, 4]</code> 中元素计数为 <code>&#123;1:2, 5:1, 2:1, 3:1, 4:1&#125;</code>。</p>
-</li>
+<li>数组 <code>[1, 1, 5, 2, 3, 4]</code> 中元素计数为 <code>&#123;1:2, 5:1, 2:1, 3:1, 4:1&#125;</code>。</li>
 <li><p>依次计算：</p>
 <ul>
 <li><p><code>m=1</code>:</p>
@@ -419,7 +417,6 @@
 </li>
 </ul>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Counter<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt = Counter(a)<br>    res = <span class="hljs-number">0</span><br>    f = <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> cnt[i] == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span><br>        f *= cnt[i]<br>        res += f<br><br>    <span class="hljs-keyword">return</span> res<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]) == <span class="hljs-number">10</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">5</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">7</span>, [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>]) == <span class="hljs-number">7</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">9</span>, [<span class="hljs-number">5</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">8</span>]) == <span class="hljs-number">4</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>]))<br></code></pre></td></tr></table></figure>
-
 <h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul>
 <li><strong>时间复杂度</strong>：<code>O(n)</code>，其中 <code>n</code> 是数组长度，用于统计元素频次。</li>
 <li><strong>空间复杂度</strong>：<code>O(n)</code>，用于存储元素频次。</li>

@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. Docker 的安装1.1 安装 Docker我使用的是 Ubuntu 20.04，安装 Docker 的步骤如下： 1.1.1 更新 apt 包索引。1sudo apt-get update  1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库1sudo apt-get install apt-transport-https ca-certificates curl gnu">
+    <meta name="description" content="1. Docker 的安装1.1 安装 Docker我使用的是 Ubuntu 20.04，安装 Docker 的步骤如下： 1.1.1 更新 apt 包索引。1sudo apt-get update 1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库1sudo apt-get install apt-transport-https ca-certificates curl gnup">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker使用">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2025/02/24/docker/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="1. Docker 的安装1.1 安装 Docker我使用的是 Ubuntu 20.04，安装 Docker 的步骤如下： 1.1.1 更新 apt 包索引。1sudo apt-get update  1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库1sudo apt-get install apt-transport-https ca-certificates curl gnu">
+<meta property="og:description" content="1. Docker 的安装1.1 安装 Docker我使用的是 Ubuntu 20.04，安装 Docker 的步骤如下： 1.1.1 更新 apt 包索引。1sudo apt-get update 1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库1sudo apt-get install apt-transport-https ca-certificates curl gnup">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2025/02/24/X6CpfRA3mSoMWzV.png">
 <meta property="og:image" content="https://s2.loli.net/2025/02/26/dcYFOhfP4VEpzqm.png">
@@ -377,36 +377,22 @@
                 
                 <h1 id="1-Docker-的安装"><a href="#1-Docker-的安装" class="headerlink" title="1. Docker 的安装"></a>1. Docker 的安装</h1><h2 id="1-1-安装-Docker"><a href="#1-1-安装-Docker" class="headerlink" title="1.1 安装 Docker"></a>1.1 安装 Docker</h2><p>我使用的是 Ubuntu 20.04，安装 Docker 的步骤如下：</p>
 <h3 id="1-1-1-更新-apt-包索引。"><a href="#1-1-1-更新-apt-包索引。" class="headerlink" title="1.1.1 更新 apt 包索引。"></a>1.1.1 更新 apt 包索引。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-get update<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-1-2-安装-apt-依赖包，⽤于通过-HTTPS-来获取仓库"><a href="#1-1-2-安装-apt-依赖包，⽤于通过-HTTPS-来获取仓库" class="headerlink" title="1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库"></a>1.1.2 安装 apt 依赖包，⽤于通过 HTTPS 来获取仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-1-3-添加-Docker-的官⽅-GPG-密钥"><a href="#1-1-3-添加-Docker-的官⽅-GPG-密钥" class="headerlink" title="1.1.3 添加 Docker 的官⽅ GPG 密钥"></a>1.1.3 添加 Docker 的官⽅ GPG 密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | <span class="hljs-built_in">sudo</span> apt-key add -<br><br></code></pre></td></tr></table></figure>
-
 <h3 id="1-1-4-通过搜索指纹的后-8-个字符，验证您现在是否拥有带有指纹的密钥"><a href="#1-1-4-通过搜索指纹的后-8-个字符，验证您现在是否拥有带有指纹的密钥" class="headerlink" title="1.1.4 通过搜索指纹的后 8 个字符，验证您现在是否拥有带有指纹的密钥"></a>1.1.4 通过搜索指纹的后 8 个字符，验证您现在是否拥有带有指纹的密钥</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-key fingerprint 0EBFCD88<br></code></pre></td></tr></table></figure>
-
 <p>输出如下表示成功了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">pub   rsa4096 2017-02-22 [SCEA]<br>      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88<br>uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;<br>sub   rsa4096 2017-02-22 [S]<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-1-5-设置稳定版仓库"><a href="#1-1-5-设置稳定版仓库" class="headerlink" title="1.1.5 设置稳定版仓库"></a>1.1.5 设置稳定版仓库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> add-apt-repository <span class="hljs-string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu <span class="hljs-subst">$(lsb_release -cs)</span> stable&quot;</span><br></code></pre></td></tr></table></figure>
-
 <h2 id="1-2-安装-Docker-Engine-Community"><a href="#1-2-安装-Docker-Engine-Community" class="headerlink" title="1.2 安装 Docker Engine-Community"></a>1.2 安装 Docker Engine-Community</h2><h3 id="1-2-1-更新-apt-包索引"><a href="#1-2-1-更新-apt-包索引" class="headerlink" title="1.2.1 更新 apt 包索引"></a>1.2.1 更新 apt 包索引</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-get update<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-2-安装最新版本的-Docker-Engine-Community-和-containerd"><a href="#1-2-2-安装最新版本的-Docker-Engine-Community-和-containerd" class="headerlink" title="1.2.2 安装最新版本的 Docker Engine-Community 和 containerd"></a>1.2.2 安装最新版本的 Docker Engine-Community 和 containerd</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> apt-get install docker-ce docker-ce-cli containerd.io<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-3-测试-docker"><a href="#1-2-3-测试-docker" class="headerlink" title="1.2.3 测试 docker"></a>1.2.3 测试 docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> docker run hello-world<br></code></pre></td></tr></table></figure>
-
 <p>输出以下内容表示成功了！</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs bash">Unable to find image <span class="hljs-string">&#x27;hello-world:latest&#x27;</span> locally<br>latest: Pulling from library/hello-world<br>e6590344b1a5: Pull complete<br>Digest: sha256:e0b569a5163a5e6be84e210a2587e7d447e08f87a0e90798363fa44a0464a1e8<br>Status: Downloaded newer image <span class="hljs-keyword">for</span> hello-world:latest<br><br>Hello from Docker!<br>This message shows that your installation appears to be working correctly.<br><br>To generate this message, Docker took the following steps:<br> 1. The Docker client contacted the Docker daemon.<br> 2. The Docker daemon pulled the <span class="hljs-string">&quot;hello-world&quot;</span> image from the Docker Hub.<br>    (amd64)<br> 3. The Docker daemon created a new container from that image <span class="hljs-built_in">which</span> runs the<br>    executable that produces the output you are currently reading.<br> 4. The Docker daemon streamed that output to the Docker client, <span class="hljs-built_in">which</span> sent it<br>    to your terminal.<br><br>To try something more ambitious, you can run an Ubuntu container with:<br> $ docker run -it ubuntu bash<br><br>Share images, automate workflows, and more with a free Docker ID:<br> https://hub.docker.com/<br><br>For more examples and ideas, visit:<br> https://docs.docker.com/get-started/<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-4-查看-docker-版本"><a href="#1-2-4-查看-docker-版本" class="headerlink" title="1.2.4 查看 docker 版本"></a>1.2.4 查看 docker 版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker -v<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-5-docker-服务启动与停止"><a href="#1-2-5-docker-服务启动与停止" class="headerlink" title="1.2.5 docker 服务启动与停止"></a>1.2.5 docker 服务启动与停止</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 启动docker</span><br><span class="hljs-built_in">sudo</span> service docker start<br><span class="hljs-comment"># 重启docker</span><br><span class="hljs-built_in">sudo</span> service docker restart<br><span class="hljs-comment"># 停⽌docker</span><br><span class="hljs-built_in">sudo</span> service docker stop<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-6-查看-docker-镜像"><a href="#1-2-6-查看-docker-镜像" class="headerlink" title="1.2.6 查看 docker 镜像"></a>1.2.6 查看 docker 镜像</h3><p>注意要先启动 docker 服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> docker images<br></code></pre></td></tr></table></figure>
-
 <h3 id="1-2-7-开机自动启动-docker-服务"><a href="#1-2-7-开机自动启动-docker-服务" class="headerlink" title="1.2.7 开机自动启动 docker 服务"></a>1.2.7 开机自动启动 docker 服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> docker<br></code></pre></td></tr></table></figure>
-
 <h1 id="2-docker-常用知识"><a href="#2-docker-常用知识" class="headerlink" title="2.docker 常用知识"></a>2.docker 常用知识</h1><p>不同操作系统下其安装包、运行环境是都不相同的！如果是手动安装，必须手动解决安装包不同、环境不同的、配置不同的问题！</p>
 <p>而使用 Docker，这些完全不用考虑。就是因为 Docker 会自动搜索并下载 MySQL。注意：这里下载的不是安装包，而是镜像。镜像中不仅包含了 MySQL 本身，还包含了其运行所需要的环境、配置、系统级函数库。因此它在运行时就有自己独立的环境，就可以跨系统运行，也不需要手动再次配置环境了。这套独立运行的隔离环境我们称为容器。</p>
 <ul>
@@ -414,7 +400,6 @@
 <li>容器：英文是 container</li>
 </ul>
 <h2 id="2-1-安装-mysql"><a href="#2-1-安装-mysql" class="headerlink" title="2.1 安装 mysql"></a>2.1 安装 mysql</h2><h3 id="2-1-1-安装命令"><a href="#2-1-1-安装命令" class="headerlink" title="2.1.1 安装命令"></a>2.1.1 安装命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> docker run -d \<br>  --name mysql \<br>  -p 3306:3306 \<br>  -e TZ=Asia/Shanghai \<br>  -e MYSQL_ROOT_PASSWORD=123 \<br>  mysql<br></code></pre></td></tr></table></figure>
-
 <h3 id="2-1-2-命令参数解读"><a href="#2-1-2-命令参数解读" class="headerlink" title="2.1.2 命令参数解读"></a>2.1.2 命令参数解读</h3><p>这里对命令各个参数的解释如下：</p>
 <ul>
 <li><p><code>sudo docker run -d</code></p>
@@ -432,27 +417,27 @@
 <li>格式： -p 宿主机端口:容器内端口，示例中就是将宿主机的 3306 映射到容器内的 3306 端口</li>
 </ul>
 </li>
-<li><p><code>-e TZ=Asia/Shanghai</code> : 配置容器内进程运行时的一些参数</p>
-<ul>
-<li>格式：-e KEY&#x3D;VALUE，KEY 和 VALUE 都由容器内进程决定</li>
-<li>案例中，TZ&#x3D;Asia&#x2F;Shanghai 是设置时区；MYSQL_ROOT_PASSWORD&#x3D;123 是设置 MySQL 默认密码</li>
+<li><code>-e TZ=Asia/Shanghai</code> : 配置容器内进程运行时的一些参数<ul>
+<li>格式：-e KEY=VALUE，KEY 和 VALUE 都由容器内进程决定</li>
+<li>案例中，TZ=Asia/Shanghai 是设置时区；MYSQL_ROOT_PASSWORD=123 是设置 MySQL 默认密码</li>
 </ul>
 </li>
-<li><p><code>mysql</code> : 设置镜像名称，Docker 会根据这个名字搜索并下载镜像</p>
-<ul>
+<li><code>mysql</code> : 设置镜像名称，Docker 会根据这个名字搜索并下载镜像<ul>
 <li>格式：REPOSITORY:TAG，例如 mysql:8.0，其中 REPOSITORY 可以理解为镜像名，TAG 是版本号</li>
 <li>在未指定 TAG 的情况下，默认是最新版本，也就是 mysql:latest</li>
 </ul>
 </li>
 </ul>
-<h2 id="2-2-常用命令"><a href="#2-2-常用命令" class="headerlink" title="2.2 常用命令"></a>2.2 常用命令</h2><h3 id="2-2-1-命令介绍"><a href="#2-2-1-命令介绍" class="headerlink" title="2.2.1 命令介绍"></a>2.2.1 命令介绍</h3><table>
+<h2 id="2-2-常用命令"><a href="#2-2-常用命令" class="headerlink" title="2.2 常用命令"></a>2.2 常用命令</h2><h3 id="2-2-1-命令介绍"><a href="#2-2-1-命令介绍" class="headerlink" title="2.2.1 命令介绍"></a>2.2.1 命令介绍</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>命令</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>docker pull</code></td>
 <td>拉取镜像</td>
 </tr>
@@ -512,15 +497,15 @@
 <td><code>docker inspect</code></td>
 <td>查看容器详细信息</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>用一张图表示它们之间的关系<br><img src="https://s2.loli.net/2025/02/24/X6CpfRA3mSoMWzV.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h3 id="2-2-2-以安装-ngnix-为例"><a href="#2-2-2-以安装-ngnix-为例" class="headerlink" title="2.2.2 以安装 ngnix 为例"></a>2.2.2 以安装 ngnix 为例</h3><blockquote>
 <p>如果报错了可以在命令之前加个 sudo。Docker 守护进程默认情况下需要超级用户权限才能访问。<br>感觉这样有点麻烦，可以将当前用户添加到 docker 组就不用每个命令都加 sudo 了,之后记得重启一下系统</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> usermod -aG docker <span class="hljs-variable">$USER</span><br></code></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 第1步，去DockerHub查看nginx镜像仓库及相关信息</span><br><br><span class="hljs-comment"># 第2步，拉取Nginx镜像</span><br>docker pull nginx<br><br><span class="hljs-comment"># 第3步，查看镜像</span><br>docker images<br><span class="hljs-comment"># 结果如下：</span><br>REPOSITORY   TAG       IMAGE ID       CREATED         SIZE<br>nginx        latest    605c77e624dd   16 months ago   141MB<br>mysql        latest    3218b38490ce   17 months ago   516MB<br><br><span class="hljs-comment"># 第4步，创建并允许Nginx容器</span><br>docker run -d --name nginx -p 80:80 nginx<br><br><span class="hljs-comment"># 第5步，查看运行中容器</span><br>docker ps<br><span class="hljs-comment"># 也可以加格式化方式访问，格式会更加清爽</span><br>docker ps --format <span class="hljs-string">&quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Image&#125;&#125;\t&#123;&#123;.Ports&#125;&#125;\t&#123;&#123;.Status&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot;</span><br><br><span class="hljs-comment"># 第6步，访问网页，地址：http://虚拟机地址</span><br><br><span class="hljs-comment"># 第7步，停止容器</span><br>docker stop nginx<br><br><span class="hljs-comment"># 第8步，查看所有容器</span><br>docker ps -a --format <span class="hljs-string">&quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Image&#125;&#125;\t&#123;&#123;.Ports&#125;&#125;\t&#123;&#123;.Status&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot;</span><br><br><span class="hljs-comment"># 第9步，再次启动nginx容器</span><br>docker start nginx<br><br><span class="hljs-comment"># 第10步，再次查看容器</span><br>docker ps --format <span class="hljs-string">&quot;table &#123;&#123;.ID&#125;&#125;\t&#123;&#123;.Image&#125;&#125;\t&#123;&#123;.Ports&#125;&#125;\t&#123;&#123;.Status&#125;&#125;\t&#123;&#123;.Names&#125;&#125;&quot;</span><br><br><span class="hljs-comment"># 第11步，查看容器详细信息</span><br>docker inspect nginx<br><br><span class="hljs-comment"># 第12步，进入容器,查看容器内目录</span><br>docker <span class="hljs-built_in">exec</span> -it nginx bash<br><span class="hljs-comment"># 或者，可以进入MySQL</span><br>docker <span class="hljs-built_in">exec</span> -it mysql mysql -uroot -p<br><br><span class="hljs-comment"># 第13步，删除容器</span><br>docker <span class="hljs-built_in">rm</span> nginx<br><span class="hljs-comment"># 发现无法删除，因为容器运行中，强制删除容器</span><br>docker <span class="hljs-built_in">rm</span> -f nginx<br></code></pre></td></tr></table></figure>
-
 <h2 id="2-3-数据卷"><a href="#2-3-数据卷" class="headerlink" title="2.3 数据卷"></a>2.3 数据卷</h2><p>容器是隔离环境，容器内程序的文件、配置、运行时产生的容器都在容器内部，我们要读写容器内的文件非常不方便。大家思考几个问题：</p>
 <ul>
 <li>如果要升级 MySQL 版本，需要销毁旧容器，那么数据岂不是跟着被销毁了？</li>
@@ -529,18 +514,20 @@
 </ul>
 <p>因此，容器提供程序的运行环境，但是程序运行产生的数据、程序运行依赖的配置都应该与容器解耦。</p>
 <h3 id="2-3-1-什么是数据卷"><a href="#2-3-1-什么是数据卷" class="headerlink" title="2.3.1 什么是数据卷"></a>2.3.1 什么是数据卷</h3><p>数据卷（volume）是一个虚拟目录，是容器内目录与宿主机目录之间映射的桥梁。它们之间的关联叫做挂载。<br>简单来说操作宿主机的内容就可以更改容器内的内容，操作容器内的内容也可以更改宿主机的内容。</p>
-<p>&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes 这个目录就是默认的存放所有容器数据卷的目录，其下再根据数据卷名称创建新目录，格式为&#x2F;数据卷名&#x2F;_data。</p>
+<p>/var/lib/docker/volumes 这个目录就是默认的存放所有容器数据卷的目录，其下再根据数据卷名称创建新目录，格式为/数据卷名/_data。</p>
 <blockquote>
 <p>注意：容器与数据卷的挂载要在创建容器时配置，对于创建好的容器，是不能设置数据卷的。而且创建容器的过程中，数据卷会自动创建。</p>
 </blockquote>
-<h3 id="2-3-2-数据卷的常用命令"><a href="#2-3-2-数据卷的常用命令" class="headerlink" title="2.3.2 数据卷的常用命令"></a>2.3.2 数据卷的常用命令</h3><table>
+<h3 id="2-3-2-数据卷的常用命令"><a href="#2-3-2-数据卷的常用命令" class="headerlink" title="2.3.2 数据卷的常用命令"></a>2.3.2 数据卷的常用命令</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>命令</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>docker volume create</code></td>
 <td>创建数据卷</td>
 </tr>
@@ -560,21 +547,20 @@
 <td><code>docker volume prune</code></td>
 <td>清除数据卷</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>示例：nginx 的 html 目录挂载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.首先创建容器并指定数据卷，注意通过 -v 参数来指定数据卷</span><br>docker run -d --name nginx -p 80:80 -v html:/usr/share/nginx/html nginx<br><br><span class="hljs-comment"># 2.然后查看数据卷</span><br>docker volume <span class="hljs-built_in">ls</span><br><span class="hljs-comment"># 结果</span><br>DRIVER    VOLUME NAME<br><span class="hljs-built_in">local</span>     2dacf60661c98b13c9d8540bf1562fb8120de940b3a45a46891ec2b029a60628<br><span class="hljs-built_in">local</span>     html<br><br><br><span class="hljs-comment"># 3.查看数据卷详情</span><br>docker volume inspect html<br><span class="hljs-comment"># 结果</span><br>[<br>    &#123;<br>        <span class="hljs-string">&quot;CreatedAt&quot;</span>: <span class="hljs-string">&quot;2025-02-24T16:21:28+08:00&quot;</span>,<br>        <span class="hljs-string">&quot;Driver&quot;</span>: <span class="hljs-string">&quot;local&quot;</span>,<br>        <span class="hljs-string">&quot;Labels&quot;</span>: null,<br>        <span class="hljs-string">&quot;Mountpoint&quot;</span>: <span class="hljs-string">&quot;/var/lib/docker/volumes/html/_data&quot;</span>,<br>        <span class="hljs-string">&quot;Name&quot;</span>: <span class="hljs-string">&quot;html&quot;</span>,<br>        <span class="hljs-string">&quot;Options&quot;</span>: null,<br>        <span class="hljs-string">&quot;Scope&quot;</span>: <span class="hljs-string">&quot;local&quot;</span><br>    &#125;<br>]<br><br><br><span class="hljs-comment"># 4.查看/var/lib/docker/volumes/html/_data目录</span><br>ll /var/lib/docker/volumes/html/_data<br><span class="hljs-comment"># 可以看到与nginx的html目录内容一样，结果如下：</span><br>root@elysia:~# ll /var/lib/docker/volumes/html/_data<br>total 16<br>drwxr-xr-x 2 root root 4096 2月  24 16:21 ./<br>drwx-----x 3 root root 4096 2月  24 16:21 ../<br>-rw-r--r-- 1 root root  497 2月   5 19:06 50x.html<br>-rw-r--r-- 1 root root  615 2月   5 19:06 index.html<br><br><br><span class="hljs-comment"># 5.进入该目录，并随意修改index.html内容</span><br><span class="hljs-built_in">cd</span> /var/lib/docker/volumes/html/_data<br>vi index.html<br><br><span class="hljs-comment"># 6.打开页面，查看效果</span><br><br><span class="hljs-comment"># 7.进入容器内部，查看/usr/share/nginx/html目录内的文件是否变化</span><br>docker <span class="hljs-built_in">exec</span> -it nginx bash<br></code></pre></td></tr></table></figure>
-
 <h3 id="2-3-3-挂载本地目录或文件"><a href="#2-3-3-挂载本地目录或文件" class="headerlink" title="2.3.3 挂载本地目录或文件"></a>2.3.3 挂载本地目录或文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 挂载本地目录</span><br>-v 本地目录:容器内目录<br><span class="hljs-comment"># 挂载本地文件</span><br>-v 本地文件:容器内文件<br></code></pre></td></tr></table></figure>
-
 <blockquote>
-<p>注意：本地目录或文件必须以 &#x2F; 或 .&#x2F;开头，如果直接以名字开头，会被识别为数据卷名而非本地目录名。<br>如果无权复制文件到容器内，可以使用 chown 命令修改文件的所属用户和组。<br>或者直接用 root 权限连接，省的麻烦。<a target="_blank" rel="noopener" href="https://blog.csdn.net/logani/article/details/126806571">root 连接教程</a></p>
+<p>注意：本地目录或文件必须以 / 或 ./开头，如果直接以名字开头，会被识别为数据卷名而非本地目录名。<br>如果无权复制文件到容器内，可以使用 chown 命令修改文件的所属用户和组。<br>或者直接用 root 权限连接，省的麻烦。<a target="_blank" rel="noopener" href="https://blog.csdn.net/logani/article/details/126806571">root 连接教程</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> -R yourusername:yourusername /path/to/target/directory<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.删除原来的MySQL容器</span><br>docker <span class="hljs-built_in">rm</span> -f mysql<br><br><span class="hljs-comment"># 2.进入root目录</span><br><span class="hljs-built_in">cd</span> ~<br><br><span class="hljs-comment"># 3.创建并运行新mysql容器，挂载本地目录</span><br>docker run -d \<br>  --name mysql \<br>  -p 3306:3306 \<br>  -e TZ=Asia/Shanghai \<br>  -e MYSQL_ROOT_PASSWORD=123 \<br>  -v ./mysql/data:/var/lib/mysql \<br>  -v ./mysql/conf:/etc/mysql/conf.d \<br>  -v ./mysql/init:/docker-entrypoint-initdb.d \<br>  mysql<br><br><span class="hljs-comment"># 4.查看root目录，可以发现~/mysql/data目录已经自动创建好了</span><br><span class="hljs-built_in">ls</span> -l mysql<br><span class="hljs-comment"># 结果：</span><br><br>总用量 12<br>drwxr-xr-x 2 root             root 4096 2月  26 23:03 conf<br>drwxr-xr-x 8 systemd-coredump root 4096 2月  26 23:07 data<br>drwxr-xr-x 2 root             root 4096 2月  26 23:03 init<br><br><br><span class="hljs-comment"># 查看data目录，会发现里面有大量数据库数据，说明数据库完成了初始化</span><br><span class="hljs-built_in">ls</span> -l data<br><br><span class="hljs-comment"># 5.查看MySQL容器内数据</span><br><span class="hljs-comment"># 5.1.进入MySQL</span><br>docker <span class="hljs-built_in">exec</span> -it mysql mysql -uroot -p123<br><span class="hljs-comment"># 5.2.查看编码表</span><br>show variables like <span class="hljs-string">&quot;%char%&quot;</span>;<br><span class="hljs-comment"># 5.3.结果，发现编码是utf8mb4没有问题</span><br>+--------------------------+--------------------------------+<br>| Variable_name            | Value                          |<br>+--------------------------+--------------------------------+<br>| character_set_client     | utf8mb4                        |<br>| character_set_connection | utf8mb4                        |<br>| character_set_database   | utf8mb4                        |<br>| character_set_filesystem | binary                         |<br>| character_set_results    | utf8mb4                        |<br>| character_set_server     | utf8mb4                        |<br>| character_set_system     | utf8mb3                        |<br>| character_sets_dir       | /usr/share/mysql-8.0/charsets/ |<br>+--------------------------+--------------------------------+<br><br><span class="hljs-comment"># 6.查看数据</span><br><span class="hljs-comment"># 6.1.查看数据库</span><br>show databases;<br><span class="hljs-comment"># 结果，hmall是黑马商城数据库</span><br>+--------------------+<br>| Database           |<br>+--------------------+<br>| hmall              |<br>| information_schema |<br>| mysql              |<br>| performance_schema |<br>| sys                |<br>+--------------------+<br>5 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)<br><span class="hljs-comment"># 6.2.切换到hmall数据库</span><br>use hmall;<br><span class="hljs-comment"># 6.3.查看表</span><br>show tables;<br><span class="hljs-comment"># 结果：</span><br>+-----------------+<br>| Tables_in_hmall |<br>+-----------------+<br>| address         |<br>| cart            |<br>| item            |<br>| order           |<br>| order_detail    |<br>| order_logistics |<br>| pay_order       |<br>| user            |<br>+-----------------+<br><span class="hljs-comment"># 6.4.查看address表数据</span><br>+----+---------+----------+--------+----------+-------------+---------------+-----------+------------+-------+<br>| <span class="hljs-built_in">id</span> | user_id | province | city   | town     | mobile      | street        | contact   | is_default | notes |<br>+----+---------+----------+--------+----------+-------------+---------------+-----------+------------+-------+<br>| 59 |       1 | 北京     | 北京   | 朝阳区    | 13900112222 | 金燕龙办公楼   | 李佳诚    | 0          | NULL  |<br>| 60 |       1 | 北京     | 北京   | 朝阳区    | 13700221122 | 修正大厦       | 李佳红    | 0          | NULL  |<br>| 61 |       1 | 上海     | 上海   | 浦东新区  | 13301212233 | 航头镇航头路   | 李佳星    | 1          | NULL  |<br>| 63 |       1 | 广东     | 佛山   | 永春      | 13301212233 | 永春武馆       | 李晓龙    | 0          | NULL  |<br>+----+---------+----------+--------+----------+-------------+---------------+-----------+------------+-------+<br>4 rows <span class="hljs-keyword">in</span> <span class="hljs-built_in">set</span> (0.00 sec)<br></code></pre></td></tr></table></figure>
-
 <h2 id="2-4-镜像"><a href="#2-4-镜像" class="headerlink" title="2.4 镜像"></a>2.4 镜像</h2><h3 id="2-4-1-镜像结构"><a href="#2-4-1-镜像结构" class="headerlink" title="2.4.1 镜像结构"></a>2.4.1 镜像结构</h3><p>镜像就是一堆文件的集合。<br>但需要注意的是，镜像文件不是随意堆放的，而是按照操作的步骤分层叠加而成，每一层形成的文件都会单独打包并标记一个唯一 id，称为 Layer（层）。这样，如果我们构建时用到的某些层其他人已经制作过，就可以直接拷贝使用这些层，而不用重复制作。<br><img src="https://s2.loli.net/2025/02/26/dcYFOhfP4VEpzqm.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
 <h3 id="2-4-2-Dockerfile"><a href="#2-4-2-Dockerfile" class="headerlink" title="2.4.2 Dockerfile"></a>2.4.2 Dockerfile</h3><p>由于制作镜像的过程中，需要逐层处理和打包，比较复杂，所以 Docker 就提供了自动打包镜像的功能。我们只需要将打包的过程，每一层要做的事情用固定的语法写下来，交给 Docker 去执行即可。<br>而这种记录镜像结构的文件就称为 Dockerfile，其对应的语法可以参考官方文档：<br><a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/builder/">https://docs.docker.com/engine/reference/builder/</a></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -583,7 +569,8 @@
 <th>示例</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>FROM</td>
 <td>指定基础镜像</td>
 <td>FROM centos:6</td>
@@ -596,7 +583,7 @@
 <tr>
 <td>COPY</td>
 <td>拷贝本地文件到镜像的指定目录</td>
-<td>COPY .&#x2F;xx.jar &#x2F;tmp&#x2F;app.jar</td>
+<td>COPY ./xx.jar /tmp/app.jar</td>
 </tr>
 <tr>
 <td>RUN</td>
@@ -613,12 +600,12 @@
 <td>镜像中应用的启动命令，容器运行时调用</td>
 <td>ENTRYPOINT java -jar xx.jar</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 基础镜像</span><br>FROM openjdk:11.0-jre-buster<br><span class="hljs-comment"># 设定时区</span><br>ENV TZ=Asia/Shanghai<br>RUN <span class="hljs-built_in">ln</span> -snf /usr/share/zoneinfo/<span class="hljs-variable">$TZ</span> /etc/localtime &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-variable">$TZ</span> &gt; /etc/timezone<br><span class="hljs-comment"># 拷贝jar包</span><br>COPY docker-demo.jar /app.jar<br><span class="hljs-comment"># 入口</span><br>ENTRYPOINT [<span class="hljs-string">&quot;java&quot;</span>, <span class="hljs-string">&quot;-jar&quot;</span>, <span class="hljs-string">&quot;/app.jar&quot;</span>]<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-4-3-制作镜像"><a href="#2-4-3-制作镜像" class="headerlink" title="2.4.3 制作镜像"></a>2.4.3 制作镜像</h3><p>将提供的 docker-demo.jar 包以及 Dockerfile 拷贝到虚拟机的&#x2F;root&#x2F;demo 目录</p>
+<h3 id="2-4-3-制作镜像"><a href="#2-4-3-制作镜像" class="headerlink" title="2.4.3 制作镜像"></a>2.4.3 制作镜像</h3><p>将提供的 docker-demo.jar 包以及 Dockerfile 拷贝到虚拟机的/root/demo 目录</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入镜像目录</span><br><span class="hljs-built_in">cd</span> /root/demo<br><span class="hljs-comment"># 开始构建</span><br>docker build -t docker-demo:1.0 .<br></code></pre></td></tr></table></figure>
-
 <ul>
 <li>docker build : 就是构建一个 docker 镜像</li>
 <li>-t docker-demo:1.0 ：-t 参数是指定镜像的名称（repository 和 tag）</li>
@@ -626,99 +613,17 @@
 </ul>
 <p>运行这个镜像</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.创建并运行容器</span><br>docker run -d --name <span class="hljs-built_in">dd</span> -p 8080:8080 docker-demo:1.0<br><span class="hljs-comment"># 2.查看容器</span><br>dps<br><span class="hljs-comment"># 结果</span><br>CONTAINER ID   IMAGE             PORTS                                                  STATUS         NAMES<br>78a000447b49   docker-demo:1.0   0.0.0.0:8080-&gt;8080/tcp, :::8090-&gt;8090/tcp              Up 2 seconds   <span class="hljs-built_in">dd</span><br>f63cfead8502   mysql             0.0.0.0:3306-&gt;3306/tcp, :::3306-&gt;3306/tcp, 33060/tcp   Up 2 hours     mysql<br><br><span class="hljs-comment"># 3.访问</span><br>curl localhost:8080/hello/count<br><span class="hljs-comment"># 结果：</span><br>&lt;h5&gt;欢迎访问黑马商城, 这是您第1次访问&lt;h5&gt;<br></code></pre></td></tr></table></figure>
-
 <h2 id="2-5-网络"><a href="#2-5-网络" class="headerlink" title="2.5 网络"></a>2.5 网络</h2><p>我们创建了一个 Java 项目的容器，而 Java 项目往往需要访问其它各种中间件，例如 MySQL、Redis 等。现在，我们的容器之间能否互相访问呢？我们来测试一下。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment"># 1.用基本命令，寻找Networks.bridge.IPAddress属性</span><br>docker inspect mysql<br><span class="hljs-comment"># 也可以使用format过滤结果</span><br>docker inspect --format=<span class="hljs-string">&#x27;&#123;&#123;range .NetworkSettings.Networks&#125;&#125;&#123;&#123;println .IPAddress&#125;&#125;&#123;&#123;end&#125;&#125;&#x27;</span> mysql<br><span class="hljs-comment"># 得到IP地址如下：</span><br>172.17.0.2<br><br><span class="hljs-comment"># 2.然后通过命令进入dd容器</span><br>docker <span class="hljs-built_in">exec</span> -it <span class="hljs-built_in">dd</span> bash<br><br><span class="hljs-comment"># 3.在容器内，通过ping命令测试网络</span><br>ping 172.17.0.2<br><span class="hljs-comment"># 结果</span><br>PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.<br>64 bytes from 172.17.0.2: icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=0.053 ms<br>64 bytes from 172.17.0.2: icmp_seq=2 ttl=64 <span class="hljs-keyword">time</span>=0.059 ms<br>64 bytes from 172.17.0.2: icmp_seq=3 ttl=64 <span class="hljs-keyword">time</span>=0.058 ms<br></code></pre></td></tr></table></figure>
-
 <p>发现可以互联，没有问题。</p>
 <p>但是，容器的网络 IP 其实是一个虚拟的 IP，其值并不固定与某一个容器绑定，如果我们在开发时写死某个 IP，而在部署时很可能 MySQL 容器的 IP 会发生变化，连接会失败。</p>
 <p>所以，我们必须借助于 docker 的网络功能来解决这个问题，<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/network/">官方文档</a></p>
-<p>常见命令有：</p>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-<th>文档地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>docker network create</td>
-<td>创建一个网络</td>
-<td>docker network create</td>
-</tr>
-<tr>
-<td>docker network ls</td>
-<td>查看所有网络</td>
-<td>docs.docker.com</td>
-</tr>
-<tr>
-<td>docker network rm</td>
-<td>删除指定网络</td>
-<td>docs.docker.com</td>
-</tr>
-<tr>
-<td>docker network prune</td>
-<td>清除未使用的网络</td>
-<td>docs.docker.com</td>
-</tr>
-<tr>
-<td>docker network connect</td>
-<td>使指定容器连接加入某网络</td>
-<td>docs.docker.com</td>
-</tr>
-<tr>
-<td>docker network disconnect</td>
-<td>使指定容器连接离开某网络</td>
-<td>docker network disconnect</td>
-</tr>
-<tr>
-<td>docker network inspect</td>
-<td>查看网络详细信息</td>
-<td>docker network inspect</td>
-</tr>
-</tbody></table>
+<p>常见命令有：<br>| 命令 | 说明 | 文档地址 |<br>|—————————————-|————————————————|————————————-|<br>| docker network create | 创建一个网络 | docker network create |<br>| docker network ls | 查看所有网络 | docs.docker.com |<br>| docker network rm | 删除指定网络 | docs.docker.com |<br>| docker network prune | 清除未使用的网络 | docs.docker.com |<br>| docker network connect | 使指定容器连接加入某网络 | docs.docker.com |<br>| docker network disconnect | 使指定容器连接离开某网络 | docker network disconnect |<br>| docker network inspect | 查看网络详细信息 | docker network inspect |</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1.首先通过命令创建一个网络</span><br>docker network create hmall<br><br><span class="hljs-comment"># 2.然后查看网络</span><br>docker network <span class="hljs-built_in">ls</span><br><span class="hljs-comment"># 结果：</span><br><br>NETWORK ID     NAME                        DRIVER    SCOPE<br>bb101b739304   bridge                      bridge    <span class="hljs-built_in">local</span><br>7a34682225aa   hmall                       bridge    <span class="hljs-built_in">local</span><br>9bd1d9580837   host                        host      <span class="hljs-built_in">local</span><br>89cd2e5269ff   none                        null      <span class="hljs-built_in">local</span><br>f7d1b6b61018   onlinejudgedeploy_default   bridge    <span class="hljs-built_in">local</span><br><br><span class="hljs-comment"># 其中，除了hmall和我的OJ以外，其它都是默认的网络</span><br><br><span class="hljs-comment"># 3.让dd和mysql都加入该网络，注意，在加入网络时可以通过--alias给容器起别名</span><br><span class="hljs-comment"># 这样该网络内的其它容器可以用别名互相访问！</span><br><span class="hljs-comment"># 3.1.mysql容器，指定别名为db，另外每一个容器都有一个别名是容器名</span><br>docker network connect hmall mysql --<span class="hljs-built_in">alias</span> db<br><span class="hljs-comment"># 3.2.db容器，也就是我们的java项目</span><br>docker network connect hmall <span class="hljs-built_in">dd</span><br><br><span class="hljs-comment"># 4.进入dd容器，尝试利用别名访问db</span><br><span class="hljs-comment"># 4.1.进入容器</span><br>docker <span class="hljs-built_in">exec</span> -it <span class="hljs-built_in">dd</span> bash<br><span class="hljs-comment"># 4.2.用db别名访问</span><br>ping db<br><span class="hljs-comment"># 结果</span><br>PING db (172.18.0.2) 56(84) bytes of data.<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=0.070 ms<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 <span class="hljs-keyword">time</span>=0.056 ms<br><span class="hljs-comment"># 4.3.用容器名访问</span><br>ping mysql<br><span class="hljs-comment"># 结果：</span><br>PING mysql (172.18.0.2) 56(84) bytes of data.<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=1 ttl=64 <span class="hljs-keyword">time</span>=0.044 ms<br>64 bytes from mysql.hmall (172.18.0.2): icmp_seq=2 ttl=64 <span class="hljs-keyword">time</span>=0.054 ms<br></code></pre></td></tr></table></figure>
-
 <h1 id="3-JAVA-项目部署-Docker-Compose"><a href="#3-JAVA-项目部署-Docker-Compose" class="headerlink" title="3.JAVA 项目部署(Docker Compose)"></a>3.JAVA 项目部署(Docker Compose)</h1><h2 id="3-1-Docker-Compose"><a href="#3-1-Docker-Compose" class="headerlink" title="3.1 Docker Compose"></a>3.1 Docker Compose</h2><p>Docker Compose 可以帮助我们实现多个相互关联的 Docker 容器的快速部署。它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器。</p>
-<p>docker-compose 文件中可以定义多个相互关联的应用容器，每一个应用容器被称为一个服务（service）。由于 service 就是在定义某个应用的运行时参数，因此与 docker run 参数非常相似。</p>
-<table>
-<thead>
-<tr>
-<th><code>docker run</code> 参数</th>
-<th><code>docker compose</code> 指令</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>–name</td>
-<td>container_name</td>
-<td>容器名称</td>
-</tr>
-<tr>
-<td>-p</td>
-<td>ports</td>
-<td>端口映射</td>
-</tr>
-<tr>
-<td>-e</td>
-<td>environment</td>
-<td>环境变量</td>
-</tr>
-<tr>
-<td>-v</td>
-<td>volumes</td>
-<td>数据卷配置</td>
-</tr>
-<tr>
-<td>–network</td>
-<td>networks</td>
-<td>网络</td>
-</tr>
-</tbody></table>
+<p>docker-compose 文件中可以定义多个相互关联的应用容器，每一个应用容器被称为一个服务（service）。由于 service 就是在定义某个应用的运行时参数，因此与 docker run 参数非常相似。<br>| <code>docker run</code> 参数 | <code>docker compose</code> 指令 | 说明 |<br>|—————————-|———————————-|——————|<br>| —name | container_name | 容器名称 |<br>| -p | ports | 端口映射 |<br>| -e | environment | 环境变量 |<br>| -v | volumes | 数据卷配置 |<br>| —network | networks | 网络 |</p>
 <p>举例来说，用 docker run 部署 MySQL 的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d \<br>  --name mysql \<br>  -p 3306:3306 \<br>  -e TZ=Asia/Shanghai \<br>  -e MYSQL_ROOT_PASSWORD=123 \<br>  -v ./mysql/data:/var/lib/mysql \<br>  -v ./mysql/conf:/etc/mysql/conf.d \<br>  -v ./mysql/init:/docker-entrypoint-initdb.d \<br>  --network hmall<br>  mysql<br></code></pre></td></tr></table></figure>
-
 <p>如果用 docker-compose.yml 文件来定义，就是这样：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs bash">version: <span class="hljs-string">&quot;3.8&quot;</span><br><br>services:<br>  mysql:<br>    image: mysql<br>    container_name: mysql<br>    ports:<br>      - <span class="hljs-string">&quot;3306:3306&quot;</span><br>    environment:<br>      TZ: Asia/Shanghai<br>      MYSQL_ROOT_PASSWORD: 123<br>    volumes:<br>      - <span class="hljs-string">&quot;./mysql/conf:/etc/mysql/conf.d&quot;</span><br>      - <span class="hljs-string">&quot;./mysql/data:/var/lib/mysql&quot;</span><br>    networks:<br>      - new<br>networks:<br>  new:<br>    name: hmall<br></code></pre></td></tr></table></figure>
 

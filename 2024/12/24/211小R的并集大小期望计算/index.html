@@ -317,7 +317,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          552 字
+          548 字
         
       </span>
     
@@ -381,19 +381,21 @@
 </li>
 <li><p><strong>计算每个元素在并集中出现的概率</strong>：</p>
 <ul>
-<li><p>对于一个元素<code>x</code>，它至少出现在所选的两个集合中的一个的概率，可以通过以下公式计算：<br>$$<br>P(x \text{ 出现在并集中}) &#x3D; 1 - P(x \text{ 不出现在两个集合中})<br>$$</p>
-</li>
+<li>对于一个元素<code>x</code>，它至少出现在所选的两个集合中的一个的概率，可以通过以下公式计算：<script type="math/tex; mode=display">
+P(x \text{ 出现在并集中}) = 1 - P(x \text{ 不出现在两个集合中})</script></li>
 <li><p><code>x</code>不出现在两个集合中的概率为：</p>
-<p>$$<br>P(x \text{ 不出现在两个集合中}) &#x3D; \frac{\binom{n - v}{2}}{\binom{n}{2}}<br>$$</p>
-<p>其中，(\binom{n}{2}) 表示从<code>n</code>个集合中选取两个集合的组合数。</p>
+<script type="math/tex; mode=display">
+P(x \text{ 不出现在两个集合中}) = \frac{\binom{n - v}{2}}{\binom{n}{2}}</script><p>其中，(\binom{n}{2}) 表示从<code>n</code>个集合中选取两个集合的组合数。</p>
 </li>
-<li><p>因此，<code>x</code>出现在并集中的概率为：<br>$$<br>P(x \text{ 出现在并集中}) &#x3D; 1 - \frac{(n - v) \times (n - v - 1)}{n \times (n - 1)}<br>$$</p>
-</li>
+<li><p>因此，<code>x</code>出现在并集中的概率为：</p>
+<script type="math/tex; mode=display">
+P(x \text{ 出现在并集中}) = 1 - \frac{(n - v) \times (n - v - 1)}{n \times (n - 1)}</script></li>
 </ul>
 </li>
 <li><p><strong>计算期望值</strong>：</p>
 <ul>
-<li>期望值为所有元素在并集中出现概率的总和，即：<br>$$<br>\text{期望值} &#x3D; \sum_{x} P(x \text{ 出现在并集中})<br>$$</li>
+<li>期望值为所有元素在并集中出现概率的总和，即：<script type="math/tex; mode=display">
+\text{期望值} = \sum_{x} P(x \text{ 出现在并集中})</script></li>
 </ul>
 </li>
 <li><p><strong>结果格式化</strong>：</p>

@@ -384,8 +384,7 @@
 </li>
 <li><p><strong>验证总和条件</strong>：</p>
 <ul>
-<li><p>计算数组元素的总和 (s)。</p>
-</li>
+<li>计算数组元素的总和 (s)。</li>
 <li><p>检查是否满足 (l \times n \leq s \leq r \times n)。</p>
 <ul>
 <li>如果不满足，说明无法通过有限次操作将所有元素调整到指定范围内，返回 <code>-1</code>。</li>
@@ -397,7 +396,6 @@
 </li>
 </ol>
 <h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, l: <span class="hljs-built_in">int</span>, r: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    cnt1 = cnt2 = s = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> a:<br>        <span class="hljs-keyword">if</span> x &lt; l:<br>            cnt1 += l - x<br>        <span class="hljs-keyword">if</span> x &gt; r:<br>            cnt2 += x - r<br>        s += x<br>    <span class="hljs-keyword">return</span> <span class="hljs-built_in">max</span>(cnt1, cnt2) <span class="hljs-keyword">if</span> l * n &lt;= s &lt;= r * n <span class="hljs-keyword">else</span> -<span class="hljs-number">1</span><br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">2</span>, l = <span class="hljs-number">3</span>, r = <span class="hljs-number">5</span>, a = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]) == -<span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">3</span>, l = <span class="hljs-number">4</span>, r = <span class="hljs-number">6</span>, a = [<span class="hljs-number">3</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>]) == <span class="hljs-number">1</span>)<br>    <span class="hljs-built_in">print</span>(solution(n = <span class="hljs-number">4</span>, l = <span class="hljs-number">2</span>, r = <span class="hljs-number">8</span>, a = [<span class="hljs-number">1</span>, <span class="hljs-number">10</span>, <span class="hljs-number">2</span>, <span class="hljs-number">6</span>]) == <span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
-
 <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><p>时间复杂度：$O(n)$，其中$ n $是数组的长度。<br>空间复杂度：$O(1)$。</p>
 
                 

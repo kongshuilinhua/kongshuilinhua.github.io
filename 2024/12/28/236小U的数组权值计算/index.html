@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题描述小 R 定义一个数组的“权值”为相邻两数乘积为奇数的对数。给定一个整数 n，表示数组的长度，即需要求从 1 到 n 的所有排列的权值之和。每个排列包含从 1 到 n 的每个正整数且仅出现一次。由于结果可能非常大，答案需要对 $10^9 + 7$ 取模。 题解 奇数对的选择：  只有两个奇数的乘积为奇数 在 1 到 n 的数中，奇数的个数为 $\lceil n&#x2F;2 \rceil$。">
+    <meta name="description" content="问题描述小 R 定义一个数组的“权值”为相邻两数乘积为奇数的对数。给定一个整数 n，表示数组的长度，即需要求从 1 到 n 的所有排列的权值之和。每个排列包含从 1 到 n 的每个正整数且仅出现一次。由于结果可能非常大，答案需要对 $10^9 + 7$ 取模。 题解 奇数对的选择：  只有两个奇数的乘积为奇数 在 1 到 n 的数中，奇数的个数为 $\lceil n&#x2F;2 \rceil$。 选择两个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="236小U的数组权值计算">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/28/236%E5%B0%8FU%E7%9A%84%E6%95%B0%E7%BB%84%E6%9D%83%E5%80%BC%E8%AE%A1%E7%AE%97/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="问题描述小 R 定义一个数组的“权值”为相邻两数乘积为奇数的对数。给定一个整数 n，表示数组的长度，即需要求从 1 到 n 的所有排列的权值之和。每个排列包含从 1 到 n 的每个正整数且仅出现一次。由于结果可能非常大，答案需要对 $10^9 + 7$ 取模。 题解 奇数对的选择：  只有两个奇数的乘积为奇数 在 1 到 n 的数中，奇数的个数为 $\lceil n&#x2F;2 \rceil$。">
+<meta property="og:description" content="问题描述小 R 定义一个数组的“权值”为相邻两数乘积为奇数的对数。给定一个整数 n，表示数组的长度，即需要求从 1 到 n 的所有排列的权值之和。每个排列包含从 1 到 n 的每个正整数且仅出现一次。由于结果可能非常大，答案需要对 $10^9 + 7$ 取模。 题解 奇数对的选择：  只有两个奇数的乘积为奇数 在 1 到 n 的数中，奇数的个数为 $\lceil n&#x2F;2 \rceil$。 选择两个">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-28T01:17:53.000Z">
 <meta property="article:modified_time" content="2024-12-28T05:44:02.000Z">
@@ -317,7 +317,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          310 字
+          304 字
         
       </span>
     
@@ -376,8 +376,8 @@
 <li><p><strong>奇数对的选择：</strong></p>
 <ul>
 <li>只有两个奇数的乘积为奇数</li>
-<li>在 1 到 n 的数中，奇数的个数为 $\lceil n&#x2F;2 \rceil$。</li>
-<li>选择两个不同的奇数有 $\lceil n&#x2F;2 \rceil \times (\lceil n&#x2F;2 \rceil - 1)$ 种方法。</li>
+<li>在 1 到 n 的数中，奇数的个数为 $\lceil n/2 \rceil$。</li>
+<li>选择两个不同的奇数有 $\lceil n/2 \rceil \times (\lceil n/2 \rceil - 1)$ 种方法。</li>
 </ul>
 </li>
 <li><p><strong>位置的安排：</strong></p>
@@ -388,12 +388,11 @@
 </li>
 <li><p><strong>总计：</strong></p>
 <ul>
-<li>将以上部分相乘，得到总权值之和：<br>a(n) &#x3D; $\lceil n&#x2F;2 \rceil \times (\lceil n&#x2F;2 \rceil - 1) \times (n-1)!$</li>
+<li>将以上部分相乘，得到总权值之和：<br>a(n) = $\lceil n/2 \rceil \times (\lceil n/2 \rceil - 1) \times (n-1)!$</li>
 </ul>
 </li>
 </ol>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python">mod = <span class="hljs-built_in">int</span>(<span class="hljs-number">1e9</span> + <span class="hljs-number">7</span>)<br><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> ceil<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span></span>) -&gt; <span class="hljs-built_in">int</span>:<br>    res = ceil(n / <span class="hljs-number">2</span>) * ceil(n / <span class="hljs-number">2</span> - <span class="hljs-number">1</span>)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n): res = (res * i) % mod<br>    <span class="hljs-keyword">return</span> res<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>) == <span class="hljs-number">144</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">3</span>) == <span class="hljs-number">4</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>) == <span class="hljs-number">720</span>)<br></code></pre></td></tr></table></figure>
-
 <p>复杂度分析：<br>时间复杂度：$O(n)$<br>空间复杂度：$O(1)$</p>
 
                 

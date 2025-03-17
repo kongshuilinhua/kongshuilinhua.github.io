@@ -317,7 +317,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          607 字
+          605 字
         
       </span>
     
@@ -388,7 +388,7 @@
 <li><p><code>chr(i)</code> 和 <code>ord(c)</code><br>这两个函数互为逆函数。<br><code>chr(i)</code>返回 Unicode 码位为整数<code>i</code> 的字符的字符串格式。<br><code>ord(c)</code>对表示单个 Unicode 字符的字符串，返回代表它 Unicode 码点的整数。</p>
 <figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-keyword">print</span>(<span class="hljs-keyword">chr</span>(<span class="hljs-number">97</span>))  <span class="hljs-comment"># &#x27;a&#x27;</span><br><span class="hljs-keyword">print</span>(<span class="hljs-keyword">ord</span>(<span class="hljs-string">&#x27;a&#x27;</span>)) <span class="hljs-comment"># 97</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p><code>divmod(a, b)</code><br>接受两个数字作为参数并返回由当对其使用整数除法时的商和余数组成的数字对。 结果与 (a &#x2F;&#x2F; b, a % b) 相同。</p>
+<li><p><code>divmod(a, b)</code><br>接受两个数字作为参数并返回由当对其使用整数除法时的商和余数组成的数字对。 结果与 (a // b, a % b) 相同。</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">a</span>, b = divmod(<span class="hljs-number">10</span>, <span class="hljs-number">3</span>)  # a = <span class="hljs-number">3</span>, b = <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 </li>
 <li><p><code>enumerate(iterable, start=0)</code><br>传入一个可迭代对象返回一个元组，里面包含一个计数值（从 start 开始，默认为 0）和通过迭代 iterable 获得的值。</p>
@@ -400,8 +400,9 @@
 <li><p><code>int(x, base=10)</code><br>将一个字符串或数字转换为整数。如果第二个参数 base 给出，则 x 必须是一个字符串，表示进制数（如 2 表示二进制，8 表示八进制，10 表示十进制，16 表示十六进制）。</p>
 <figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;5&#x27;</span>))  <span class="hljs-meta"># 5</span><br><span class="hljs-keyword">print</span>(<span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;1010&#x27;</span>, <span class="hljs-number">2</span>))  <span class="hljs-meta"># 10</span><br></code></pre></td></tr></table></figure>
 </li>
-<li><p><code>max(iterable, *[, key, default])</code> 和 <code>min(iterable, *[, key, default])</code><br>大家都知道这两个函数的作用，需要注意的是，如果传入的可迭代对象为空，会抛出 <em>ValueError</em> 异常。可以通过 default 参数设置默认返回值。</p>
-<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs monkey">nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums))<span class="hljs-meta">  # 5</span><br>nums2 = []<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums2))<span class="hljs-meta">  # ValueError: max() arg is an empty sequence</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums2, <span class="hljs-keyword">default</span>=<span class="hljs-number">0</span>))<span class="hljs-meta">  # 0</span><br></code></pre></td></tr></table></figure></li>
+<li><p><code>max(iterable, *[, key, default])</code> 和 <code>min(iterable, *[, key, default])</code><br>大家都知道这两个函数的作用，需要注意的是，如果传入的可迭代对象为空，会抛出 _ValueError_ 异常。可以通过 default 参数设置默认返回值。</p>
+<figure class="highlight monkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs monkey">nums = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums))<span class="hljs-meta">  # 5</span><br>nums2 = []<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums2))<span class="hljs-meta">  # ValueError: max() arg is an empty sequence</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">max</span>(nums2, <span class="hljs-keyword">default</span>=<span class="hljs-number">0</span>))<span class="hljs-meta">  # 0</span><br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>11.<code>pow(base, exp, mod=None)</code><br>返回<em>base</em>的 exp 次幂；如果 mod 存在，则返回结果对 mod 取模。</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">print</span>(pow(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>))  # <span class="hljs-number">8</span><br></code></pre></td></tr></table></figure>
