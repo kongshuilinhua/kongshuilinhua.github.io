@@ -33,8 +33,9 @@
 <meta property="og:image" content="https://s2.loli.net/2025/03/20/h1ncsCDfToG4RLZ.png">
 <meta property="og:image" content="https://s2.loli.net/2025/03/20/juZdlYCAgephi4n.png">
 <meta property="og:image" content="https://s2.loli.net/2025/03/20/P1LDUvNkF87aenA.png">
+<meta property="og:image" content="https://s2.loli.net/2025/03/20/ljML7imJGQqZK1A.png">
 <meta property="article:published_time" content="2025-03-17T10:28:23.000Z">
-<meta property="article:modified_time" content="2025-03-19T16:52:56.527Z">
+<meta property="article:modified_time" content="2025-03-20T12:42:15.659Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="Mysql">
@@ -324,7 +325,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          4.6k 字
+          5.8k 字
         
       </span>
     
@@ -336,7 +337,7 @@
         
         
           <!-- compatible with older versions-->
-          39 分钟
+          49 分钟
         
       </span>
     
@@ -547,6 +548,55 @@
 <li>索引上等值查询（唯一索引），给不存在的记录加锁时，优化为间隙锁</li>
 <li>索引上等值查询（普通索引），向右遍历到最后一个值不满足查询需求时，next-key-lock 退化为间隙锁</li>
 <li>索引上范围查询（唯一索引），会访问到不满足条件的第一个值为止。</li>
+</ul>
+<h1 id="5-InnoDB-存储引擎（待补充）"><a href="#5-InnoDB-存储引擎（待补充）" class="headerlink" title="5. InnoDB 存储引擎（待补充）"></a>5. InnoDB 存储引擎（待补充）</h1><h2 id="5-1-逻辑存储结构"><a href="#5-1-逻辑存储结构" class="headerlink" title="5.1 逻辑存储结构"></a>5.1 逻辑存储结构</h2><p>InnoDB 存储引擎的逻辑存储架构主要包括：表空间、段、区、页、行。</p>
+<h2 id="5-2-架构"><a href="#5-2-架构" class="headerlink" title="5.2 架构"></a>5.2 架构</h2><h2 id="5-3-事务原理"><a href="#5-3-事务原理" class="headerlink" title="5.3 事务原理"></a>5.3 事务原理</h2><p>事务是逻辑上的一组操作的集合，事务会把所有操作作为一个整体向系统提交，要么都执行，要么都不执行。</p>
+<p>事务的四大特性：</p>
+<ul>
+<li>原子性（Atomicity）：事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。</li>
+<li>一致性（Consistency）：事务执行的结果必须是使数据库从一个一致性状态变到另一个一致性状态。</li>
+<li>隔离性（Isolation）：一个事务的执行不能被其他事务干扰。</li>
+<li>持久性（Durability）：事务一旦提交，对数据库的改变是永久性的。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 开启一个事务<br><span class="hljs-keyword">START</span> TRANSACTION;<br># 多条 <span class="hljs-keyword">SQL</span> 语句<br>SQL1,SQL2...<br>## 提交事务<br><span class="hljs-keyword">COMMIT</span>;<br></code></pre></td></tr></table></figure>
+
+<p>redo log：<br>重做日志，记录的是事务提交时数据页的物理修改，用来实现事务的持久性。<br>undo log：<br>回滚日志，用于记录事务发生之前的数据，提供回滚和 MVCC。</p>
+<h2 id="5-4-MVCC"><a href="#5-4-MVCC" class="headerlink" title="5.4 MVCC"></a>5.4 MVCC</h2><h3 id="5-4-1-基本概念"><a href="#5-4-1-基本概念" class="headerlink" title="5.4.1 基本概念"></a>5.4.1 基本概念</h3><p>当前读 （一致性锁定读）就是给行记录加 X 锁或 S 锁。</p>
+<p>当前读的一些常见 SQL 语句类型如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 对读的记录加一个X锁<br>SELECT...FOR <span class="hljs-keyword">UPDATE</span><br># 对读的记录加一个S锁<br>SELECT...LOCK <span class="hljs-keyword">IN</span> SHARE MODE<br># 对读的记录加一个S锁<br>SELECT...FOR SHARE<br># 对修改的记录加一个X锁<br>INSERT...<br>UPDATE...<br>DELETE...<br></code></pre></td></tr></table></figure>
+
+<p>快照读（一致性非锁定读）就是单纯的 SELECT 语句，但不包括下面这两类 SELECT 语句：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> ... <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span><br># 共享锁 可以在 MySQL <span class="hljs-number">5.7</span> 和 MySQL <span class="hljs-number">8.0</span> 中使用<br><span class="hljs-keyword">SELECT</span> ... LOCK <span class="hljs-keyword">IN</span> SHARE MODE;<br># 共享锁 可以在 MySQL <span class="hljs-number">8.0</span> 中使用<br><span class="hljs-keyword">SELECT</span> ... <span class="hljs-keyword">FOR</span> SHARE;<br></code></pre></td></tr></table></figure>
+
+<p>快照即记录的历史版本，每行记录可能存在多个历史版本（多版本技术）。快照读的情况下，如果读取的记录正在执行 UPDATE&#x2F;DELETE 操作，读取操作不会因此去等待记录上 X 锁的释放，而是会去读取行的一个快照。</p>
+<h3 id="5-4-2-实现原理"><a href="#5-4-2-实现原理" class="headerlink" title="5.4.2 实现原理"></a>5.4.2 实现原理</h3><p>MVCC 的实现依赖于：隐藏字段、Read View、undo log。在内部实现中，InnoDB 通过数据行的 DB_TRX_ID 和 Read View 来判断数据的可见性，如不可见，则通过数据行的 DB_ROLL_PTR 找到 undo log 中的历史版本。每个事务读到的数据版本可能是不一样的，在同一个事务中，用户只能看到该事务创建 Read View 之前已经提交的修改和该事务本身做的修改</p>
+<h4 id="5-4-2-1-隐藏字段"><a href="#5-4-2-1-隐藏字段" class="headerlink" title="5.4.2.1 隐藏字段"></a>5.4.2.1 隐藏字段</h4><p>在内部，InnoDB 存储引擎为每行数据添加了三个 隐藏字段：</p>
+<ul>
+<li>DB_TRX_ID（6 字节）：表示最后一次插入或更新该行的事务 id。此外，delete 操作在内部被视为更新，只不过会在记录头 Record header 中的 deleted_flag 字段将其标记为已删除</li>
+<li>DB_ROLL_PTR（7 字节） 回滚指针，指向该行的 undo log 。如果该行未被更新，则为空</li>
+<li>DB_ROW_ID（6 字节）：如果没有设置主键且该表没有唯一非空索引时，InnoDB 会使用该 id 来生成聚簇索引。</li>
+</ul>
+<h4 id="5-4-2-2-undo-log"><a href="#5-4-2-2-undo-log" class="headerlink" title="5.4.2.2 undo-log"></a>5.4.2.2 undo-log</h4><p>undo log 主要有两个作用：</p>
+<ul>
+<li>当事务回滚时用于将数据恢复到修改前的样子</li>
+<li>另一个作用是 MVCC ，当读取记录时，若该记录被其他事务占用或当前版本对该事务不可见，则可以通过 undo log 读取之前的版本数据，以此实现非锁定读</li>
+</ul>
+<h4 id="5-4-2-3-Read-View"><a href="#5-4-2-3-Read-View" class="headerlink" title="5.4.2.3 Read View"></a>5.4.2.3 Read View</h4><p>read view 是一个事务开始时的一个快照，用于判断事务在执行期间，其他事务对数据的修改是否对该事务可见。Read View 由以下几个部分组成：</p>
+<ul>
+<li>m_low_limit_id：目前出现过的最大的事务 ID+1，即下一个将被分配的事务 ID。大于等于这个 ID 的数据版本均不可见</li>
+<li>m_up_limit_id：活跃事务列表 m_ids 中最小的事务 ID，如果 m_ids 为空，则 m_up_limit_id 为 m_low_limit_id。小于这个 ID 的数据版本均可见</li>
+<li>m_ids：Read View 创建时其他未提交的活跃事务 ID 列表。创建 Read View 时，将当前未提交事务 ID 记录下来，后续即使它们修改了记录行的值，对于当前事务也是不可见的。m_ids 不包括当前事务自己和已提交的事务（正在内存中）</li>
+<li>m_creator_trx_id：创建该 Read View 的事务 ID</li>
+</ul>
+<h1 id="6-mysql-管理"><a href="#6-mysql-管理" class="headerlink" title="6. mysql 管理"></a>6. mysql 管理</h1><p>mysql 安装之后自带四个数据库：information_schema、mysql、performance_schema、sys</p>
+<p>mysql：存放 mysql 服务器正常运行所需要的各种信息（时区、主从、用户、权限）等。<br>information_schema：</p>
+<p><img src="https://s2.loli.net/2025/03/20/ljML7imJGQqZK1A.png" srcset="/img/loading.gif" lazyload alt="image.png"></p>
+<p>参考：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zh411L7mT/?spm_id_from=333.788.player.switch&vd_source=b9ab4f9aa6bebe7d9fc425c0f3a63b0f&p=95">MySQL 高级（索引+存储过程+锁）从原理到优化，深入浅出数据库 MySQL 教程 一套通关!</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://javaguide.cn/database/mysql/mysql-index.html">MySQL 索引详解</a></p>
+</li>
 </ul>
 
                 
