@@ -28,29 +28,31 @@
 <meta property="og:site_name" content="FireFly">
 <meta property="og:description" content="1.Redis 入门 1.1 Redis 配置 1.1.1 常用配置项说明 12345678910111213141516# 允许访问的地址，默认是 127.0.0.1，会导致只能在本地访问。修改为 0.0.0.0 则可以在任意 IP 访问，生产环境不要设置为 0.0.0.0bind 0.0.0.0# 守护进程，修改为 yes 后即可后台运行daemonize yes# 密码，设置后访问 Redi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-2.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-3.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-4.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-5.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-6.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-7.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-8.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-9.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-10.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-11.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-12.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-13.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-14.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-15.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-16.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-17.png">
-<meta property="og:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-18.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-2.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-3.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-4.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-5.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-6.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-7.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-8.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-9.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-10.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-11.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-12.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-13.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-14.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-15.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-16.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-17.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-18.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-19.png">
+<meta property="og:image" content="https://kongshuilinhua.github.io/img/image-20.png">
 <meta property="article:published_time" content="2025-03-19T06:21:16.000Z">
-<meta property="article:modified_time" content="2026-01-17T08:02:46.255Z">
+<meta property="article:modified_time" content="2026-05-09T12:19:55.179Z">
 <meta property="article:author" content="FireFLy">
 <meta property="article:tag" content="redis, database, caching">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kongshuilinhua.github.io/2025/03/19/Redis/image-2.png">
+<meta name="twitter:image" content="https://kongshuilinhua.github.io/img/image-2.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -335,7 +337,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          8.2k 字
+          8.8k 字
         
       </span>
     
@@ -347,7 +349,7 @@
         
         
           <!-- compatible with older versions-->
-          69 分钟
+          74 分钟
         
       </span>
     
@@ -443,7 +445,7 @@
 <h2 id="2-3-Hash-命令">2.3 Hash 命令</h2>
 <p>Hash 类型，也叫散列，其 value 是一个无序字典，类似于 Java 中的 HashMap 结构。</p>
 <p>String 结构是将对象序列化为 JSON 字符串后存储，当需要修改对象某个字段时很不方便,Hash 结构可以将对象中的每个字段独立存储，可以针对单个字段做 CRUD。<br>
-<img src="image-2.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<img src="/img/image-2.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>常见命令有</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xquery">- HSET<span class="hljs-built_in"> key</span> field <span class="hljs-keyword">value</span>：添加或者修改hash类<span class="hljs-built_in">型key</span>的field的值<br><br>- HGET<span class="hljs-built_in"> key</span> field：获取一个hash类<span class="hljs-built_in">型key</span>的field的值<br><br>- HMSET：批量添加多个hash类<span class="hljs-built_in">型key</span>的field的值<br><br>- HMGET：批量获取多个hash类<span class="hljs-built_in">型key</span>的field的值<br><br>- HGETALL：获取一个hash类型<span class="hljs-built_in">的key</span>中的所有的field和<span class="hljs-keyword">value</span><br>- HKEYS：获取一个hash类型<span class="hljs-built_in">的key</span>中的所有的field<br>- HINCRBY:让一个hash类<span class="hljs-built_in">型key</span>的字段值自增并指定步长<br>- HSETNX：添加一个hash类型<span class="hljs-built_in">的key</span>的field值，前提是这个field不存在，否则不执行<br></code></pre></td></tr></table></figure>
 <h2 id="2-4-List-命令">2.4 List 命令</h2>
@@ -542,7 +544,7 @@
 <li>支持基于 JDK、JSON、字符串、Spring 对象的数据序列化及反序列化</li>
 <li>支持基于 Redis 的 JDKCollection 实现<br>
 SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 Redis 的操作。并且将不同数据类型的操作 API 封装到了不同的类型中：<br>
-<img src="image-3.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<img src="/img/image-3.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ul>
 <h3 id="3-2-1-引入依赖">3.2.1 引入依赖</h3>
 <p>springboot 勾选 nosql 选项会自动引入 spring-data-redis 依赖，如果是普通的 spring 项目，则需要手动引入如下依赖：</p>
@@ -593,7 +595,7 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p>**布隆过滤：**布隆过滤器其实采用的是哈希思想来解决这个问题，通过一个庞大的二进制数组，走哈希思想去判断当前这个要查询的这个数据是否存在，如果布隆过滤器判断存在，则放行，这个请求会去访问 redis，哪怕此时 redis 中的数据过期了，但是数据库中一定存在这个数据，在数据库中查询出来这个数据后，再将其放入到 redis 中，</p>
 <p>假设布隆过滤器判断这个数据不存在，则直接返回</p>
 <p>这种方式优点在于节约内存空间，存在误判，误判原因在于：布隆过滤器走的是哈希思想，只要哈希思想，就可能存在哈希冲突<br>
-<img src="image-4.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<img src="/img/image-4.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p><strong>小总结：</strong></p>
 <p>缓存穿透产生的原因是什么？</p>
 <ul>
@@ -616,7 +618,7 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <li>利用 Redis 集群提高服务的可用性</li>
 <li>给缓存业务添加降级限流策略</li>
 <li>给业务添加多级缓存<br>
-<img src="image-5.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<img src="/img/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ul>
 <h2 id="5-3-缓存击穿问题及解决思路">5.3 缓存击穿问题及解决思路</h2>
 <p>缓存击穿问题也叫热点 Key 问题，就是一个被高并发访问并且缓存重建业务较复杂的 key 突然失效了，无数的请求访问会在瞬间给数据库带来巨大的冲击。</p>
@@ -626,26 +628,26 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <li>逻辑过期</li>
 </ul>
 <p>逻辑分析：假设线程 1 在查询缓存之后，本来应该去查询数据库，然后把这个数据重新加载到缓存的，此时只要线程 1 走完这个逻辑，其他线程就都能从缓存中加载这些数据了，但是假设在线程 1 没有走完的时候，后续的线程 2，线程 3，线程 4 同时过来访问当前这个方法， 那么这些线程都不能从缓存中查询到数据，那么他们就会同一时刻来访问查询缓存，都没查到，接着同一时间去访问数据库，同时的去执行数据库代码，对数据库访问压力过大</p>
-<p><img src="image-6.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-6.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>解决方案一、使用锁来解决：</p>
 <p>因为锁能实现互斥性。假设线程过来，只能一个人一个人的来访问数据库，从而避免对于数据库访问压力过大，但这也会影响查询的性能，因为此时会让查询的性能从并行变成了串行，我们可以采用 tryLock 方法 + double check 来解决这样的问题。</p>
 <p>假设现在线程 1 过来访问，他查询缓存没有命中，但是此时他获得到了锁的资源，那么线程 1 就会一个人去执行逻辑，假设现在线程 2 过来，线程 2 在执行过程中，并没有获得到锁，那么线程 2 就可以进行到休眠，直到线程 1 把锁释放后，线程 2 获得到锁，然后再来执行逻辑，此时就能够从缓存中拿到数据了。</p>
-<p><img src="image-7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>解决方案二、逻辑过期方案</p>
 <p>方案分析：我们之所以会出现这个缓存击穿问题，主要原因是在于我们对 key 设置了过期时间，假设我们不设置过期时间，其实就不会有缓存击穿的问题，但是不设置过期时间，这样数据不就一直占用我们内存了吗，我们可以采用逻辑过期方案。</p>
 <p>我们把过期时间设置在 redis 的 value 中，注意：这个过期时间并不会直接作用于 redis，而是我们后续通过逻辑去处理。假设线程 1 去查询缓存，然后从 value 中判断出来当前的数据已经过期了，此时线程 1 去获得互斥锁，那么其他线程会进行阻塞，获得了锁的线程他会开启一个 线程去进行 以前的重构数据的逻辑，直到新开的线程完成这个逻辑后，才释放锁， 而线程 1 直接进行返回，假设现在线程 3 过来访问，由于线程线程 2 持有着锁，所以线程 3 无法获得锁，线程 3 也直接返回数据，只有等到新开的线程 2 把重建数据构建完后，其他线程才能走返回正确的数据。</p>
 <p>这种方案巧妙在于，异步的构建缓存，缺点在于在构建完缓存之前，返回的都是脏数据。</p>
-<p><img src="image-8.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-8.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>进行对比</p>
 <p><strong>互斥锁方案：</strong> 由于保证了互斥性，所以数据一致，且实现简单，因为仅仅只需要加一把锁而已，也没其他的事情需要操心，所以没有额外的内存消耗，缺点在于有锁就有死锁问题的发生，且只能串行执行性能肯定受到影响</p>
 <p><strong>逻辑过期方案：</strong> 线程读取过程中不需要等待，性能好，有一个额外的线程持有锁去进行重构数据，但是在重构数据完成前，其他的线程只能返回之前的数据，且实现起来麻烦</p>
-<p><img src="image-9.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h1>6. 优惠卷</h1>
 <h2 id="6-1-lua-脚本">6.1 lua 脚本</h2>
 <p>Lua 脚本是 Redis 提供的一种服务器端脚本语言，可以用来实现复杂的原子操作。Lua 脚本在 Redis 中运行时是单线程的，因此可以保证脚本中的所有命令都是原子执行的。<br>
 更为极端的误删逻辑说明：</p>
 <p>线程 1 现在持有锁之后，在执行业务逻辑过程中，他正准备删除锁，而且已经走到了条件判断的过程中，比如他已经拿到了当前这把锁确实是属于他自己的，正准备删除锁，但是此时他的锁到期了，那么此时线程 2 进来，但是线程 1 他会接着往后执行，当他卡顿结束后，他直接就会执行删除锁那行代码，相当于条件判断并没有起到作用，这就是删锁时的原子性问题，之所以有这个问题，是因为线程 1 的拿锁，比锁，删锁，实际上并不是原子性的，我们要防止刚才的情况发生，<br>
-<img src="image-10.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<img src="/img/image-10.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>这里重点介绍 Redis 提供的调用函数，语法如下：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua">redis.call(<span class="hljs-string">&#x27;命令名称&#x27;</span>, <span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&#x27;其它参数&#x27;</span>, ...)<br></code></pre></td></tr></table></figure>
 <p>例如，我们要执行 set name jack，则脚本是这样：</p>
@@ -653,11 +655,11 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p>例如，我们要先执行 set name Rose，再执行 get name，则脚本如下：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua"># 先执行 set name jack<br>redis.call(<span class="hljs-string">&#x27;set&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>, <span class="hljs-string">&#x27;Rose&#x27;</span>)<br># 再执行 get name<br><span class="hljs-keyword">local</span> name = redis.call(<span class="hljs-string">&#x27;get&#x27;</span>, <span class="hljs-string">&#x27;name&#x27;</span>)<br># 返回<br><span class="hljs-keyword">return</span> name<br></code></pre></td></tr></table></figure>
 <p>写好脚本以后，需要用 Redis 命令来调用脚本，调用脚本的常见命令如下：<br>
-<img src="image-11.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>
+<img src="/img/image-11.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>
 例如，我们要执行 redis.call(‘set’, ‘name’, ‘jack’) 这个脚本，语法如下：<br>
-<img src="image-12.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>
+<img src="/img/image-12.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>
 如果脚本中的 key、value 不想写死，可以作为参数传递。key 类型参数会放入 KEYS 数组，其它参数会放入 ARGV 数组，在脚本中可以从 KEYS 和 ARGV 数组获取这些参数：<br>
-<img src="image-13.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<img src="/img/image-13.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>接下来我们来回一下我们释放锁的逻辑：</p>
 <p>释放锁的业务流程是这样的</p>
 <p>​ 1、获取锁中的线程标示</p>
@@ -668,7 +670,7 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p>最终我们操作 redis 的拿锁比锁删锁的 lua 脚本就会变成这样</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-comment">-- 这里的 KEYS[1] 就是锁的 key，这里的 ARGV[1] 就是当前线程标示</span><br><span class="hljs-comment">-- 获取锁中的标示，判断是否与当前线程标示一致</span><br><span class="hljs-keyword">if</span> (redis.call(<span class="hljs-string">&#x27;GET&#x27;</span>, KEYS[<span class="hljs-number">1</span>]) == ARGV[<span class="hljs-number">1</span>]) <span class="hljs-keyword">then</span><br><span class="hljs-comment">-- 一致，则删除锁</span><br><span class="hljs-keyword">return</span> redis.call(<span class="hljs-string">&#x27;DEL&#x27;</span>, KEYS[<span class="hljs-number">1</span>])<br><span class="hljs-keyword">end</span><br><span class="hljs-comment">-- 不一致，则直接返回</span><br><span class="hljs-keyword">return</span> <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
 <h2 id="6-2-java-调用-lua-脚本">6.2 java 调用 lua 脚本</h2>
-<p><img src="image-14.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-14.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> DefaultRedisScript&lt;Long&gt; UNLOCK_SCRIPT;<br>    <span class="hljs-keyword">static</span> &#123;<br>        UNLOCK_SCRIPT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultRedisScript</span>&lt;&gt;();<br>        UNLOCK_SCRIPT.setLocation(<span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassPathResource</span>(<span class="hljs-string">&quot;unlock.lua&quot;</span>));<br>        UNLOCK_SCRIPT.setResultType(Long.class);<br>    &#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">unlock</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 调用lua脚本</span><br>    stringRedisTemplate.execute(<br>            UNLOCK_SCRIPT,<br>            Collections.singletonList(KEY_PREFIX + name),<br>            ID_PREFIX + Thread.currentThread().getId());<br>&#125;<br>经过以上代码改造后，我们就能够实现 拿锁比锁删锁的原子性动作了~<br></code></pre></td></tr></table></figure>
 <h2 id="6-3-分布式锁总结">6.3 分布式锁总结</h2>
 <p>基于 Redis 的分布式锁实现思路：</p>
@@ -697,11 +699,11 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p><strong>不可重试</strong>：是指目前的分布式只能尝试一次，我们认为合理的情况是：当线程在获得锁失败后，他应该能再次尝试获得锁。</p>
 <p>**超时释放：**我们在加锁时增加了过期时间，这样的我们可以防止死锁，但是如果卡顿的时间超长，虽然我们采用了 lua 表达式防止删锁的时候，误删别人的锁，但是毕竟没有锁住，有安全隐患</p>
 <p><strong>主从一致性：</strong> 如果 Redis 提供了主从集群，当我们向集群写数据时，主机需要异步的将数据同步给从机，而万一在同步过去之前，主机宕机了，就会出现死锁问题。</p>
-<p><img src="image-15.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-15.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <p>那么什么是 Redission 呢</p>
 <p>Redisson 是一个在 Redis 的基础上实现的 Java 驻内存数据网格（In-Memory Data Grid）。它不仅提供了一系列的分布式的 Java 常用对象，还提供了许多分布式服务，其中就包含了各种分布式锁的实现。</p>
 <p>Redission 提供了分布式锁的多种多样的功能</p>
-<p><img src="image-16.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-16.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h2 id="7-2-Redission-入门">7.2 Redission 入门</h2>
 <p>引入依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.redisson<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>redisson<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>	<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.13.6<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
@@ -729,7 +731,7 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p>将当前这个锁的 value 进行+1 ，redis.call(‘pexpire’, KEYS[1], ARGV[1]); 然后再对其设置过期时间，如果以上两个条件都不满足，则表示当前这把锁抢锁失败，最后返回 pttl，即为当前这把锁的失效时间</p>
 <p>看了前边的源码， 你会发现他会去判断当前这个方法的返回值是否为 null，如果是 null，则对应则前两个 if 对应的条件，退出抢锁逻辑，如果返回的不是 null，即走了第三个分支，在源码处会进行 while(true)的自旋抢锁。</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-string">&quot;if (redis.call(&#x27;exists&#x27;, KEYS[1]) == 0) then &quot;</span> +<br>                  <span class="hljs-string">&quot;redis.call(&#x27;hset&#x27;, KEYS[1], ARGV[2], 1); &quot;</span> +<br>                  <span class="hljs-string">&quot;redis.call(&#x27;pexpire&#x27;, KEYS[1], ARGV[1]); &quot;</span> +<br>                  <span class="hljs-string">&quot;return nil; &quot;</span> +<br>              <span class="hljs-string">&quot;end; &quot;</span> +<br>              <span class="hljs-string">&quot;if (redis.call(&#x27;hexists&#x27;, KEYS[1], ARGV[2]) == 1) then &quot;</span> +<br>                  <span class="hljs-string">&quot;redis.call(&#x27;hincrby&#x27;, KEYS[1], ARGV[2], 1); &quot;</span> +<br>                  <span class="hljs-string">&quot;redis.call(&#x27;pexpire&#x27;, KEYS[1], ARGV[1]); &quot;</span> +<br>                  <span class="hljs-string">&quot;return nil; &quot;</span> +<br>              <span class="hljs-string">&quot;end; &quot;</span> +<br>              <span class="hljs-string">&quot;return redis.call(&#x27;pttl&#x27;, KEYS[1]);&quot;</span><br></code></pre></td></tr></table></figure>
-<p><img src="image-17.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-17.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h2 id="7-4-分布式锁-redission-锁重试和-WatchDog-机制">7.4 分布式锁-redission 锁重试和 WatchDog 机制</h2>
 <p><strong>说明</strong>：由于课程中已经说明了有关 tryLock 的源码解析以及其看门狗原理，所以笔者在这里给大家分析 lock()方法的源码解析，希望大家在学习过程中，能够掌握更多的知识</p>
 <p>抢锁过程中，获得当前线程，通过 tryAcquire 进行抢锁，该抢锁逻辑和之前逻辑相同</p>
@@ -753,7 +755,31 @@ SpringDataRedis 中提供了 RedisTemplate 工具类，其中封装了各种对 
 <p>此时我们去写命令，写在主机上， 主机会将数据同步给从机，但是假设在主机还没有来得及把数据写入到从机去的时候，此时主机宕机，哨兵会发现主机宕机，并且选举一个 slave 变成 master，而此时新的 master 中实际上并没有锁信息，此时锁信息就已经丢掉了。</p>
 <p>为了解决这个问题，redission 提出来了 MutiLock 锁，使用这把锁咱们就不使用主从了，每个节点的地位都是一样的， 这把锁加锁的逻辑需要写入到每一个主丛节点上，只有所有的服务器都写入成功，此时才是加锁成功，假设现在某个节点挂了，那么他去获得锁的时候，只要有一个节点拿不到，都不能算是加锁成功，就保证了加锁的可靠性。</p>
 <p>当我们去设置了多个锁时，redission 会将多个锁添加到一个集合中，然后用 while 循环去不停去尝试拿锁，但是会有一个总共的加锁时间，这个时间是用需要加锁的个数 * 1500ms ，假设有 3 个锁，那么时间就是 4500ms，假设在这 4500ms 内，所有的锁都加锁成功， 那么此时才算是加锁成功，如果在 4500ms 有线程加锁失败，则会再次去进行重试.</p>
-<p><img src="image-18.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="/img/image-18.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h1>8. BitMap 命令</h1>
+<p>Redis中是利用string类型数据结构实现BitMap，因此最大上限是512M，转换为bit则是 2^32个bit位。<br>
+<img src="/img/image-19.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>BitMap的操作命令有：</p>
+<ul>
+<li>SETBIT：向指定位置（offset）存入一个0或1 (setbit mybitmap 10 1, 将mybitmap的第10个bit位置为1, 即第11天签到)</li>
+<li>GETBIT ：获取指定位置（offset）的bit值 (getbit mybitmap 10, 获取mybitmap的第10个bit位的值)</li>
+<li>BITCOUNT ：统计BitMap中值为1的bit位的数量 （bitcount mybitmap）</li>
+<li>BITFIELD ：操作（查询、修改、自增）BitMap中bit数组中的指定位置（offset）的值 （bitfield mybitmap GET u5 0, 表示获取无符号的5个比特位，从0开始）</li>
+<li>BITFIELD_RO ：获取BitMap中bit数组，并以十进制形式返回 （bitfield_ro mybitmap GET u5 0, 表示获取无符号的5个比特位，从0开始）</li>
+<li>BITOP ：将多个BitMap的结果做位运算（与 、或、异或）</li>
+<li>BITPOS ：查找bit数组中指定范围内第一个0或1出现的位置</li>
+</ul>
+<h1>9. HyperLogLog 命令</h1>
+<p>首先我们搞懂两个概念：</p>
+<ul>
+<li>UV：全称Unique Visitor，也叫独立访客量，是指通过互联网访问、浏览这个网页的自然人。1天内同一个用户多次访问该网站，只记录1次。</li>
+<li>PV：全称Page View，也叫页面访问量或点击量，用户每访问网站的一个页面，记录1次PV，用户多次打开页面，则记录多次PV。往往用来衡量网站的流量。</li>
+</ul>
+<p>通常来说UV会比PV大很多，所以衡量同一个网站的访问量，我们需要综合考虑很多因素，所以我们只是单纯的把这两个值作为一个参考值</p>
+<p>UV统计在服务端做会比较麻烦，因为要判断该用户是否已经统计过了，需要将统计过的用户信息保存。但是如果每个访问的用户都保存到Redis中，数据量会非常恐怖，那怎么处理呢？</p>
+<p>Hyperloglog(HLL)是从Loglog算法派生的概率算法，用于确定非常大的集合的基数，而不需要存储其所有值。相关算法原理大家可以参考：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903785744056333#heading-0">https://juejin.cn/post/6844903785744056333#heading-0</a><br>
+Redis中的HLL是基于string结构实现的，单个HLL的内存<strong>永远小于16kb</strong>，<strong>内存占用低</strong>的令人发指！作为代价，其测量结果是概率性的，<strong>有小于0.81％的误差</strong>。不过对于UV统计来说，这完全可以忽略。</p>
+<p><img src="/img/image-20.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 
                 
               </div>

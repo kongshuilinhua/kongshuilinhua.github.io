@@ -21,12 +21,12 @@
   <meta name="author" content="FireFLy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="203 小 Q 和小 X 的游戏问题描述小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。 每次行动时，当前玩家需要选择当前元素左边比它更小的元素，然后移动到该元素，接下来换另一方从这个元素继续移动。如果某一方无法进行合法的移动，则该方输掉游戏。 小 Q 想知道，在双方都采取最优策略的情况下，她最">
+    <meta name="description" content="203 小 Q 和小 X 的游戏 问题描述 小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。 每次行动时，当前玩家需要选择当前元素左边比它更小的元素，然后移动到该元素，接下来换另一方从这个元素继续移动。如果某一方无法进行合法的移动，则该方输掉游戏。 小 Q 想知道，在双方都采取最优策略的情况下，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="203小Q和小X的游戏">
 <meta property="og:url" content="https://kongshuilinhua.github.io/2024/12/23/203%E5%B0%8FQ%E5%92%8C%E5%B0%8FX%E7%9A%84%E6%B8%B8%E6%88%8F/index.html">
 <meta property="og:site_name" content="FireFly">
-<meta property="og:description" content="203 小 Q 和小 X 的游戏问题描述小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。 每次行动时，当前玩家需要选择当前元素左边比它更小的元素，然后移动到该元素，接下来换另一方从这个元素继续移动。如果某一方无法进行合法的移动，则该方输掉游戏。 小 Q 想知道，在双方都采取最优策略的情况下，她最">
+<meta property="og:description" content="203 小 Q 和小 X 的游戏 问题描述 小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。 每次行动时，当前玩家需要选择当前元素左边比它更小的元素，然后移动到该元素，接下来换另一方从这个元素继续移动。如果某一方无法进行合法的移动，则该方输掉游戏。 小 Q 想知道，在双方都采取最优策略的情况下，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-12-23T11:59:23.000Z">
 <meta property="article:modified_time" content="2024-12-25T02:00:30.000Z">
@@ -371,12 +371,16 @@
             
               <div class="markdown-body">
                 
-                <h1 id="203-小-Q-和小-X-的游戏"><a href="#203-小-Q-和小-X-的游戏" class="headerlink" title="203 小 Q 和小 X 的游戏"></a>203 小 Q 和小 X 的游戏</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。</p>
+                <h1>203 小 Q 和小 X 的游戏</h1>
+<h2 id="问题描述">问题描述</h2>
+<p>小 Q 和小 X 是很好的朋友，她们正在玩一个游戏。她们拿到了一个数组，游戏开始时小 Q 随机选择一个元素作为起点。接着，两人轮流行动，小 Q 先行动。</p>
 <p>每次行动时，当前玩家需要选择当前元素左边比它更小的元素，然后移动到该元素，接下来换另一方从这个元素继续移动。如果某一方无法进行合法的移动，则该方输掉游戏。</p>
 <p>小 Q 想知道，在双方都采取最优策略的情况下，她最终获胜的概率是多少？请输出分数的最简形式，即分子和分母互素。如果小 Q 必胜，则输出 <code>1/1</code>。如果小 Q 必败，则输出 <code>0/1</code>。</p>
-<h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p>因为起点是随机的，那么一共有 $n$ 种可能的起点。对于每个起点，我们可以通过模拟游戏的过程来判断小 Q 是否能获胜。</p>
+<h2 id="解题思路">解题思路</h2>
+<p>因为起点是随机的，那么一共有 $n$ 种可能的起点。对于每个起点，我们可以通过模拟游戏的过程来判断小 Q 是否能获胜。</p>
 <p>因为双方都采取最优策略，如果当前位置左边没有比它更小的元素，那么当前玩家必败。否则先手的小 Q 可以直接移动到左边的最小元素获得胜利。因此，我们可以通过统计当前位置左边是否存在比它更小的元素来判断小 Q 是否能获胜。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>以下是基于上述思路的 Python 代码实现：</p>
+<h2 id="代码实现">代码实现</h2>
+<p>以下是基于上述思路的 Python 代码实现：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> math <span class="hljs-keyword">import</span> gcd<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solution</span>(<span class="hljs-params">n: <span class="hljs-built_in">int</span>, a: <span class="hljs-built_in">list</span></span>) -&gt; <span class="hljs-built_in">str</span>:<br>    mi = <span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;inf&#x27;</span>)<br>    cnt = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-keyword">if</span> a[i] &gt; mi:<br>            cnt += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            mi = a[i]<br>    <span class="hljs-comment"># 计算最大公约数，化简分数</span><br>    g = gcd(cnt, n)<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;cnt//g&#125;</span>/<span class="hljs-subst">&#123;n//g&#125;</span>&#x27;</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">5</span>, [<span class="hljs-number">3</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>]) == <span class="hljs-string">&#x27;3/5&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">6</span>, [<span class="hljs-number">6</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span>, <span class="hljs-number">7</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span>]) == <span class="hljs-string">&#x27;2/3&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(solution(<span class="hljs-number">4</span>, [<span class="hljs-number">8</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">3</span>]) == <span class="hljs-string">&#x27;1/4&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
                 
