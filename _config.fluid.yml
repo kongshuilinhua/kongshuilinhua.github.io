@@ -60,7 +60,7 @@ navbar:
 ## 关于页设置
 about:
   ## 关于页的顶部预览图
-  banner_img: /img/about.png
+  banner_img: /img/about.jpg
   banner_img_width: 200px
   banner_img_height: 80px
   ### 你的头像
@@ -103,7 +103,7 @@ links:
         # avatar: "/img/favicon.png",
       }
   ### 默认头像
-  default_avatar: /img/default.png
+  default_avatar: /img/about_banner.jpg
 
 ## 标签页设置
 tag:
@@ -114,7 +114,7 @@ tag:
 ## 分类页设置
 category:
   ### 分类页的顶部预览图
-  banner_img: /img/categories.PNG
+  banner_img: /img/categories.jpg
   banner_img_width: 400px
   banner_img_height: 200px
 ## 归档页设置
@@ -206,7 +206,7 @@ index:
 # ==================================== 文章页设置 ====================================
 post:
   ## 统一给文章设置一个默认封面
-  default_index_img: /img/default.png
+  default_index_img: /img/title_default.jpg
   ## 日期/字数/阅读时长/阅读数 设置
   meta:
     author: # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
