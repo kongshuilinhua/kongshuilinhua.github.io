@@ -1,4 +1,4 @@
-# ==================================== 全局设置 ====================================
+﻿# ==================================== 全局设置 ====================================
 
 ## 顶部预览大图（不知道为什么，设置这个属性貌似没起到作用）
 # banner_img: /img/bg/banner_img.jpg
@@ -100,10 +100,10 @@ links:
         title: "Fluid Docs",
         intro: "Fluid 主题使用指南",
         link: "https://hexo.fluid-dev.com/docs/",
-        avatar: "/img/favicon.png",
+        # avatar: "/img/favicon.png",
       }
   ### 默认头像
-  default_avatar: /img/about_banner.jpg
+  default_avatar: /img/default.png
 
 ## 标签页设置
 tag:
@@ -206,7 +206,7 @@ index:
 # ==================================== 文章页设置 ====================================
 post:
   ## 统一给文章设置一个默认封面
-  default_index_img: /img/title_default.jpg
+  default_index_img: /img/default.png
   ## 日期/字数/阅读时长/阅读数 设置
   meta:
     author: # 作者，优先根据 front-matter 里 author 字段，其次是 hexo 配置中 author 值
